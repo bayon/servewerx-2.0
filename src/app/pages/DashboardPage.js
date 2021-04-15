@@ -27,7 +27,7 @@ export default function DashboardPage(props) {
   }
   return (
     <React.Fragment>
-      <Grid container>
+      <Grid container alignItems="center" justify="center">
         <Grid item xs={10}>
           <h1>Dashboard</h1>
           <StatusChecker></StatusChecker>

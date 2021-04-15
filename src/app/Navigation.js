@@ -1,7 +1,6 @@
 import Grid from "@material-ui/core/Grid";
 import Icon from "@material-ui/core/Icon";
 import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
 import React, { useEffect, useState } from "react";
 //import store from "./redux/store";
 import { useDispatch, useSelector } from "react-redux";
@@ -54,15 +53,11 @@ function Navigation(props) {
       <Toolbar >
         <Grid container spacing={1} >
           <Grid item xs={12} sm={3}>
-            <Typography
-              component="h6"
-              variant="h6"
-              color="inherit"
-              align="center"
-              noWrap
+            <h2
+              style={{color:"darkblue"}}
             >
-              Web Applications
-            </Typography>
+              Servewerx.com
+            </h2>
           </Grid>
           <Grid item xs={12} sm={2}>
             <div style={{ marginRight: 15 }}>
@@ -115,7 +110,7 @@ function Navigation(props) {
                   }}
                   to="/allSitePosts"
                 >
-                  <LinkStyle>Posts</LinkStyle>
+                  <LinkStyle>All Posts</LinkStyle>
                 </Link>
               </Grid>
 
@@ -127,7 +122,7 @@ function Navigation(props) {
                   }}
                   to="/profile"
                 >
-                  <LinkStyle>Profile</LinkStyle>
+                  <LinkStyle>My Profile</LinkStyle>
                 </Link>
               </Grid>
               <Grid item xs={12} sm={1}  >

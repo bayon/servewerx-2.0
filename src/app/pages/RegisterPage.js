@@ -3,8 +3,10 @@ import Paper from "@material-ui/core/Paper";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import React from "react";
-import logo from "../assets/img/pexels-pixabay-159201.jpg";
+//import logo from "../assets/img/pexels-pixabay-159201.jpg";
+import logo from "../assets/img/pexels-laurie-shaw-804392.jpg";
 import PayPage from "./PayPage";
+
 
 
 const stripePromise = loadStripe("pk_test_7aHY16H2I0thccZMQJIDUNpi");
@@ -23,7 +25,7 @@ export default function RegisterPage(props) {
           style={{
             backgroundImage: `url(${logo})`,
             backgroundSize: "cover",
-            height: "400px",
+            height: "750px",
           }}
         >
           <Elements stripe={stripePromise}>

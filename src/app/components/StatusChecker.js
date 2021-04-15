@@ -33,7 +33,7 @@ export default function StatusChecker() {
       .catch((err) => console.log("error:", err));
   };
   return (
-    <div style={{position:"fixed",bottom:"0px",left:"0px",background:"#000",opacity:".8", width:"100%"}}>
+    <div style={{position:"fixed",bottom:"0px",left:"0px",background:"#000",opacity:".8", width:"100%", height:"25px"}}>
       <p style={{color:"#fff",fontSize:".5em"}}>Status Checker: 
       <button onClick={setStatusGreen} style={{background:"green",height:"15px",  color:"white",padding:"0 .5em 0 .5em"}}>Green</button>
       <button onClick={setStatusBlue} style={{background:"blue",height:"15px",  color:"white",padding:"0 .5em 0 .5em"}}>Blue</button>
