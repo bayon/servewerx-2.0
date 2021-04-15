@@ -216,7 +216,8 @@ const UsersPostsPage = (props) => {
   }
 
   return (
-    <Grid container direction="column" className="card-plain">
+    //className="card-plain" 
+    <Grid container direction="column" alignItems="center" justify="center">
         <Grid item>
           <span>
             <h2>Current Posts</h2>

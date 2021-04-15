@@ -18,7 +18,7 @@ const calc = (x, y) => [
       config: { mass: 5, tension: 350, friction: 40 },
     }));
     return (
-      <div>
+      <div style={{opacity:".90"}}>
         <animated.div
           className="card"
           onMouseMove={({ clientX: x, clientY: y }) => set({ xys: calc(x, y) })}
@@ -27,12 +27,11 @@ const calc = (x, y) => [
           title="Title hello..."
         >
           <Typography variant="h5" component="h2">
-            Backend
+            Hiring
           </Typography>
   
           <Typography variant="body2" component="p" color="textSecondary">
-          PHP, NodeJS, Python, Server Administration, API
-                      Integration, GraphQL
+          Need to hire some professionals.
           </Typography>
   
           {/* <Button

@@ -1,5 +1,4 @@
 import Grid from "@material-ui/core/Grid";
-import Paper from "@material-ui/core/Paper";
 import React from "react";
 //import logo from "./assets/img/pexels-pixabay-159201.jpg";
 import logo from "./assets/img/pexels-laurie-shaw-804392.jpg";
@@ -9,28 +8,33 @@ import FrontEndAnimatedCard from "./cards/FrontEndAnimatedCard";
 import Footer from "./Footer";
 
 export default function Home(props) {
- 
   return (
     <React.Fragment>
-      <Grid container spacing={2}>
+      <Grid container  >
         <Grid item xs={12} sm={12}>
-          <Paper
-            style={{
+         
+            <Grid container spacing={1} alignItems="center" justify="center" direction="row"  style={{
               backgroundImage: `url(${logo})`,
-              backgroundSize: "cover",
-              height: "400px",
-            }}
-          ></Paper>
-        </Grid>
-        <Grid item xs={12} sm={4}>
-          <FrontEndAnimatedCard></FrontEndAnimatedCard>
-        </Grid>
+              backgroundSize: "contain",
+              height: "750px",
+              backgroundRepeat: "no-repeat",
+              alignItems: "center",
+              justifyContent: "center",
+            }}>
+           
+              <Grid item xs={12} sm={3}>
+                <FrontEndAnimatedCard></FrontEndAnimatedCard>
+              </Grid>
 
-        <Grid item xs={12} sm={4}>
-          <DatabaseAnimatedCard></DatabaseAnimatedCard>
-        </Grid>
-        <Grid item xs={12} sm={4}>
-          <BackendAnimatedCard></BackendAnimatedCard>
+              <Grid item xs={12} sm={3}>
+                <DatabaseAnimatedCard></DatabaseAnimatedCard>
+              </Grid>
+              <Grid item xs={12} sm={3}>
+                <BackendAnimatedCard></BackendAnimatedCard>
+              </Grid>
+              
+            </Grid>
+         
         </Grid>
       </Grid>
 

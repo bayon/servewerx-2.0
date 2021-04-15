@@ -1,4 +1,3 @@
-import Paper from "@material-ui/core/Paper";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as authAction from "../../redux/actions/authAction";
@@ -153,11 +152,11 @@ if (!auth) {
    
 
   return (
-    <div>
-      <Paper>
+    <Grid container alignItems="center" justify="center">
+       
       <p className="cardDevNote" >UsersPage</p>
 
-        <div>
+        <div style={{border:"dotted red 2px"}}>
           <span>
             Sort Options:
             <input
@@ -202,7 +201,7 @@ if (!auth) {
         {haveUsers && displayUsers()}
  
        
-      </Paper>
+      
     </div>
   );
 };
