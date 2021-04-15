@@ -61,7 +61,7 @@ function Navigation(props) {
               align="center"
               noWrap
             >
-              Web Applications
+              Servewerx.com
             </Typography>
           </Grid>
           <Grid item xs={12} sm={2}>
