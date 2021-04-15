@@ -1,0 +1,45 @@
+/*
+import { config } from "../../Constants";
+import { useSelector } from "react-redux";
+
+const HOST_URL = config.url.HOST_URL;
+ var auth = useSelector((state) => state.auth.authorized);
+  var user = useSelector((state) => state.auth.user);
+
+*/
+
+/*
+//NOT EVERY!!!  PAGE.
+ROUTER CODE TO GO: 
+import { BrowserRouter as Router, Link, Route } from "react-router-dom";
+import DashboardPage from "./pages/DashboardPage";
+import styled from "styled-components";
+
+
+const LinkStyle = styled.section`
+  padding: 0.3em;
+  height: 35px;
+  background: #fff;
+  color: #333;
+`;
+
+<Router>
+
+
+    <Grid item xs={12} sm={1}>
+      <Link
+        style={{
+          textDecoration: "none",
+        }}
+        to="/dashboard"
+      >
+        <LinkStyle>Dashboard</LinkStyle>
+      </Link>
+    </Grid>
+
+      <Route path="/dashboard" component={DashboardPage} />
+
+
+</Router>
+
+*/

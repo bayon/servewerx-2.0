@@ -1,0 +1,228 @@
+https://www.pluralsight.com/guides/how-to-use-geolocation-call-in-reactjs
+
+Introduction
+Sometimes an app may require a user’s current location properties, such as latitude and longitude, in order to enable location-related functionalities.
+
+Location properties allow you to access a current user’s geolocation, or location at a given moment, and provide specific services based on their particular area.
+
+With geolocation, you can access user details including:
+
+Current position
+Altitude
+Velocity speed
+Direction of movement
+Speed accuracy
+Timestamp
+In this guide, you'll learn to show and update a user's geolocation on a map.
+
+Access Geolocation
+You can access a user's geolocation using the JavaScript API navigator.geolocation, which allows you to ask for location permission. If the user gives permission, location properties can be accessed.
+
+There are two methods available to get the location of the user.:
+
+geolocation.getCurrentPosition()
+geolocation.watchPosition()
+The first step is finding out if a user's geolocation is available or not.
+
+
+componentDidMount() {
+    if ("geolocation" in navigator) {
+      console.log("Available");
+    } else {
+      console.log("Not Available");
+    }
+  }
+jsx
+If the code above returns true, then you can access various geolocation properties. If not, then the user has disabled the location access.
+
+Get Current Position
+Get the current position of the user using the navigator.getCurrentPosition() method.
+
+
+import React, { Component } from "react";
+import { render } from "react-dom";
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+    };
+  }
+
+  componentDidMount() {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      console.log("Latitude is :", position.coords.latitude);
+      console.log("Longitude is :", position.coords.longitude);
+    });
+  }
+
+  render() {
+    return (
+      <div>
+        <h4>Using geolocation JavaScript API in React</h4>
+      </div>
+    );
+  }
+}
+
+render(<App />, document.getElementById("root"));
+jsx
+Open the console, and the output should look like this.
+
+1
+2
+Latitude is : xx.xxxxxx
+Longitude is : xx.xxxxxx
+The xxx can be any number based on the location.
+
+Try the following code to get the complete position of the user.
+
+
+componentDidMount() {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      console.log(position)
+    });
+  }
+jsx
+The output in the console will look like this.
+
+
+GeolocationPosition {
+    coords: GeolocationCoordinates, 
+    timestamp: 1583849180132
+    }
+    coords: { 
+        GeolocationCoordinateslatitude: 19.xxxxxxx
+        longitude: 73.xxxxxx
+        altitude: 
+            nullaccuracy: 1158
+            altitudeAccuracy: null
+            heading: null
+            speed: null
+            __proto__: GeolocationCoordinates
+        timestamp: 1583849180132
+    }
+__proto__: GeolocationPosition
+getCurrentPosition returns the success object as a position property, but along with the success callback, you also have the error callback. It can be implemented with the following code.
+
+componentDidMount() {
+    navigator.geolocation.getCurrentPosition(
+      function(position) {
+        console.log(position);
+      },
+      function(error) {
+        console.error("Error Code = " + error.code + " - " + error.message);
+      }
+    );
+  }
+jsx
+Error callback is used to get the error related to position such as disallow the location and so on. When you open the console and disallow the location,you will get an error that looks like this.
+
+Error Code = 1 - Geolocation has been disabled in this document by Feature Policy
+
+Watch User Movements
+getCurrentPosition, allows you to access the current position, but what if the user changes their location? watchPosition attaches the handler function and executes itself as soon as the user changes their current location, returning the updated location properties for the user's new position.
+
+The following code will get the basic location properties.
+ 
+import React, { Component } from "react";
+import { render } from "react-dom";
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
+  componentDidMount() {
+    if (navigator.geolocation) {
+      navigator.geolocation.watchPosition(function(position) {
+        console.log("Latitude is :", position.coords.latitude);
+        console.log("Longitude is :", position.coords.longitude);
+      });
+    }
+  }
+
+  render() {
+    return (
+      <div>
+        <h4>Using geolocation JavaScript API in React</h4>
+      </div>
+    );
+  }
+}
+
+render(<App />, document.getElementById("root"));
+jsx
+Open the console, and you will see that the new position properties are updated as soon as user changes their location.
+
+Show Map after Getting Location
+Maps are a primary way to show a user’s current position. You'll need some location parameters, such as latitude and longitude, to render the current location.
+
+Note: Before using a map, you should have a Google Map API key. Otherwise, the map will not work and will show an error.
+
+Install this map library, which will allow you to get started with a map quickly.
+
+1
+npm install google-maps-react
+shell
+Using this library, you can pass the location data, and based on that data, the specific location of the user will be highlighted on the map.
+
+Open the new component and write the following code snippet.
+ 
+import React, { Component } from "react";
+import { Map, GoogleApiWrapper, Marker  } from 'google-maps-react';
+
+const mapStyles = {
+  width: '100%',
+  height: '100%'
+};
+
+class Demo1 extends Component {
+  constructor() {
+    super();
+    this.state = {
+      name: "React"
+    };
+  }
+
+  render() {
+    return (
+      <div>
+        <Map
+          google={this.props.google}
+          zoom={14}
+          style={mapStyles}
+          initialCenter={{
+            lat: YOUR_LATITUDE,
+            lng: YOUR_LONGITUDE
+          }}
+        >
+         <Marker
+          onClick={this.onMarkerClick}
+          name={'This is test name'}
+        />
+        </Map>
+      </div>
+    );
+  }
+}
+
+export default GoogleApiWrapper({
+  apiKey: 'API_KEY'
+})(Demo1);
+jsx
+Note: You'll need to replace your google maps API key with API_KEY. Otherwise, the map won’t be able to render the location-related properties.
+
+Based on the latitude and longitude, a map will be able to load the exact location. The location will be identified as a marker on the map.
+
+Other Interfaces
+JavaScript provides a number of other interfaces that work closely with location properties based on different functional requirements.
+
+Geolocation
+GeolocationCoordinates
+GeolocationPosition
+Navigator.geolocation
+GeolocationPositionError
+Conclusion
+In this guide, you learned how to use JavaScript’s Geolocation APIs to work with user locations and related properties. 

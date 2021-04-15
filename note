@@ -1,0 +1,70 @@
+
+host: 
+67.205.153.202
+
+repo: 
+https://github.com/bayon/bayonforte.com.react.git
+
+
+
+
+
+http://www.bayonforte.com/
+NOT FINDING: 
+http://www.bayonforte.com/build/static/js/2.91ebb971.chunk.js
+
+
+Digital Ocean Hosting does not require 
+  "homepage": "http://www.bayonforte.com/build",
+ 
+ 
+
+
+ BUG ISSUES: 
+ After I am logged in, say on the Profile page or the Search page. 
+ IF I hit refresh the page refreshes with the same 'slug' but the page is empty and I have to 're-login' to see them.
+
+ HOME PAGE needs the NAvigation Layer. 
+ 
+
+ SERVER ISSUE: 
+ bayon@ubuntu-s-1vcpu-2gb-nyc1-01:~$ sudo systemctl restart nginx
+Job for nginx.service failed because the control process exited with error code.
+See "systemctl status nginx.service" and "journalctl -xe" for details.
+
+bayon@ubuntu-s-1vcpu-2gb-nyc1-01:~$ sudo journalctl -xe
+Apr 14 11:53:22 ubuntu-s-1vcpu-2gb-nyc1-01 nginx[1487]: nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address >
+Apr 14 11:53:22 ubuntu-s-1vcpu-2gb-nyc1-01 nginx[1487]: nginx: [emerg] bind() to [::]:80 failed (98: Address alr>
+Apr 14 11:53:23 ubuntu-s-1vcpu-2gb-nyc1-01 nginx[1487]: nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address >
+Apr 14 11:53:23 ubuntu-s-1vcpu-2gb-nyc1-01 nginx[1487]: nginx: [emerg] bind() to [::]:80 failed (98: Address alr>
+Apr 14 11:53:23 ubuntu-s-1vcpu-2gb-nyc1-01 nginx[1487]: nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address >
+Apr 14 11:53:23 ubuntu-s-1vcpu-2gb-nyc1-01 nginx[1487]: nginx: [emerg] bind() to [::]:80 failed (98: Address alr>
+Apr 14 11:53:24 ubuntu-s-1vcpu-2gb-nyc1-01 nginx[1487]: nginx: [emerg] still could not bind()
+Apr 14 11:53:24 ubuntu-s-1vcpu-2gb-nyc1-01 systemd[1]: nginx.service: Control process exited, code=exited, statu>
+-- Subject: Unit process exited
+-- Defined-By: systemd
+-- Support: http://www.ubuntu.com/support
+-- 
+-- An ExecStart= process belonging to unit nginx.service has exited.
+-- 
+-- The process' exit code is 'exited' and its exit status is 1.
+Apr 14 11:53:24 ubuntu-s-1vcpu-2gb-nyc1-01 sudo[1472]: pam_unix(sudo:session): session closed for user root
+Apr 14 11:53:24 ubuntu-s-1vcpu-2gb-nyc1-01 systemd[1]: nginx.service: Failed with result 'exit-code'.
+-- Subject: Unit failed
+-- Defined-By: systemd
+-- Support: http://www.ubuntu.com/support
+-- 
+-- The unit nginx.service has entered the 'failed' state with result 'exit-code'.
+Apr 14 11:53:24 ubuntu-s-1vcpu-2gb-nyc1-01 systemd[1]: Failed to start A high performance web server and a rever>
+-- Subject: A start job for unit nginx.service has failed
+-- Defined-By: systemd
+-- Support: http://www.ubuntu.com/support
+-- 
+-- A start job for unit nginx.service has finished with a failure.
+-- 
+-- The job identifier is 798 and the job result is failed.
+Apr 14 11:53:43 ubuntu-s-1vcpu-2gb-nyc1-01 kernel: [UFW BLOCK] IN=eth0 OUT= MAC=56:05:87:04:aa:1c:fe:00:00:00:01>
+Apr 14 11:53:48 ubuntu-s-1vcpu-2gb-nyc1-01 kernel: [UFW BLOCK] IN=eth0 OUT= MAC=56:05:87:04:aa:1c:fe:00:00:00:01>
+Apr 14 11:54:05 ubuntu-s-1vcpu-2gb-nyc1-01 sudo[1488]:    bayon : TTY=pts/0 ; PWD=/home/bayon ; USER=root ; COMM>
+Apr 14 11:54:05 ubuntu-s-1vcpu-2gb-nyc1-01 sudo[1488]: pam_unix(sudo:session): session opened for user root by b>
+lines 2831-2864/2864 (END)
