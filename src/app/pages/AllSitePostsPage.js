@@ -1,10 +1,10 @@
 import Grid from "@material-ui/core/Grid";
+import Icon from "@material-ui/core/Icon";
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as postAction from "../../redux/actions/postAction";
 import AllSitePostsDisplayCard from "../cards/AllSitePostsDisplayCard";
 import PostDisplayCard from "../cards/PostDisplayCard";
-
 
 const AllSitePostsPage = (props) => {
   var auth = useSelector((state) => state.auth.authorized);
@@ -20,7 +20,6 @@ const AllSitePostsPage = (props) => {
   const [sortPostType2, setSortPostType2] = useState(false);
   const [sortCategory, setSortCategory] = useState(false);
 
-
   const [sortId, setSortId] = useState(false);
   const [sortZip, setSortZip] = useState(false);
   const [sortState, setSortState] = useState(false);
@@ -29,7 +28,7 @@ const AllSitePostsPage = (props) => {
   const [filterKey, setFilterKey] = useState("");
 
   const searchInputEl = useRef(null);
-  
+
   const getDefaultPosts = () => {
     //Function needed to handle case where search input empty or a space.
     dispatch(postAction.allSitePosts())
@@ -66,9 +65,7 @@ const AllSitePostsPage = (props) => {
     posts
       .sort((a, b) => (a.title > b.title ? 1 : -1))
       .map((post, i) => {
-        return(
-          <PostDisplayCard key={i} post={post} ></PostDisplayCard>
-        )
+        return <PostDisplayCard key={i} post={post}></PostDisplayCard>;
         // return (
         //   <AllSitePostsDisplayCard
         //     key={i}
@@ -98,7 +95,7 @@ const AllSitePostsPage = (props) => {
       case "name":
         setSortName(true);
         break;
-     
+
       case "latest":
         setSortLatest(true);
         break;
@@ -109,8 +106,8 @@ const AllSitePostsPage = (props) => {
         setSortPostType2(true);
         break;
       case "category":
-          setSortCategory(true);
-          break;
+        setSortCategory(true);
+        break;
       default:
         setNoSort(true);
         break;
@@ -207,25 +204,22 @@ const AllSitePostsPage = (props) => {
     }
   };
   const resetAll = async () => {
-    console.log('resetting all ...')
-    getDefaultPosts()
-    searchInputEl.current.value ="";
+    console.log("resetting all ...");
+    getDefaultPosts();
+    searchInputEl.current.value = "";
     searchInputEl.current.focus();
     //  setNoSort(true);
     // displayPosts()
-  }
-  if (!auth) {
-    return <div>not authorized.</div>;
-  }
+  };
+  // if (!auth) {
+  //   return <div>not authorized.</div>;
+  // }
 
   return (
-    <Grid container spacing={0}>
-
-        <p className="cardDevNote">AllSitePostsPage</p>
-        <Grid item xs={12}>
-        
+    <Grid container spacing={0} className="main-component-container">
+      <Grid container spacing={0}style={{  position:"fixed",top:"50px",left:"0px",right:"0px" ,zIndex:"100",background:"#fff",paddingTop:"20px"}}>
+        <Grid item xs={12}  >
           <span>
-            Sort Options:
             <input
               type="radio"
               id="name"
@@ -257,7 +251,7 @@ const AllSitePostsPage = (props) => {
               value="postType2"
               onChange={setSortOption}
             />
-            <label htmlFor="postType2">Looking To Hire</label>
+            <label htmlFor="postType2">Hiring</label>
             <input
               type="radio"
               id="category"
@@ -267,25 +261,31 @@ const AllSitePostsPage = (props) => {
             />
             <label htmlFor="category">Category</label>
           </span>
-          </Grid>
-          <Grid item xs={12}>
+        </Grid>
+        <Grid item xs={12} style={{  padding:"0px 0px 0px 0px",margin:"0px 0px 0px 0px " }}>
           <span>
-            Filter:
             <input
-            className="appInputAuto"
+              className="appInputAuto"
               type="text"
               id="filterKey"
               name="filterKey"
               onBlur={setFilterOption}
-              ref={searchInputEl} 
+              ref={searchInputEl}
+             style={{padding:"3px 3px 3px 3px",margin:"0px 0px 0px 0px "}}  
             />
-            <button>Search</button>
-            <button onClick={resetAll}>Reset</button>
+            <Icon style={{fontSize:".8em",height:"25px",width:"25px",padding:"3px 3px 3px 3px",margin:"0px 3px 0px 3px "}}>search</Icon>
+
+            <button onClick={resetAll} style={{height:"25px",width:"25px",padding:"0px 0px 0px 0px",margin:"0px 0px 0px 0px "}}>
+              <Icon style={{fontSize:".8em",padding:"0px 0px 0px 0px ",margin:"0px 0px 0px 0px "}}>clear</Icon>
+            </button>
           </span>
         </Grid>
-
+      </Grid>
+      <Grid item xs={12} style={{marginTop:"200px"}} >
         {haveCurrentPosts && displayPosts()}
-     
+      </Grid>
+
+      <p className="cardDevNote">AllSitePostsPage</p>
     </Grid>
   );
 };

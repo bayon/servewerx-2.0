@@ -3,6 +3,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 import styled from "styled-components";
+import "../../App.css";
 import { config } from "../../Constants";
 import StatusChecker from "../components/StatusChecker";
 import PostStepOne from "./PostCreation/PostStepOne";
@@ -26,9 +27,11 @@ export default function DashboardPage(props) {
     return <div>not authorized.</div>;
   }
   return (
-    <React.Fragment>
-      <Grid container alignItems="center" justify="center">
-        <Grid item xs={10}>
+    <React.Fragment >
+      <Grid container className="main-component-container">
+
+      <Grid container alignItems="center" justify="center" >
+        <Grid item xs={10} >
           <h1>Dashboard</h1>
           <StatusChecker></StatusChecker>
         </Grid>
@@ -69,6 +72,7 @@ export default function DashboardPage(props) {
         <Grid item xs={12} sm={6}>
           <UsersPostsPage></UsersPostsPage>
         </Grid>
+      </Grid>
       </Grid>
     </React.Fragment>
   );

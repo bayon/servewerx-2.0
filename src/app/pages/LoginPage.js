@@ -10,7 +10,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import * as yup from "yup";
 import * as authAction from "../../redux/actions/authAction";
 // import logo from "../assets/img/pexels-pixabay-159201.jpg";
-import logo from "../assets/img/pexels-laurie-shaw-804392.jpg";
+// import logo from "../assets/img/pexels-laurie-shaw-804392.jpg";
 import DashboardPage from "./DashboardPage";
 
 const formSchema = yup.object({
@@ -58,8 +58,10 @@ export default function LoginPage(props) {
         >
           <Paper
             style={{
-              backgroundImage: `url(${logo})`,
-              backgroundSize: "cover",
+              // backgroundImage: `url(${logo})`,
+              // backgroundSize: "cover",
+             background:"none",
+              // opacity:".5",
               height: "750px",
             }}
           >

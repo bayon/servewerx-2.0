@@ -26,7 +26,7 @@ const AllSitePostsDisplayCard = (props) => {
 
   return (
     <>
-      <Grid container direction="row" className="card-plain">
+      <Grid container direction="row" style={{background:"#eee" ,borderRadius:"15px",marginTop:"20px"}} >
         <Grid item xs={12} sm={3}>
           <p className="cardTitle">{props.post.title}</p>
 

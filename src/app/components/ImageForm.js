@@ -85,7 +85,7 @@ const ImageForm = (props) => {
             <img
               src={`${HOST_URL}/public/images/` + props.props.user.profileImage}
               alt="img"
-              style={{ height: "200px", width: "auto", borderRadius: "15px" }}
+              style={{ height: "150px", width: "auto", borderRadius: "15px" }}
             />
           }
         </Grid>

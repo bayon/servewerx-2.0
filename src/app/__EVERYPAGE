@@ -6,6 +6,9 @@ const HOST_URL = config.url.HOST_URL;
  var auth = useSelector((state) => state.auth.authorized);
   var user = useSelector((state) => state.auth.user);
 
+ // if (!auth) {
+  //   return <div>not authorized.</div>;
+  // }
 */
 
 /*

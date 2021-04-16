@@ -1,7 +1,5 @@
 import Grid from "@material-ui/core/Grid";
 import React from "react";
-//import logo from "./assets/img/pexels-pixabay-159201.jpg";
-import logo from "./assets/img/pexels-laurie-shaw-804392.jpg";
 import BackendAnimatedCard from "./cards/BackendAnimatedCard";
 import DatabaseAnimatedCard from "./cards/DatabaseAnimatedCard";
 import FrontEndAnimatedCard from "./cards/FrontEndAnimatedCard";
@@ -14,8 +12,8 @@ export default function Home(props) {
         <Grid item xs={12} sm={12}>
          
             <Grid container spacing={1} alignItems="center" justify="center" direction="row"  style={{
-              backgroundImage: `url(${logo})`,
-              backgroundSize: "contain",
+              // backgroundImage: `url(${logo})`,
+              // backgroundSize: "contain",
               height: "750px",
               backgroundRepeat: "no-repeat",
               alignItems: "center",
@@ -38,7 +36,7 @@ export default function Home(props) {
         </Grid>
       </Grid>
 
-      <Footer title="Footer" description="Now you know too much!" />
+      <Footer  />
     </React.Fragment>
   );
 }

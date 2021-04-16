@@ -1,3 +1,12 @@
+
+
+
+
+body, html {
+  height: 100%;
+  margin: 0;
+}
+
 .App {
   text-align: center;
 }
@@ -54,3 +63,27 @@
   border-radius: 4px;
   width:100%;
 }
+
+.component-full-background-image {
+  /* The image used */
+  background-image: url(./app/assets/img/pexels-laurie-shaw-804392.jpg);
+
+  /* Full height */
+  height: 100%; 
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.main-component-container{
+   
+  /* border:dotted 1px white; */
+  min-height:100vh;
+  padding-bottom:100px;
+}
+/* .navigation-container{
+  padding-top:100px;
+  border:solid 10px red;
+  height:100%;
+} */

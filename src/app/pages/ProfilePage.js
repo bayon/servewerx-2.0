@@ -1,3 +1,4 @@
+import Grid from "@material-ui/core/Grid";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as authAction from "../../redux/actions/authAction";
@@ -35,36 +36,24 @@ const ProfilePage = (props) => {
   
 
   return (
-    <div>
-      
+    
+    
+        <Grid
+          container
+          spacing={0}
+          // align="center"
+          // justify="center"
+          direction="column"
+          className="main-component-container"
+        >
         
-      <p className="cardDevNote" >ProfilePage</p>
+        <h3>My Profile</h3>
 
         <ProfileCard user={user} refresh={getUserProfile}></ProfileCard>
-        <div style={{ textAlign: "left" }}>
-          <ul>
-            <li>
-              PERSONAL PROFILE
-              <ul>
-               
-                <li>activate/deactivate account</li>
-                <li>Public Title:</li>
-                <li>Public Story:</li>
-                
-              </ul>
-            </li>
-            <li>
-              ACTIONS: 
-              <ul>
-                <li>Edit My Profile Info</li>
-                <li>Verify My Information.</li>
-              </ul>
-            </li>
-          </ul>
-        </div>
         
-      
-    </div>
+        <p className="cardDevNote" >ProfilePage</p>
+        </Grid>
+    
   );
 };
 

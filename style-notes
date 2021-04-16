@@ -1,0 +1,41 @@
+
+============================================================================
+
+INDEX: 
+
+1) Background Image Entire Screen
+2) Center Everything in Grid Container 
+3) Horizontally align items in grid row.
+
+
+
+
+
+CONTENT: 
+============================================================================
+1)  Background Image Entire Screen: 
+In Index.css:
+
+body, html {
+    height: 100%;
+    margin: 0;
+}
+ 
+.component-full-background-image {
+    /* The image used */
+    background-image: url(../static/login-bg.jpg);
+
+    /* Full height */
+    height: 100%; 
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+2) Center Everything in Grid Container 
+<Grid container alignItems="center" justify="center ></Grid>
+
+3) 
+
