@@ -15,6 +15,7 @@ import PostStatus from "./components/PostStatus";
 import Home from "./Home";
 // import UsersPage from "./app/pages/UsersPage";
 import "./navigation.css";
+import SimpleMenu from './NavigationMenu';
 import AllSitePostsPage from "./pages/AllSitePostsPage";
 import DashboardPage from "./pages/DashboardPage";
 import LoginPage from "./pages/LoginPage";
@@ -22,12 +23,13 @@ import ProfilePage from "./pages/ProfilePage";
 import RegisterPage from "./pages/RegisterPage";
 
 
-
 const LinkStyle = styled.section`
   padding: 0.3em;
   height: 35px;
   background: #fff;
   color: #333;
+  borderRadius:10px !important;
+  opacity:.8;
 `;
 
 function Navigation(props) {
@@ -50,11 +52,12 @@ function Navigation(props) {
 
   return (
     <Router>
-      <Toolbar >
-        <Grid container spacing={1} >
+      <Toolbar style={{border:"solid 2px red",position:"fixed",top:"0px",left:"0px",right:"0px"}}  >
+        <Grid container spacing={1} style={{marginTop:"20px", border:"dotted 1px white"}} >
+          <SimpleMenu></SimpleMenu>
           <Grid item xs={12} sm={3}>
             <h2
-              style={{color:"darkblue"}}
+              
             >
               Servewerx.com
             </h2>
@@ -67,7 +70,7 @@ function Navigation(props) {
                   color: "#333",
                   margin: "15px",
                   textDecoration: "none",
-                  fontSize: ".8em",
+                  fontSize: "1em",
                 }}
               >
                 (812) 267-0592

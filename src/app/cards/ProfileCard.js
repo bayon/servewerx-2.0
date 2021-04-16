@@ -29,8 +29,8 @@ const ProfileCard = (props) => {
   }
  
   return (
-    <div className="card-plain">
-
+    <Grid container >
+       
       <Grid container spacing={0} direction="row"  >
         <Grid item xs={12} sm={9}  >
           <Typography variant="h5" component="h2">
@@ -43,7 +43,7 @@ const ProfileCard = (props) => {
               setSeeDetails(!seeDetails);
             }}
           >
-            {seeDetails ? "hide" : "edit"}
+            {seeDetails ? "Close My Profile" : "Edit My Profile"}
           </button>
         </Grid>
       </Grid>
@@ -247,9 +247,10 @@ const ProfileCard = (props) => {
           </React.Fragment>
         </>
       )}
-                  <p className="cardDevNote" >ProfileCard</p>
-
-    </div>
+               
+               <p className="cardDevNote" >ProfileCard</p>
+    </Grid>
+   
   );
 };
 
