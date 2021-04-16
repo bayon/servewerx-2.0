@@ -63,7 +63,7 @@ export default function LoginPage(props) {
               height: "750px",
             }}
           >
-            <Grid item xs={12} style={{ marginTop: "25vh",width:"75%" ,opacity:".95"}}>
+            <Grid item xs={12} style={{ marginTop: "25vh",width:"95%" ,opacity:".95"}}>
               {/* //FORM AND REDUX  part 3 JSX*/}
               <Formik
                 initialValues={{
