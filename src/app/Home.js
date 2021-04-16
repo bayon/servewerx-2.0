@@ -36,7 +36,7 @@ export default function Home(props) {
         </Grid>
       </Grid>
 
-      <Footer title="Footer" description="Now you know too much!" />
+      <Footer  />
     </React.Fragment>
   );
 }

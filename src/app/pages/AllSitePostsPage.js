@@ -216,9 +216,9 @@ const AllSitePostsPage = (props) => {
   // }
 
   return (
-    <Grid container spacing={0}>
-      <Grid container spacing={0}style={{ border: "solid 2px black",position:"fixed",top:"50px",left:"0px",right:"0px" ,zIndex:"100",background:"#fff"}}>
-        <Grid item xs={12} style={{ border: "dotted 1px blue" }}>
+    <Grid container spacing={0} className="main-component-container">
+      <Grid container spacing={0}style={{  position:"fixed",top:"50px",left:"0px",right:"0px" ,zIndex:"100",background:"#fff",paddingTop:"20px"}}>
+        <Grid item xs={12}  >
           <span>
             <input
               type="radio"
@@ -262,7 +262,7 @@ const AllSitePostsPage = (props) => {
             <label htmlFor="category">Category</label>
           </span>
         </Grid>
-        <Grid item xs={12} style={{ border: "dotted 3px green",padding:"0px 0px 0px 0px",margin:"0px 0px 0px 0px " }}>
+        <Grid item xs={12} style={{  padding:"0px 0px 0px 0px",margin:"0px 0px 0px 0px " }}>
           <span>
             <input
               className="appInputAuto"
@@ -281,7 +281,7 @@ const AllSitePostsPage = (props) => {
           </span>
         </Grid>
       </Grid>
-      <Grid item xs={12} style={{ border: "dotted 1px orange" }}>
+      <Grid item xs={12} style={{marginTop:"200px"}} >
         {haveCurrentPosts && displayPosts()}
       </Grid>
 

@@ -22,7 +22,8 @@ const LinkStyle = styled.section`
   height: 35px;
   background: #fff;
   color: #333;
-  borderradius: 10px !important;
+  font-size: .9em
+  border-radius: 10px !important;
   opacity: 0.8;
 `;
 
@@ -54,7 +55,7 @@ export default function NavigationMenu() {
   return (
     <div>
        <Router>
-      <Toolbar style={{border:"solid red 1px",position:"fixed",top:"0px",left:"0px",right:"0px",zIndex:"101",background:"#fff"}}>
+      <Toolbar style={{position:"fixed",top:"0px",left:"0px",right:"0px",zIndex:"101",background:"#fff"}}>
         <Grid container spacing={1}>
          
             <IconButton
@@ -76,13 +77,13 @@ export default function NavigationMenu() {
               <MenuItem onClick={handleClose}>
                 {" "}
                 <LinkStyle>
-                  <Link to="/">Home</Link>
+                  <Link to="/"  style={{textDecoration:"none",color:"#222"}} >Home</Link>
                 </LinkStyle>
               </MenuItem>
               <MenuItem onClick={handleClose}>
                 {" "}
                 <LinkStyle>
-                  <Link to="/allSitePosts">All Posts</Link>
+                  <Link to="/allSitePosts"  style={{textDecoration:"none",color:"#222"}} >All Posts</Link>
                 </LinkStyle>
               </MenuItem>
               {auth && (
@@ -90,13 +91,13 @@ export default function NavigationMenu() {
                   <MenuItem onClick={handleClose}>
                     {" "}
                     <LinkStyle>
-                      <Link to="/dashboard">Dashboard</Link>
+                      <Link to="/dashboard"  style={{textDecoration:"none",color:"#222"}}>Dashboard</Link>
                     </LinkStyle>
                   </MenuItem>
                   <MenuItem onClick={handleClose}>
                     {" "}
                     <LinkStyle>
-                      <Link to="/profile">Profile</Link>
+                      <Link to="/profile"  style={{textDecoration:"none",color:"#222"}} >Profile</Link>
                     </LinkStyle>
                   </MenuItem>
                 </>
@@ -106,13 +107,13 @@ export default function NavigationMenu() {
                   <MenuItem onClick={handleClose}>
                     {" "}
                     <LinkStyle>
-                      <Link to="/login">Login</Link>
+                      <Link to="/login"  style={{textDecoration:"none",color:"#222"}}>Login</Link>
                     </LinkStyle>
                   </MenuItem>
                   <MenuItem onClick={handleClose}>
                     {" "}
                     <LinkStyle>
-                      <Link to="/register">Register</Link>
+                      <Link to="/register"  style={{textDecoration:"none",color:"#222"}}>Register</Link>
                     </LinkStyle>
                   </MenuItem>
                 </>
