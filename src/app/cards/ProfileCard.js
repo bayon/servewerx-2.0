@@ -29,7 +29,7 @@ const ProfileCard = (props) => {
   }
  
   return (
-    <Grid container >
+    <Grid container  alignItems="center" justify="center"  style={{background:"#fff",borderRadius:"10px",padding:"15px"}}>
        
       <Grid container spacing={0} direction="row"  >
         <Grid item xs={12} sm={9}  >
