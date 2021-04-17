@@ -55,9 +55,11 @@ export default function NavigationMenu() {
   return (
     <div>
        <Router>
-      <Toolbar style={{position:"fixed",top:"0px",left:"0px",right:"0px",zIndex:"101",background:"#fff"}}>
-        <Grid container spacing={1}>
-         
+      <Toolbar style={{position:"fixed",top:"0px",left:"0px",right:"0px",zIndex:"101",background:"#fff" }}>
+        <Grid container spacing={1}    >
+            <Grid item sm={1}  >
+
+           
             <IconButton
               edge="start"
               aria-controls="simple-menu"
@@ -159,7 +161,14 @@ export default function NavigationMenu() {
                 </>
               )}
             </Menu>
+           
+            </Grid> 
+            <Grid item sm={3} xs={8} >
             <h3>SERVEWERX.COM</h3>
+              </Grid>
+            <Grid item sm={8} xs={12}  >
+              {/* filter */}
+            </Grid>
           
         </Grid>
       </Toolbar>

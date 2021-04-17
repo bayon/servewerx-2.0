@@ -3,9 +3,9 @@ import { Formik } from "formik";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as yup from "yup";
+import "../../App.css";
 import * as postAction from "../../redux/actions/postAction";
 import AreYouSureModal from "../components/AreYouSureModal";
-import "./card.css";
 
 const formSchema = yup.object({
   title: yup.string().required().min(3),

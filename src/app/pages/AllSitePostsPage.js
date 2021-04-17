@@ -18,7 +18,7 @@ const AllSitePostsPage = (props) => {
   const [sortLatest, setSortLatest] = useState(false);
   const [sortPostType1, setSortPostType1] = useState(false);
   const [sortPostType2, setSortPostType2] = useState(false);
-  const [sortCategory, setSortCategory] = useState(false);
+  // const [sortCategory, setSortCategory] = useState(false);
 
   const [sortId, setSortId] = useState(false);
   const [sortZip, setSortZip] = useState(false);
@@ -79,7 +79,7 @@ const AllSitePostsPage = (props) => {
     setSortLatest(false);
     setSortPostType1(false);
     setSortPostType2(false);
-    setSortCategory(false);
+    // setSortCategory(false);
     setNoSort(false);
   };
   const setSortOption = (e) => {
@@ -105,9 +105,9 @@ const AllSitePostsPage = (props) => {
       case "postType2":
         setSortPostType2(true);
         break;
-      case "category":
-        setSortCategory(true);
-        break;
+      // case "category":
+      //   setSortCategory(true);
+      //   break;
       default:
         setNoSort(true);
         break;
@@ -178,18 +178,18 @@ const AllSitePostsPage = (props) => {
             );
           });
       }
-      if (sortCategory) {
-        return currentPosts
-          .sort((a, b) => (a.category > b.category ? 1 : -1))
-          .map((post, i) => {
-            return (
-              <AllSitePostsDisplayCard
-                key={i}
-                post={post}
-              ></AllSitePostsDisplayCard>
-            );
-          });
-      }
+      // if (sortCategory) {
+      //   return currentPosts
+      //     .sort((a, b) => (a.category > b.category ? 1 : -1))
+      //     .map((post, i) => {
+      //       return (
+      //         <AllSitePostsDisplayCard
+      //           key={i}
+      //           post={post}
+      //         ></AllSitePostsDisplayCard>
+      //       );
+      //     });
+      // }
 
       if (noSort) {
         return currentPosts.map((post, i) => {
@@ -216,8 +216,8 @@ const AllSitePostsPage = (props) => {
   // }
 
   return (
-    <Grid container spacing={0} className="main-component-container">
-      <Grid container spacing={0}style={{  position:"fixed",top:"50px",left:"0px",right:"0px" ,zIndex:"100",background:"#fff",paddingTop:"20px"}}>
+    <Grid container spacing={0} className="main-component-container" >
+      <Grid container spacing={0} style={{  position:"fixed",top:"50px",left:"0px",right:"0px" ,zIndex:"100",background:"#fff",paddingTop:"1em"}}>
         <Grid item xs={12}  >
           <span>
             <input
@@ -226,44 +226,48 @@ const AllSitePostsPage = (props) => {
               name="sortOption"
               value="name"
               onChange={setSortOption}
+              className="radioInput"
             />
-            <label htmlFor="name">Title</label>
+            <label htmlFor="name" className="radioLabel" >Title</label>
             <input
               type="radio"
               id="latest"
               name="sortOption"
               value="latest"
               onChange={setSortOption}
+              className="radioInput"
             />
-            <label htmlFor="latest">Latest</label>
+            <label htmlFor="latest"  className="radioLabel" >Latest</label>
             <input
               type="radio"
               id="postType1"
               name="sortOption"
               value="postType1"
               onChange={setSortOption}
+              className="radioInput"
             />
-            <label htmlFor="postType1">Looking For Work</label>
+            <label htmlFor="postType1"  className="radioLabel" >Looking For Work</label>
             <input
               type="radio"
               id="postType2"
               name="sortOption"
               value="postType2"
               onChange={setSortOption}
+              className="radioInput"
             />
-            <label htmlFor="postType2">Hiring</label>
-            <input
+            <label htmlFor="postType2"  className="radioLabel" >Hiring</label>
+            {/* <input
               type="radio"
               id="category"
               name="sortOption"
               value="category"
               onChange={setSortOption}
             />
-            <label htmlFor="category">Category</label>
+            <label htmlFor="category" >Category</label> */}
           </span>
         </Grid>
-        <Grid item xs={12} style={{  padding:"0px 0px 0px 0px",margin:"0px 0px 0px 0px " }}>
-          <span>
+        
+          <Grid container alignItems="center" justify="center" >
             <input
               className="appInputAuto"
               type="text"
@@ -271,21 +275,22 @@ const AllSitePostsPage = (props) => {
               name="filterKey"
               onBlur={setFilterOption}
               ref={searchInputEl}
-             style={{padding:"3px 3px 3px 3px",margin:"0px 0px 0px 0px "}}  
+              
             />
-            <Icon style={{fontSize:".8em",height:"25px",width:"25px",padding:"3px 3px 3px 3px",margin:"0px 3px 0px 3px "}}>search</Icon>
-
-            <button onClick={resetAll} style={{height:"25px",width:"25px",padding:"0px 0px 0px 0px",margin:"0px 0px 0px 0px "}}>
-              <Icon style={{fontSize:".8em",padding:"0px 0px 0px 0px ",margin:"0px 0px 0px 0px "}}>clear</Icon>
+            <button className=" filterButton" >
+                <Icon style={{fontSize:"1em"}} >search</Icon>
             </button>
-          </span>
-        </Grid>
+            <button onClick={resetAll}  className=" filterButton" >
+              <Icon  style={{fontSize:"1em"}} >clear</Icon>
+            </button>
+          </Grid>
+        
       </Grid>
       <Grid item xs={12} style={{marginTop:"200px"}} >
         {haveCurrentPosts && displayPosts()}
       </Grid>
 
-      <p className="cardDevNote">AllSitePostsPage</p>
+      <p className="cardDevNote" >AllSitePostsPage</p>
     </Grid>
   );
 };

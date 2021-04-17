@@ -5,7 +5,7 @@ import React from "react";
 import { Provider } from "react-redux";
 import "./App.css";
 import StatusChecker from "./app/components/StatusChecker";
-import NavigationB from "./app/NavigationB";
+import NavigationMenu from "./app/NavigationMenu";
 import store from "./redux/store";
 
 
@@ -19,8 +19,8 @@ function App(props) {
           <React.Fragment>
             <CssBaseline />
             <Container maxWidth="lg">
-              <NavigationB />
-               
+              {/* <NavigationB /> */}
+               <NavigationMenu></NavigationMenu>
             </Container>
           </React.Fragment>
            <StatusChecker></StatusChecker>

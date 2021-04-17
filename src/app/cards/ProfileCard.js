@@ -4,9 +4,9 @@ import { Formik } from "formik";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as yup from "yup";
+import "../../App.css";
 import * as authAction from "../../redux/actions/authAction";
 import ImageForm from "../components/ImageForm";
-import "./card.css";
 
 const formSchema = yup.object({
   fullName: yup.string().required().min(3),
