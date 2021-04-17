@@ -1,10 +1,11 @@
 import Grid from "@material-ui/core/Grid";
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 import styled from "styled-components";
 import "../../App.css";
 import { config } from "../../Constants";
+import * as postAction from "../../redux/actions/postAction";
 import StatusChecker from "../components/StatusChecker";
 import PostStepOne from "./PostCreation/PostStepOne";
 import UsersPostsPage from "./UsersPostsPage";
@@ -24,10 +25,13 @@ const LinkStyle = styled.section`
   height: 35px;
   background: orange;
   color: #333;
+  border-radius:10px;
+  margin:15px;
 `;
-//!postStepZero || !postStepOne || !postStepTwo || !postStepThree  Then display current posts, otherwise hide them. 
 
 export default function DashboardPage(props) {
+
+  const dispatch = useDispatch();
   var auth = useSelector((state) => state.auth.authorized);
   var user = useSelector((state) => state.auth.user);
   var haveUser = useSelector((state) => state.auth.haveUser);
@@ -38,12 +42,10 @@ export default function DashboardPage(props) {
     return <div>not authorized.</div>;
   }
 
-
-  // useEffect( () => {
-  //   if(post.postStepZero ){
-  //     setEditingPost(true)
-  //   }
-  // },[post.postStepZero])
+  const initPostCreation = () => {
+    dispatch(postAction.initPost()).catch((err) => console.error(err))
+  }
+  
   return (
     <React.Fragment>
       <Grid container className="main-component-container">
@@ -78,20 +80,23 @@ export default function DashboardPage(props) {
 
             <Router>
               <Grid item xs={12} sm={12}>
+                <h3>Create A Post</h3>
                 <Link
                   style={{
                     textDecoration: "none",
                   }}
                   to="/postStepOne"
+                  onClick={initPostCreation}
+                  // dispatch(postAction.initPost()).catch((err) => console.error(err))
                 >
-                  <LinkStyle>Create Post</LinkStyle>
+                  <LinkStyle>Step One</LinkStyle>
                 </Link>
               </Grid>
               <Route path="/postStepOne" component={PostStepOne} />
             </Router>
           </Grid>
           <Grid item xs={12} sm={6}>
-             {!editingPost &&
+             {post.postStepsAvailable &&
               <UsersPostsPage></UsersPostsPage>
              }
             

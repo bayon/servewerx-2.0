@@ -68,3 +68,52 @@ Apr 14 11:53:48 ubuntu-s-1vcpu-2gb-nyc1-01 kernel: [UFW BLOCK] IN=eth0 OUT= MAC=
 Apr 14 11:54:05 ubuntu-s-1vcpu-2gb-nyc1-01 sudo[1488]:    bayon : TTY=pts/0 ; PWD=/home/bayon ; USER=root ; COMM>
 Apr 14 11:54:05 ubuntu-s-1vcpu-2gb-nyc1-01 sudo[1488]: pam_unix(sudo:session): session opened for user root by b>
 lines 2831-2864/2864 (END)
+
+
+TODOS: 
+An Example POst
+
+First Step seems straightforward...but then I have to add the image and my current posts just updated right? 
+2nd The 'post create card' is still showing and I have to push the 'step two button'. 
+3rd Then 'step 3' shows up before I am ready. 4th I choose an image ...there is a missing image and I get no confirmation. 
+Then it just froze up. ? Then once it is created. The image not there ,... step one form is still visible, and 'step two' button is still visible. 
+postStepZero is STILL set to true. 
+One more thing, when I go back to working locally, the production images will be blank I bet.
+
+one image missing...other is there. 
+the second image url did not get saved to the db. 
+
+
+Remodeling and Renovations. Free estimates.
+*(issues with categories not updating properly.)
+*(issues with the flow for creating a post.)
+# (need websites to display)
+
+
+Plan: 
+
+Start at the Dashboard Page. 
+initial visit to the page and all state data for the steps are set correctly. false. 
+hit 'create post' and postStepZero goes TRUE. 
+hit 'create' and postStepOne goes true. 
+step 2 choose a 'image' and postStepZero goes TRUE. ( * no image preview visible !)
+hit 'step 3' button and ...step 2 still visible. 
+hit 'accept' all posts steps go to 'FALSE' (*  but then postStepZero flips back to TRUE. !)
+
+STOP: must figure out the postStepZero issue. 
+# we have a confusing name mismatch for 1. const [readyToComplete, setAllowEdit] = useState(false);  in 'CreatePostDisplayCard' 
+
+CHECK: that postImage var is correct ... CreatePostDisplayCard - props:
+ACTION: 
+ dispatch(postAction.acceptPost(currentPost._id)).catch((err) => console.error(err))
+
+ postCreateCard...create post button should set zero to true.
+
+
+ WHAT: when I set the status to activated when editing a post...it set the postStepTwo to TRUE ? 
+
+ need a new action reducer for update_post_creation
+ok. 
+ hadn't implemented this yet...updateCreatingPost 
+
+ first post works fine, 2nd will not open up 'create post' button.

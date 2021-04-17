@@ -67,7 +67,6 @@ const AllSitePostsDisplayCard = (props) => {
           )}
         </Grid>
         <Grid item xs={12} sm={3}  >
-          {/* <PostImageForm props={props}></PostImageForm> */}
           <img
             src={`${HOST_URL}/public/images/posts/` + props.post.postImage} //+ props.props.post.postImage
             alt="img"

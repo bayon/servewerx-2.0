@@ -11,8 +11,10 @@ const HOST_URL = config.url.HOST_URL;
 const LinkStyle = styled.section`
   padding: 0.3em;
   height: 35px;
-  background: blue;
+ background: orange;
   color: #333;
+  border-radius:10px;
+  margin:15px;
 `;
 
 const PostStepTwo = () => {
@@ -24,7 +26,14 @@ const PostStepTwo = () => {
 
   return (
     <>
-      <PostImageForm props={post}></PostImageForm>
+
+      {/* why?: to hide after step two is finished. */}
+      {!post.postStepTwo && 
+       <PostImageForm props={post}></PostImageForm>
+      }
+     
+
+
       {post.postStepTwo &&
       <Router>
         <Grid item xs={12} sm={12}>
@@ -48,10 +57,4 @@ const PostStepTwo = () => {
 };
 
 export default PostStepTwo;
-/*
-TO GO: 
-import PostImageForm from "../components/PostImageForm";
-
- <PostImageForm props={currentPost}></PostImageForm>
-
-*/
+ 

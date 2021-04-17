@@ -5,17 +5,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import * as yup from "yup";
 // import forteworks.com from "../components/forteworks.com";
 import "../../App.css";
-// import PostImageForm from "../components/PostImageForm";
 import { config } from "../../Constants";
 import * as postAction from "../../redux/actions/postAction";
 
-/*
-TO GO: 
-import PostImageForm from "../components/PostImageForm";
-
- <PostImageForm props={currentPost}></PostImageForm>
-
-*/
+ 
 
 const HOST_URL = config.url.HOST_URL;
 
@@ -42,6 +35,9 @@ const PostCreateCard = (props) => {
     console.log('post data changed:',post)
     
  },[post])
+
+
+ 
 //console.log("STATE---------user:",user)
   useEffect(() => {
     setInProgress(inProgress);
@@ -51,6 +47,7 @@ const PostCreateCard = (props) => {
  
   const initEdit = () => {
     console.log('. . . . . . . .init edit ')
+    //set postStepZero to TRUE HERE and call initEdit when the create button gets clicked. 
     dispatch(postAction.setStatusBlue()).catch((err) => console.error(err))
     //setAllowEdit(!allowEdit);
     setSeeDetails(!seeDetails);
@@ -104,14 +101,7 @@ const post_types = ["select one", "looking for work","looking to hire"]
             
               
             
-              {/* <Grid item xs={12} sm={6}>
-                 <PostImageForm props={props}></PostImageForm>  
-                 <img
-              src={`${HOST_URL}/public/images/`+ user.data.profileImage } //+ props.props.post.postImage
-              alt="img"
-              style={{ height: "100px", width: "auto", borderRadius: "15px" }}
-            /> 
-              </Grid> */}
+             
               <Grid item xs={12}    >
                 {/* //FORM AND REDUX  part 3 JSX*/}
                 <Formik
@@ -354,10 +344,7 @@ const post_types = ["select one", "looking for work","looking to hire"]
       
 
 <Grid>
-                {/* {submitComplete && 
                 
-                <PostImageForm props={currentPost}></PostImageForm>
-                } */}
               </Grid>
       <p className="cardDevNote" >PostCreateCard</p>
     </div>

@@ -99,7 +99,6 @@ const CreatePostDisplayCard = (props) => {
                     </div>
                   </Grid>
                   <Grid item xs={12} sm={4} className="cardImageGrid" >
-                    {/* <PostImageForm props={props}></PostImageForm> */}
                     <img
                       src={
                         `${HOST_URL}/public/images/posts/` + currentPost.postImage
@@ -121,7 +120,11 @@ const CreatePostDisplayCard = (props) => {
                      console.log("ACCEPT THE NEW POST")
                      //dispatch to new post action postAccepted
                      // set postStepone and postStepTwo back to false. call it good.
-                     dispatch(postAction.acceptPost(currentPost._id)).catch((err) => console.error(err))
+                     dispatch(postAction.acceptPost(currentPost._id))
+                     .then((res) => {
+                       console.log('accept post result: res:',res)
+                     })
+                     .catch((err) => console.error(err))
                   }}
                   style={{ color: "blue" }}
                 >
