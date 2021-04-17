@@ -89,7 +89,7 @@ export default function DashboardPage(props) {
                   onClick={initPostCreation}
                   // dispatch(postAction.initPost()).catch((err) => console.error(err))
                 >
-                  <LinkStyle>Step One</LinkStyle>
+                  <LinkStyle>Step 1</LinkStyle>
                 </Link>
               </Grid>
               <Route path="/postStepOne" component={PostStepOne} />

@@ -108,7 +108,7 @@ const PostImageForm = (props) => {
         </Grid>
         <Grid xs={12}>
           <button className="btn btn-primary mt-3" onClick={handleSubmit}>
-            Change Post Image
+            Save Image and Continue
           </button>
         </Grid>
       </form>
