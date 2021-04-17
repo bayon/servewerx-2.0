@@ -2,8 +2,8 @@ import Grid from "@material-ui/core/Grid";
 import Icon from "@material-ui/core/Icon";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import "../../App.css";
 import { config } from "../../Constants";
-import "./card.css";
 
 const AllSitePostsDisplayCard = (props) => {
   const HOST_URL = config.url.HOST_URL;
@@ -26,7 +26,7 @@ const AllSitePostsDisplayCard = (props) => {
 
   return (
     <>
-      <Grid container direction="row" style={{background:"#eee" ,borderRadius:"15px",marginTop:"20px"}} >
+      <Grid container direction="row"  className="cardCard"   >
         <Grid item xs={12} sm={3}>
           <p className="cardTitle">{props.post.title}</p>
 

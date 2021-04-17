@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { animated, useSpring } from 'react-spring';
+import "../../App.css";
 import * as postAction from "../../redux/actions/postAction";
-import "./card.css";
 
 const calc = (x, y) => [
   -(y - window.innerHeight / 2) / 20,

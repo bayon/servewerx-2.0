@@ -156,7 +156,7 @@ if (!auth) {
        
       <p className="cardDevNote" >UsersPage</p>
 
-        <div style={{border:"dotted red 2px"}}>
+        <div  >
           <span>
             Sort Options:
             <input

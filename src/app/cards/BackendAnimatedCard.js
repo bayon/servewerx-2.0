@@ -4,7 +4,7 @@ import {
 import React from "react";
 //---
 import { animated, useSpring } from "react-spring";
-import "./card.css";
+import "../../App.css";
   
 const calc = (x, y) => [
     -(y - window.innerHeight / 2) / 20,

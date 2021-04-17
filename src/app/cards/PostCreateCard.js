@@ -3,11 +3,11 @@ import { Formik } from "formik";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import * as yup from "yup";
+// import forteworks.com from "../components/forteworks.com";
+import "../../App.css";
 // import PostImageForm from "../components/PostImageForm";
 import { config } from "../../Constants";
 import * as postAction from "../../redux/actions/postAction";
-// import forteworks.com from "../components/forteworks.com";
-import "./card.css";
 
 /*
 TO GO: 

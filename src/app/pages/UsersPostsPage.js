@@ -217,34 +217,17 @@ const UsersPostsPage = (props) => {
 
   return (
     //className="card-plain" 
-    <Grid container direction="column" alignItems="center" justify="center">
+    <Grid container direction="column" alignItems="center" justify="center" className="appPage">
         <Grid item>
           <span>
             <h2>Current Posts</h2>
-            {/* Sort Options:
-            <input
-              type="radio"
-              id="name"
-              name="sortOption"
-              value="name"
-              onChange={setSortOption}
-            />
-            <label htmlFor="name">Name</label> */}
+           
         
            
           </span>
         </Grid>
         <Grid item>
-          {/* <span>
-            Filter:
-            <input
-              type="text"
-              id="filterKey"
-              name="filterKey"
-              onBlur={setFilterOption}
-            />
-            <button>Search</button>
-          </span> */}
+         
         </Grid>
 
         {haveCurrentPosts && displayPosts()}

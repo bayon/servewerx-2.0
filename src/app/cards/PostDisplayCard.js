@@ -2,9 +2,9 @@ import Grid from "@material-ui/core/Grid";
 import Icon from "@material-ui/core/Icon";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import "../../App.css";
 import { config } from "../../Constants";
 import * as postAction from "../../redux/actions/postAction";
-import "./card.css";
 import EditPostCard from "./EditPostCard";
 
 

@@ -1,7 +1,7 @@
 import { Typography } from "@material-ui/core";
 import Icon from "@material-ui/core/Icon";
 import React, { useEffect, useState } from "react";
-import "./card.css";
+import "../../App.css";
 
  
 const PlainCard = (props) => {
