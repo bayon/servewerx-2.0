@@ -10,7 +10,7 @@ import * as postAction from "../../redux/actions/postAction";
 
 const PostImageForm = (props) => {
   const dispatch = useDispatch();
-  console.log("PostImageForm PROPS: ", props);
+   console.log("PostImageForm PROPS: ", props);
 
 
 
@@ -34,26 +34,32 @@ const PostImageForm = (props) => {
     const data = new FormData();
     console.log('PROPS:',props);
     console.log('PROPS PROPS:',props.props);
-    console.log('PROPS PROPS DATA:',props.props.data);
-    data.append("id", props.props.post.data.id);//props.props 2x
+    const currentPost = props.props.post.data; // AS OPPOSED TO : props.props.post.post ??? 
+    data.append("id", currentPost.id);//props.props 2x UNDEFINED ? id vs _id 
+    
+    //POST IMAGE FORM 
+   // TROUBLE SHOOTING HERE: WHY? is there a props.props.post.post SOMETIMES and a props.props.post.data OTHERTIMES ? 
+   /// FIX THIS SHOULD BE THE SOLUTION... had not implemented the updateCreatingPost yet...see if it helps. 
+   
     for (var x = 0; x < file.length; x++) {
       data.append("file", file[x]);
     }
     console.log("DATA getting sent to API: data:",data)
-    
+    //NOT USING THE REDUX ACTIONS AND REDUCERS: 
     axios.post(`${API_URL}/uploadPostImage`, data).then((res) => {
       console.log('post image upload results: ',res)
       const postImage = res.data;
-      props.props.post.data.postImage = postImage;
+      currentPost.postImage = postImage;
       // const values = user.data;
-      const values = props.props.post.data
+      const values = currentPost
       console.log('values to update the post with...',values)
-      dispatch(postAction.updatePost(values))
+      dispatch(postAction.updateCreatingPost(values))
         .then(async (result) => {
           console.log('update post result:',result)
           if (result.success) {
             //code
             console.log('success response ')
+
           }
           console.log('success or fail dispatch response ?! ')
           //props.props.refresh();
@@ -78,27 +84,15 @@ const PostImageForm = (props) => {
     >
       <form name="fileinfo" encType="multipart/form-data">
         <Grid xs={12}>
-          {/* {imgFile && (
-              
-                <img
-                  src={imgFile}
-                  alt="img"
-                  style={{
-                    height: "100px",
-                    width: "auto",
-                    borderRadius: "15px",
-                  }}
-                />
-              
-            )}   */}
+        
 
-          {props.props.post &&
+          {/* {props.props.post &&
             <img
               src={`${HOST_URL}/public/images/posts/` + props.props.post.postImage}
               alt="img"
               style={{ height: "200px", width: "auto", borderRadius: "15px" }}
             />
-          }
+          } */}
         </Grid>
 
         <Grid xs={12}>
@@ -114,7 +108,7 @@ const PostImageForm = (props) => {
         </Grid>
         <Grid xs={12}>
           <button className="btn btn-primary mt-3" onClick={handleSubmit}>
-            Change Post Image
+            Save Image and Continue
           </button>
         </Grid>
       </form>

@@ -92,7 +92,6 @@ const PostDisplayCard = (props) => {
                     </div>
                   </Grid>
                   <Grid item xs={12} sm={4} className="cardImageGrid" >
-                    {/* <PostImageForm props={props}></PostImageForm> */}
                     <img
                       src={
                         `${HOST_URL}/public/images/posts/` + props.post.postImage

@@ -43,6 +43,10 @@ export const GET_STATUS_COLOR = "GET_STATUS_COLOR";
 export const DELETE_POST_SUCCESS = "DELETE_POST_SUCCESS";
 export const DELETE_POST_FAIL = "DELETE_POST_FAIL";
 
+export const UPDATE_CREATING_POST_SUCCESS = "UPDATE_CREATING_POST_SUCCESS";
+export const UPDATE_CREATING_POST_FAIL = "UPDATE_CREATING_POST_FAIL";
+
+
 export const allSitePosts = () => {
   return async (dispatch) => {
     const result = await fetch(`${API_URL}/posts/site/posts`, {
@@ -168,6 +172,7 @@ export const updatePost = (postData) => {
   //post versus posts in URL
   return async (dispatch) => {
     // ? why getting a 404 for posts/update ? 
+    //? NOT FOUND ? ? ? ? ? 
     const result = await fetch(`${API_URL}/posts/update`, {
       method: "PUT",
       headers: {
@@ -443,6 +448,70 @@ export const clearPost = (key) => {
   };
   
 };
+
+
+
+export const updateCreatingPost = (postData) => {
+  console.log("POST ACTION UPDATE  CREATING-POST: postData:", postData);
+  const {
+    id,
+    userId,
+    title,
+    description,
+    category,
+    postType,
+    email,
+    phone,
+    address,
+    city,
+    state,
+    zip,
+    postImage,
+    activated,
+  } = postData;
+  //post versus posts in URL
+  return async (dispatch) => {
+    // ? why getting a 404 for posts/update ? 
+    const result = await fetch(`${API_URL}/posts/updateCreating`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        id,
+        userId,
+        title,
+        description,
+        category,
+        postType,
+        email,
+        phone,
+        address,
+        city,
+        state,
+        zip,
+        postImage,
+        activated,
+      }),
+    });
+
+    const resultData = await result.json();
+    console.log("post update resultData:",resultData);
+    if (resultData.success) {
+      dispatch({
+        type: UPDATE_CREATING_POST_SUCCESS,
+        payload: resultData,
+      });
+    } else {
+      dispatch({
+        type: UPDATE_CREATING_POST_FAIL,
+      });
+    }
+
+    return resultData;
+  };
+};
+
 /////////////////////////
 export const setStatusGreen = () => {
   return async (dispatch) => {

@@ -7,11 +7,10 @@ import PostDisplayCard from "../cards/PostDisplayCard";
 
 const UsersPostsPage = (props) => {
   var auth = useSelector((state) => state.auth.authorized);
-  var newPost = useSelector((state) => state.newPost); //whenever new post created, use to trigger all posts refresh.
   const [user, setUser] = useState({});
   const dispatch = useDispatch();
   const Kolor = useSelector((state) => state.post.statusColor);
-
+const postStepsAvailable = useSelector((state) => state.post.postStepsAvailable)
   // I NEED A USE EFFECT TO LISTEN FOR CHANGES ON LOWER COMPONENTS.
 
   useEffect(() => {
@@ -83,8 +82,13 @@ const UsersPostsPage = (props) => {
         setHaveCurrentPosts(true);
       })
       .catch((err) => console.log(err));
-  }, [newPost]); // get new ones when posted...did NOT solve the problem ....
+  }, []); // get new ones when posted...did NOT solve the problem ....
+// ??????  [postStepsAvailable]  as condition ^^^
 
+
+
+
+// MAY NEED TO USE 
   //HERE?
   // whenever currentPosts update I'd like to update state posts as well. (havePost and posts)
   // ? I creates userPosts array in reducer...now how does AllSitePostsPage page do it. ?

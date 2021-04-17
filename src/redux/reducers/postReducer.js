@@ -22,7 +22,10 @@ import {
   INIT_POST_SUCCESS,
   SET_STATUS_BLUE,
   SET_STATUS_GREEN,
-  UPDATE_POST_FAIL,
+
+
+
+  UPDATE_CREATING_POST_FAIL, UPDATE_CREATING_POST_SUCCESS, UPDATE_POST_FAIL,
   UPDATE_POST_SUCCESS
 } from "../actions/postAction";
 
@@ -33,12 +36,12 @@ const initialState = {
   usersPosts: [],
   haveUsersPosts: false,
   errors: {},
-  newPost: false,
   statusColor: "undefined",
   postStepZero: false,
   postStepOne: false,
   postStepTwo: false,
   postStepThree: false,
+  postStepsAvailable: true,
   postType: ["select type", "Looking For Work", "Hiring", "Advertising"],
   categories: [
     "select category",
@@ -89,7 +92,6 @@ export default function (state = initialState, action) {
       return {
         ...state,
         post: action.payload,
-        newPost: true,
         postStepOne: true,
         statusColor: "BLUE",
       };
@@ -103,13 +105,28 @@ export default function (state = initialState, action) {
         ...state,
         post: action.payload,
         statusColor: "BLUE",
-        postStepTwo: true,
-      };
+      };//problem: UPDATE_POST_SUCCESS is getting used in two different cases. Creating, and Editing...should only get set to TRUE during creation.
     case UPDATE_POST_FAIL:
       return {
         ...state,
         errors: true,
       };
+
+
+      case UPDATE_CREATING_POST_SUCCESS:
+        return {
+          ...state,
+          post: action.payload,
+          statusColor: "BLUE",
+          postStepTwo: true,
+        };//problem: UPDATE_POST_SUCCESS is getting used in two different cases. Creating, and Editing...should only get set to TRUE during creation.
+      case UPDATE_CREATING_POST_FAIL:
+        return {
+          ...state,
+          errors: true,
+        };
+
+
     case FILTER_POSTS_SUCCESS:
       return {
         ...state,
@@ -153,6 +170,7 @@ export default function (state = initialState, action) {
         postStepOne: false,
         postStepTwo: false,
         postStepThree: false,
+        postStepsAvailable: true
       };
     case ACCEPT_POST_FAIL:
       return {
@@ -169,6 +187,8 @@ export default function (state = initialState, action) {
         postStepOne: false,
         postStepTwo: false,
         postStepThree: false,
+        postStepsAvailable: true
+
       };
     case CANCEL_POST_FAIL:
       return {
@@ -179,9 +199,10 @@ export default function (state = initialState, action) {
     case INIT_POST_SUCCESS:
       return {
         ...state,
-        post: action.payload,
+        // post: action.payload, why? it should not overwrite the post data.
         statusColor: "GREEN",
         postStepZero: true,
+        postStepsAvailable: false
       };
     case INIT_POST_FAIL:
       return {
@@ -198,6 +219,7 @@ export default function (state = initialState, action) {
         postStepOne: false,
         postStepTwo: false,
         postStepThree: false,
+        postStepsAvailable: true
       };
     case CLEAR_POST_FAIL:
       return {
