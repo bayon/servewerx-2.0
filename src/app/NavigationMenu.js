@@ -17,6 +17,9 @@ import DashboardPage from "./pages/DashboardPage";
 import LoginPage from "./pages/LoginPage";
 import ProfilePage from "./pages/ProfilePage";
 import RegisterPage from "./pages/RegisterPage";
+
+
+
 const LinkStyle = styled.section`
   padding: 0.3em;
   height: 35px;
@@ -85,7 +88,7 @@ export default function NavigationMenu() {
               <MenuItem onClick={handleClose}>
                 {" "}
                 <LinkStyle>
-                  <Link to="/allSitePosts"  style={{textDecoration:"none",color:"#222"}} >All Posts</Link>
+                  <Link to="/allSitePosts"  style={{textDecoration:"none",color:"#222"}} >Browse</Link>
                 </LinkStyle>
               </MenuItem>
               {auth && (
@@ -93,13 +96,13 @@ export default function NavigationMenu() {
                   <MenuItem onClick={handleClose}>
                     {" "}
                     <LinkStyle>
-                      <Link to="/dashboard"  style={{textDecoration:"none",color:"#222"}}>Dashboard</Link>
+                      <Link to="/dashboard"  style={{textDecoration:"none",color:"#222"}}>My Dashboard</Link>
                     </LinkStyle>
                   </MenuItem>
                   <MenuItem onClick={handleClose}>
                     {" "}
                     <LinkStyle>
-                      <Link to="/profile"  style={{textDecoration:"none",color:"#222"}} >Profile</Link>
+                      <Link to="/profile"  style={{textDecoration:"none",color:"#222"}} >My Profile</Link>
                     </LinkStyle>
                   </MenuItem>
                 </>

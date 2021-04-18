@@ -61,6 +61,7 @@ const AllSitePostsDisplayCard = (props) => {
                     {props.post.phone}
                     <Icon className="cardIcon">phone</Icon>
                   </a>
+                  <a href={`http://`+props.post.website} target="blank" >{`http://`+props.post.website}</a>
                 </div>
               </Grid>
             </>
@@ -79,7 +80,7 @@ const AllSitePostsDisplayCard = (props) => {
               setSeeDetails(!seeDetails);
             }}
           >
-            {seeDetails ? "hide" : "details"}
+            {seeDetails ? "hide" : "more..."}
           </button>
         </Grid>
       </Grid>

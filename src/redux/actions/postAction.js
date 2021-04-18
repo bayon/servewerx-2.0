@@ -166,6 +166,7 @@ export const updatePost = (postData) => {
     city,
     state,
     zip,
+    website,
     postImage,
     activated,
   } = postData;
@@ -191,6 +192,7 @@ export const updatePost = (postData) => {
         city,
         state,
         zip,
+        website,
         postImage,
         activated,
       }),
@@ -466,6 +468,7 @@ export const updateCreatingPost = (postData) => {
     city,
     state,
     zip,
+    website,
     postImage,
     activated,
   } = postData;
@@ -490,6 +493,7 @@ export const updateCreatingPost = (postData) => {
         city,
         state,
         zip,
+        website,
         postImage,
         activated,
       }),

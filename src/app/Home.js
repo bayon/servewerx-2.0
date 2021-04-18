@@ -1,9 +1,11 @@
 import Grid from "@material-ui/core/Grid";
 import React from "react";
-import BackendAnimatedCard from "./cards/BackendAnimatedCard";
-import DatabaseAnimatedCard from "./cards/DatabaseAnimatedCard";
-import FrontEndAnimatedCard from "./cards/FrontEndAnimatedCard";
+import HomeCardFour from "./cards/HomeCardFour";
+import HomeCardOne from "./cards/HomeCardOne";
+import HomeCardThree from "./cards/HomeCardThree";
+import HomeCardTwo from "./cards/HomeCardTwo";
 import Footer from "./Footer";
+
 
 export default function Home(props) {
   return (
@@ -18,17 +20,20 @@ export default function Home(props) {
               backgroundRepeat: "no-repeat",
               alignItems: "center",
               justifyContent: "center",
+              paddingTop:"100px"
             }}>
            
               <Grid item xs={12} sm={3}>
-                <FrontEndAnimatedCard></FrontEndAnimatedCard>
-              </Grid>
-
-              <Grid item xs={12} sm={3}>
-                <DatabaseAnimatedCard></DatabaseAnimatedCard>
+                <HomeCardOne></HomeCardOne>
               </Grid>
               <Grid item xs={12} sm={3}>
-                <BackendAnimatedCard></BackendAnimatedCard>
+                <HomeCardTwo></HomeCardTwo>
+              </Grid>
+              <Grid item xs={12} sm={3}>
+                <HomeCardThree></HomeCardThree>
+              </Grid>
+              <Grid item xs={12} sm={3}>
+                <HomeCardFour></HomeCardFour>
               </Grid>
               
             </Grid>

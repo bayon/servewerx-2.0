@@ -50,7 +50,6 @@ const ProfilePage = (props) => {
         <h3>My Profile</h3>
 
         <ProfileCard user={user} refresh={getUserProfile}></ProfileCard>
-        
         <p className="cardDevNote" >ProfilePage</p>
         </Grid>
     

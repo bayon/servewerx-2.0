@@ -8,8 +8,6 @@ import StatusChecker from "./app/components/StatusChecker";
 import NavigationMenu from "./app/NavigationMenu";
 import store from "./redux/store";
 
-
-
 function App(props) {
 
   console.log('Environment:',process.env.NODE_ENV)
@@ -19,7 +17,6 @@ function App(props) {
           <React.Fragment>
             <CssBaseline />
             <Container maxWidth="lg">
-              {/* <NavigationB /> */}
                <NavigationMenu></NavigationMenu>
             </Container>
           </React.Fragment>

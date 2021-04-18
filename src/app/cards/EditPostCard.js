@@ -109,13 +109,14 @@ _id: "60730537d09d5d33501fc987"
                 city: currentPost.city,
                 state: currentPost.state,
                 zip: currentPost.zip,
+                website: currentPost.website,
                 postImage: currentPost.postImage,
                 activated: currentPost.activated,
               }}
               // !PostImage REQUIRED here so as to not get deleted accidentally.
               validationSchema={formSchema}
               onSubmit={(values) => {
-                console.log("values:", values);
+                console.log(". . . . . . . . . post update values:", values);
                 setInProgress(true);
                 props.closeEdit();
                 setSeeDetails(!seeDetails);
@@ -304,6 +305,22 @@ _id: "60730537d09d5d33501fc987"
                         {props.touched.zip && props.errors.zip}
                       </div>
                     </Grid>
+
+                    <Grid item xs={12}>
+                      <input
+                       className="cardInput"
+                        placeholder="Website"
+                        onChange={props.handleChange("website")}
+                        value={props.values.website}
+                        onBlur={props.handleBlur("website")}
+                      />
+                      <div style={{ color: "salmon" }}>
+                        {props.touched.website && props.errors.website}
+                      </div>
+                    </Grid>
+
+
+
                     <input
                       type="hidden"
                       onChange={() => {}}
