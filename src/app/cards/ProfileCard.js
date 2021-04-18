@@ -242,6 +242,8 @@ const ProfileCard = (props) => {
                 </Formik>
 
                 {/* //end  part 3*/}
+                <p>Once your profile is set up, you can go to your Dashboard and create a Post.</p>
+
               </Grid>
             </Grid>
           </React.Fragment>
