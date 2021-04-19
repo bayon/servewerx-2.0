@@ -5,7 +5,6 @@ import { animated, useSpring } from "react-spring";
 import "../../App.css";
 import FreeRegistrationPage from "../pages/FreeRegistrationPage";
 
-
 const calc = (x, y) => [
   -(y - window.innerHeight / 2) / 20,
   (x - window.innerWidth / 2) / 20,
@@ -13,17 +12,16 @@ const calc = (x, y) => [
 ];
 const trans = (x, y, s) => `perspective(600px)  scale(${s})`;
 const HomeCardFour = () => {
-
-const [showRegister,setShowRegister] = useState(false)
+  const [showRegister, setShowRegister] = useState(false);
 
   const [props, set] = useSpring(() => ({
     xys: [0, 0, 1],
     config: { mass: 5, tension: 350, friction: 40 },
   }));
 
-const displayRegistration = () => {
+  const displayRegistration = () => {
     setShowRegister(!showRegister);
-}
+  };
 
   return (
     <div className="homeCard">
@@ -36,28 +34,23 @@ const displayRegistration = () => {
       >
         <div
           className="innerHomeCard"
-          style={{ minHeight: "125px",height:"auto", padding: "20px" }}
+          style={{ minHeight: "125px", height: "auto", padding: "20px" }}
         >
+          {!showRegister && (
+            <>
+              <Typography variant="h5" component="h2">
+                Browse for Free
+              </Typography>
 
-          {! showRegister && 
-          <>
-          <Typography variant="h5" component="h2">
-            Browse for Free
-          </Typography>
+              <Typography variant="body2" component="p" color="textSecondary">
+                or Register to place an ad.
+              </Typography>
 
-          <Typography variant="body2" component="p" color="textSecondary">
-            or Register to place an ad.
-          </Typography>
-         
-           <button onClick={displayRegistration}>Register Now</button>
-           </>
-          }
+              <button onClick={displayRegistration}>Register Now</button>
+            </>
+          )}
 
-    { showRegister && 
-    
-           <FreeRegistrationPage   ></FreeRegistrationPage>
-    }
-          
+          {showRegister && <FreeRegistrationPage></FreeRegistrationPage>}
         </div>
       </animated.div>
     </div>
