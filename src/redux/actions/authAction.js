@@ -22,6 +22,11 @@ export const UPDATE_USER_FAIL = "UPDATE_USER_FAIL";
 export const FILTER_USERS_SUCCESS = "FILTER_USERS_SUCCESS";
 export const FILTER_USERS_FAIL = "FILTER_USERS_FAIL";
 
+
+export const GET_CATEGORIES_SUCCESS = "GET_CATEGORIES_SUCCESS";
+export const GET_CATEGORIES_FAIL = "GET_CATEGORIES_FAIL";
+
+
 //const API_URL = "http://localhost:4000/api";
 //const API_URL = "https://arcane-eyrie-05882.herokuapp.com/api"
 
@@ -230,4 +235,30 @@ export const filterUsers = (key) => {
    
 
 
+
+};
+export const getCategories = () => {
+  return async (dispatch) => {
+    const result = await fetch(`${API_URL}/users/category`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+     
+      });
+  
+      const resultData = await result.json();
+      if(resultData){
+        dispatch({
+            type: GET_CATEGORIES_SUCCESS,
+            payload: resultData,
+          });
+      } else {
+        dispatch({
+            type: GET_CATEGORIES_FAIL,
+          });
+      }
+      return resultData;  
+    
+  };
 };

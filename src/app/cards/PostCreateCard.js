@@ -6,6 +6,7 @@ import * as yup from "yup";
 // import forteworks.com from "../components/forteworks.com";
 import "../../App.css";
 import { config } from "../../Constants";
+import * as authAction from "../../redux/actions/authAction";
 import * as postAction from "../../redux/actions/postAction";
 
 const HOST_URL = config.url.HOST_URL;
@@ -20,21 +21,36 @@ const PostCreateCard = (props) => {
   const dispatch = useDispatch();
   const [seeDetails, setSeeDetails] = useState(false);
   const [inProgress, setInProgress] = useState(false);
+  const [categories, setCategories] = useState([])
   const [submitComplete, setSumbitComplete] = useState(false);
   const [currentPost, setCurrentPost] = useState(false);
 
   var user = useSelector((state) => state.auth.user);
   var post = useSelector((state) => state.post);
+  var us_states = useSelector((state) => state.auth.usstates);
+  //var categories = useSelector((state) => state.post.categories);
+  var haveCategories = useSelector((state) => state.auth.haveCategories);
+  
   useEffect(() => {
     console.log("post data changed:", post);
   }, [post]);
+
+  useEffect( () => {
+    //get initial categories 
+    dispatch(authAction.getCategories())
+    .then((results) => {
+      console.log("category results:",results)
+      setCategories(results)
+    })
+    .catch((err) => console.error(err));
+
+  },[])
 
   //console.log("STATE---------user:",user)
   useEffect(() => {
     setInProgress(inProgress);
   }, [inProgress]);
-  var us_states = useSelector((state) => state.auth.usstates);
-  var categories = useSelector((state) => state.post.categories);
+
 
   const initEdit = () => {
     console.log(". . . . . . . .init edit ");
@@ -57,7 +73,7 @@ const PostCreateCard = (props) => {
         <React.Fragment>
         <>
        
-          {!post.postStepOne && (
+          {!post.postStepOne && haveCategories  && (
              <div className="card-plain">
             <Grid
               container
@@ -169,8 +185,8 @@ const PostCreateCard = (props) => {
                           >
                             {categories.map((item, index) => {
                               return (
-                                <option key={index} value={index}>
-                                  {item}
+                                <option key={item._id} value={item.title}>
+                                  {item.title}
                                 </option>
                               );
                             })}

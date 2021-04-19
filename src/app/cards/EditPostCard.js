@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as yup from "yup";
 import "../../App.css";
+import * as authAction from "../../redux/actions/authAction";
 import * as postAction from "../../redux/actions/postAction";
 import AreYouSureModal from "../components/AreYouSureModal";
 
@@ -13,11 +14,27 @@ const formSchema = yup.object({
   phone: yup.string().min(10),
 });
 
+
 const EditPostCard = (props) => {
   console.log("EDIT POST CARD props:", props);
   const currentPost = props.data
 
   const Kolor = useSelector((state) => state.post.statusColor);
+  const [categories, setCategories] = useState([])
+  var haveCategories = useSelector((state) => state.auth.haveCategories);
+
+
+  useEffect( () => {
+    //get initial categories 
+    dispatch(authAction.getCategories())
+    .then((results) => {
+      console.log("category results:",results)
+      setCategories(results)
+    })
+    .catch((err) => console.error(err));
+
+  },[])
+  
 
   useEffect(() => {
     dispatch(postAction.getStatusColor())
@@ -57,7 +74,7 @@ _id: "60730537d09d5d33501fc987"
 
   var user = useSelector((state) => state.auth.user);
   var us_states = useSelector((state) => state.auth.usstates);
-  var categories = useSelector((state) => state.post.categories);
+  //var categories = useSelector((state) => state.post.categories);
 
   console.log("STATE---------user:", user);
   useEffect(() => {
@@ -82,6 +99,9 @@ _id: "60730537d09d5d33501fc987"
 
   return (
     <>
+    {haveCategories && 
+    
+  
       <React.Fragment>
         <Grid
           container
@@ -205,7 +225,20 @@ _id: "60730537d09d5d33501fc987"
                     </Grid>
 
                     <Grid item xs={12}>
-                      <select
+                    <select
+                            value={props.values.category}
+                            onChange={props.handleChange("category")}
+                            className="appSelect"
+                          >
+                            {categories.map((item, index) => {
+                              return (
+                                <option key={item._id} value={item.title}>
+                                  {item.title}
+                                </option>
+                              );
+                            })}
+                          </select>
+                      {/* <select
                         className="cardSelect"
                         value={props.values.category}
                         onChange={props.handleChange("category")}
@@ -217,7 +250,7 @@ _id: "60730537d09d5d33501fc987"
                             </option>
                           );
                         })}
-                      </select>
+                      </select> */}
                     </Grid>
 
                     <Grid item xs={12}>
@@ -393,6 +426,7 @@ _id: "60730537d09d5d33501fc987"
         </Grid>
         <p className="cardDevNote">EditPostCard</p>
       </React.Fragment>
+        }
     </>
   );
 };
