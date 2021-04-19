@@ -18,8 +18,6 @@ import LoginPage from "./pages/LoginPage";
 import ProfilePage from "./pages/ProfilePage";
 import RegisterPage from "./pages/RegisterPage";
 
-
-
 const LinkStyle = styled.section`
   padding: 0.3em;
   height: 35px;
@@ -57,137 +55,180 @@ export default function NavigationMenu() {
 
   return (
     <div>
-       <Router>
-      <Toolbar style={{position:"fixed",top:"0px",left:"0px",right:"0px",zIndex:"101",background:"#fff" }}>
-        <Grid container spacing={1}    >
-            <Grid item sm={1}  >
-
-           
-            <IconButton
-              edge="start"
-              aria-controls="simple-menu"
-              aria-haspopup="true"
-              aria-label="menu"
-              onClick={handleClick}
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="simple-menu"
-              anchorEl={anchorEl}
-              keepMounted
-              open={Boolean(anchorEl)}
-              onClose={handleClose}
-            >
-              <MenuItem onClick={handleClose}>
-                {" "}
-                <LinkStyle>
-                  <Link to="/"  style={{textDecoration:"none",color:"#222"}} >Home</Link>
-                </LinkStyle>
-              </MenuItem>
-              <MenuItem onClick={handleClose}>
-                {" "}
-                <LinkStyle>
-                  <Link to="/allSitePosts"  style={{textDecoration:"none",color:"#222"}} >Browse</Link>
-                </LinkStyle>
-              </MenuItem>
-              {auth && (
-                <>
-                  <MenuItem onClick={handleClose}>
-                    {" "}
-                    <LinkStyle>
-                      <Link to="/dashboard"  style={{textDecoration:"none",color:"#222"}}>My Dashboard</Link>
-                    </LinkStyle>
-                  </MenuItem>
-                  <MenuItem onClick={handleClose}>
-                    {" "}
-                    <LinkStyle>
-                      <Link to="/profile"  style={{textDecoration:"none",color:"#222"}} >My Profile</Link>
-                    </LinkStyle>
-                  </MenuItem>
-                </>
-              )}
-              {!auth ? (
-                <>
-                  <MenuItem onClick={handleClose}>
-                    {" "}
-                    <LinkStyle>
-                      <Link to="/login"  style={{textDecoration:"none",color:"#222"}}>Login</Link>
-                    </LinkStyle>
-                  </MenuItem>
-                  <MenuItem onClick={handleClose}>
-                    {" "}
-                    <LinkStyle>
-                      <Link to="/register"  style={{textDecoration:"none",color:"#222"}}>Register</Link>
-                    </LinkStyle>
-                  </MenuItem>
-                </>
-              ) : (
-                <>
-                  <MenuItem onClick={handleClose}>
+      <Router>
+        <Toolbar
+          style={{
+            position: "fixed",
+            top: "0px",
+            left: "0px",
+            right: "0px",
+            zIndex: "101",
+            background: "#fff",
+          }}
+        >
+          <Grid container spacing={1}>
+            <Grid item sm={1}>
+              <IconButton
+                edge="start"
+                aria-controls="simple-menu"
+                aria-haspopup="true"
+                aria-label="menu"
+                onClick={handleClick}
+              >
+                <MenuIcon />
+              </IconButton>
+              <Menu
+                id="simple-menu"
+                anchorEl={anchorEl}
+                keepMounted
+                open={Boolean(anchorEl)}
+                onClose={handleClose}
+              >
+                <MenuItem onClick={handleClose}>
+                  {" "}
+                  <LinkStyle>
                     <Link
-                      style={{
-                        textDecoration: "none",
-                        backgroundColor: "#ccc",
-                        color: "#fff",
-                      }}
-                      to="/logout"
-                      onClick={() => {
-                        dispatch(authAction.logoutUser())
-                          .then(async (result) => {
-                            console.log("result:", result);
-                            //PURGE post step vars:
-                            localStorage.removeItem("forteworksToken");
-                            dispatch(postAction.clearPost())
-                              .then(async (result) => {
-                                console.log(
-                                  "logout and cancel to purge post vars: result:",
-                                  result
-                                );
-                              })
-                              .catch((err) => console.log(err));
-                          })
-                          .catch((err) => console.log(err));
-                      }}
+                      to="/"
+                      style={{ textDecoration: "none", color: "#222" }}
                     >
-                      <LinkStyle
+                      Home
+                    </Link>
+                  </LinkStyle>
+                </MenuItem>
+                <MenuItem onClick={handleClose}>
+                  {" "}
+                  <LinkStyle>
+                    <Link
+                      to="/allSitePosts"
+                      style={{ textDecoration: "none", color: "#222" }}
+                    >
+                      Browse
+                    </Link>
+                  </LinkStyle>
+                </MenuItem>
+                {auth && (
+                  <>
+                    <MenuItem onClick={handleClose}>
+                      {" "}
+                      <LinkStyle>
+                        <Link
+                          to="/dashboard"
+                          style={{ textDecoration: "none", color: "#222" }}
+                        >
+                          My Dashboard
+                        </Link>
+                      </LinkStyle>
+                    </MenuItem>
+                    <MenuItem onClick={handleClose}>
+                      {" "}
+                      <LinkStyle>
+                        <Link
+                          to="/profile"
+                          style={{ textDecoration: "none", color: "#222" }}
+                        >
+                          My Profile
+                        </Link>
+                      </LinkStyle>
+                    </MenuItem>
+                  </>
+                )}
+                {!auth ? (
+                  <>
+                    <MenuItem onClick={handleClose}>
+                      {" "}
+                      <LinkStyle>
+                        <Link
+                          to="/login"
+                          style={{ textDecoration: "none", color: "#222" }}
+                        >
+                          Login
+                        </Link>
+                      </LinkStyle>
+                    </MenuItem>
+                    <MenuItem onClick={handleClose}>
+                      {" "}
+                      <LinkStyle>
+                        <Link
+                          to="/register"
+                          style={{ textDecoration: "none", color: "#222" }}
+                        >
+                          Register
+                        </Link>
+                      </LinkStyle>
+                    </MenuItem>
+                  </>
+                ) : (
+                  <>
+                    <MenuItem onClick={handleClose}>
+                      <Link
                         style={{
                           textDecoration: "none",
                           backgroundColor: "#ccc",
                           color: "#fff",
                         }}
+                        to="/logout"
+                        onClick={() => {
+                          dispatch(authAction.logoutUser())
+                            .then(async (result) => {
+                              console.log("result:", result);
+                              //PURGE post step vars:
+                              localStorage.removeItem("forteworksToken");
+                              dispatch(postAction.clearPost())
+                                .then(async (result) => {
+                                  console.log(
+                                    "logout and cancel to purge post vars: result:",
+                                    result
+                                  );
+                                })
+                                .catch((err) => console.log(err));
+                            })
+                            .catch((err) => console.log(err));
+                        }}
                       >
-                        Logout
-                      </LinkStyle>
-                    </Link>
-                  </MenuItem>
-                </>
-              )}
-            </Menu>
-           
-            </Grid> 
-            <Grid item sm={3} xs={8} >
-            <h3>SERVEWERX.COM</h3>
-              </Grid>
-            <Grid item sm={8} xs={12}  >
-              {/* filter */}
+                        <LinkStyle
+                          style={{
+                            textDecoration: "none",
+                            backgroundColor: "#ccc",
+                            color: "#fff",
+                          }}
+                        >
+                          Logout
+                        </LinkStyle>
+                      </Link>
+                    </MenuItem>
+                  </>
+                )}
+              </Menu>
             </Grid>
-          
-        </Grid>
-      </Toolbar>
-      
-          <Route exact path="/" component={Home} />
-            <Route exact path="/build" component={Home} />
-            <Route path="/login" component={LoginPage} />
-            <Route path="/register" component={RegisterPage} />
-            <Route path="/dashboard" component={DashboardPage} />
-            <Route path="/profile" component={ProfilePage} />
-            <Route path="/allSitePosts" component={AllSitePostsPage} />
-            <Route path="/logout" component={Home} />
+            <Grid item sm={3} xs={8}>
+              <h3>SERVEWERX.COM</h3>
+            </Grid>
+            <Grid item sm={8} xs={2}  >
+              <Grid container alignItems="center" justify="center">
+                <Grid
+                  item
+                >
+                  <h4><Link
+                    to="/allSitePosts"
+                    style={{ textDecoration: "none", color: "#222" }}
+                  >
+                    Browse
+                  </Link></h4>
+                </Grid>
+              </Grid>
+            </Grid>
+          </Grid>
+        </Toolbar>
+
+        <Route exact path="/" component={Home} />
+        <Route exact path="/build" component={Home} />
+        <Route path="/login" component={LoginPage} />
+        <Route path="/register" component={RegisterPage} />
+        <Route path="/dashboard" component={DashboardPage} />
+        <Route path="/profile" component={ProfilePage} />
+        <Route path="/allSitePosts" component={AllSitePostsPage} />
+        <Route path="/logout" component={Home} />
       </Router>
-
-       
-
     </div>
   );
 }
