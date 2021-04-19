@@ -32,12 +32,15 @@ const displayRegistration = () => {
         onMouseMove={({ clientX: x, clientY: y }) => set({ xys: calc(x, y) })}
         onMouseLeave={() => set({ xys: [0, 0, 1] })}
         style={{ transform: props.xys.interpolate(trans) }}
-        title="Title hello..."
+        title="Browse or Register"
       >
         <div
           className="innerHomeCard"
           style={{ minHeight: "125px",height:"auto", padding: "20px" }}
         >
+
+          {! showRegister && 
+          <>
           <Typography variant="h5" component="h2">
             Browse for Free
           </Typography>
@@ -47,9 +50,12 @@ const displayRegistration = () => {
           </Typography>
          
            <button onClick={displayRegistration}>Register Now</button>
+           </>
+          }
+
     { showRegister && 
     
-           <FreeRegistrationPage></FreeRegistrationPage>
+           <FreeRegistrationPage   ></FreeRegistrationPage>
     }
           
         </div>

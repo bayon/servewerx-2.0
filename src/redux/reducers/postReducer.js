@@ -60,6 +60,12 @@ const initialState = {
     "excavating",
     "appliances",
     "landscaping",
+    "excavating",
+    "general contracting",
+    "subcontracting",
+    "cleaning",
+    "electrical",
+    "other"
   ],
 };
 //!!!!: The order of there 'categories' is important !!! And I just changed it !!!

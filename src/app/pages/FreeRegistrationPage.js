@@ -14,20 +14,11 @@ import * as authAction from "../../redux/actions/authAction";
 
 
 
-
-
-// import logo from "../assets/img/pexels-pixabay-159201.jpg";
-// import CardInput from '../components/CardInput';
-// import Home from "../Home";
-
-
 const formSchema = yup.object({
   fullName: yup.string().required().min(3),
   email: yup.string().email().required(),
   password: yup.string().required().min(6),
 });
-
-
 
 function ButtonComponent(props) {
   const { onClick, loading } = props;
@@ -44,10 +35,6 @@ function ButtonComponent(props) {
   );
 }
 
-
-
-
-
 export default function FreeRegistrationPage() {
 
   const [loading, setLoading] = useState(false);
@@ -61,6 +48,7 @@ export default function FreeRegistrationPage() {
 <>
 <h1>Great!</h1>
 <p>Once you register, you'll be able to create ads.</p>
+
 <React.Fragment>
   <Grid
     container
@@ -168,9 +156,10 @@ export default function FreeRegistrationPage() {
   </Grid>
  
 </React.Fragment>
+<p>Ads are $1.00 per month.</p>
+<p>All payments made securely via <a href="https://stripe.com/"  style={{textDecoration:"none"}}>Stripe.com</a> </p>
+
 </>
-
-
 
 
     )
