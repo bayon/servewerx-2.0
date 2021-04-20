@@ -107,7 +107,7 @@ const ProfileCard = (props) => {
                         <Grid item xs={12}>
                           <input
                           className="appInput"
-                            placeholder="Full Name"
+                            placeholder="Business Name or User Name"
                             onChange={props.handleChange("fullName")}
                             value={props.values.fullName}
                             onBlur={props.handleBlur("fullName")}

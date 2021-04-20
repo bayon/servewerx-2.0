@@ -17,6 +17,7 @@ import DashboardPage from "./pages/DashboardPage";
 import LoginPage from "./pages/LoginPage";
 import ProfilePage from "./pages/ProfilePage";
 import RegisterPage from "./pages/RegisterPage";
+ 
 
 const LinkStyle = styled.section`
   padding: 0.3em;
@@ -31,8 +32,13 @@ const LinkStyle = styled.section`
 export default function NavigationMenu() {
   var auth = useSelector((state) => state.auth.authorized);
   const [user, setUser] = useState({});
-
+  const [redirect,setRedirect] = useState(null)
+  
   const dispatch = useDispatch();
+ 
+
+
+
 
   useEffect(() => {
     //check authorization
@@ -52,6 +58,21 @@ export default function NavigationMenu() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+
+
+
+ 
+
+  const goToBrowse = () => {
+    console.log('function goToBrowse() ... ')
+   
+     
+   
+  
+
+    
+  }
 
   return (
     <div>
@@ -220,8 +241,10 @@ export default function NavigationMenu() {
           </Grid>
         </Toolbar>
 
-        <Route exact path="/" component={Home} />
-        <Route exact path="/build" component={Home} />
+        <Route exact path="/" render={(props) => <Home {...props} browse={goToBrowse} title={`Props through render`} />} />
+
+        {/* <Route exact path="/" component={Home} />
+        <Route exact path="/build" component={Home}  /> */}
         <Route path="/login" component={LoginPage} />
         <Route path="/register" component={RegisterPage} />
         <Route path="/dashboard" component={DashboardPage} />
@@ -232,3 +255,15 @@ export default function NavigationMenu() {
     </div>
   );
 }
+
+/*
+
+3.1. withRouter
+withRouter is a function provided in the react-router-dom library that helps us access the history prop in components which are not immediate children to the <Route> components.
+To import withRouter
+import { withRouter } from "react-router-dom";
+Now to get the history prop inside our component, we need to wrap our component with withRouter while exporting it.
+export default withRouter(yourComponent);
+We can now access the history prop same as above to do our required navigations.
+
+*/

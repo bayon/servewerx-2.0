@@ -11,7 +11,10 @@ const calc = (x, y) => [
   1.07,
 ];
 const trans = (x, y, s) => `perspective(600px)  scale(${s})`;
-const HomeCardFour = () => {
+const HomeCardFour = (data) => {
+
+
+  console.log('Home Card Four  props data:',data)
   const [showRegister, setShowRegister] = useState(false);
 
   const [props, set] = useSpring(() => ({
@@ -22,7 +25,14 @@ const HomeCardFour = () => {
   const displayRegistration = () => {
     setShowRegister(!showRegister);
   };
+console.log('JUST PROPS: ',props)
+console.log('just data:',data)
 
+
+const comeOn = () => {
+  console.log('come on fn!' )
+  data.browse()
+}
   return (
     <div className="homeCard">
       <animated.div
@@ -41,12 +51,18 @@ const HomeCardFour = () => {
               <Typography variant="h5" component="h2">
                 Browse for Free
               </Typography>
+              
 
               <Typography variant="body2" component="p" color="textSecondary">
-                or Register to place an ad.
+                or  
+              </Typography>
+              <Typography variant="body2" component="p" color="textSecondary">
+                Register to place your ad
               </Typography>
 
               <button onClick={displayRegistration}>Register Now</button>
+
+           
             </>
           )}
 

@@ -18,6 +18,7 @@ const formSchema = yup.object({
   fullName: yup.string().required().min(3),
   email: yup.string().email().required(),
   password: yup.string().required().min(6),
+  sms_secret: yup.string().required().min(4)
 });
 
 function ButtonComponent(props) {
@@ -60,11 +61,19 @@ export default function FreeRegistrationPage() {
     
       <Grid item xs={12} sm={6} style={{ marginTop: "15px" }}>
         {/* //FORM AND REDUX  part 3 JSX*/}
+        <p>First, text 'servewerx' to </p>
+          <p style={{fontWeight:"bold"}}> 770-285-5486 </p>
+          <a href="sms:+17702855486&body=servewerx">text us!</a>
+
+              <p>Then, use 'Text code' to register with.</p>
+              {/* <input name="sms_response" placeholder="sms response here."></input>
+              <button onClick={ () => {console.log('need to verify user....phone....')} }>Submit Your Response</button> */}
         <Formik
           initialValues={{
             fullName: "",
             email: "",
             password: "",
+            sms_secret:"",
           }}
           validationSchema={formSchema}
           onSubmit={(values) => {
@@ -98,7 +107,7 @@ export default function FreeRegistrationPage() {
                       borderBottom: "solid 1px #ddd",
                       padding: "10px",
                     }}
-                    placeholder="Full Name"
+                    placeholder="Business Name or User Name"
                     onChange={props.handleChange("fullName")}
                     value={props.values.fullName}
                     onBlur={props.handleBlur("fullName")}
@@ -137,6 +146,23 @@ export default function FreeRegistrationPage() {
                   />
                   <div style={{ color: "salmon" }}>
                     {props.touched.password && props.errors.password}
+                  </div>
+
+                  <input
+                    style={{
+                      marginTop: "15px",
+                      border: "none",
+                      outline: "none",
+                      borderBottom: "solid 1px #ddd",
+                      padding: "10px",
+                    }}
+                    placeholder="Text Code"
+                    onChange={props.handleChange("sms_secret")}
+                    value={props.values.sms_secret}
+                    onBlur={props.handleBlur("sms_secret")}
+                  />
+                  <div style={{ color: "salmon" }}>
+                    {props.touched.sms_secret && props.errors.sms_secret}
                   </div>
 
                   <ButtonComponent

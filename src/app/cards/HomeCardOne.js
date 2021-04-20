@@ -33,7 +33,13 @@ const HomeCardOne = () => {
           </Typography>
 
           <Typography variant="body2" component="p" color="textSecondary">
-            Crafstmen and Small Businesses.
+            Crafstmen 
+          </Typography>
+          <Typography variant="body2" component="p" color="textSecondary">
+            and
+          </Typography>
+          <Typography variant="body2" component="p" color="textSecondary">
+            Small Businesses
           </Typography>
         </div>
       </animated.div>
