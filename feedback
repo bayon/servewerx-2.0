@@ -1,0 +1,28 @@
+The site is fairly intuitive and I did not experience any major issues when signing up and creating a post.  Some general feedback:
+
+"Hiring" heading on the front page may not be the best title.  
+Does that mean "I am a business looking hire some people", or "I am a home owner looking for a pro".  I expect the latter.  
+
+"Full Name" field upon signup:  A few thoughts here.  I intuitively tabbed between first and last name.  
+Consider splitting up First/Last name, or possibly renaming this field to "Full name or Business Name". 
+ I realize adding a couple extra data entry fields complicates the very simple signup process.  
+ There is a lot of value in just 3 fields required for signup.  Maybe I am over thinking it.  
+
+Javascript popup indicating "You are registered, ...".  I expect you will update that to either bring you 
+to your profile page directly, or prompt an email validation process.  
+
+During the post creation process, you will want to give a description or examples of what fields Post Title, 
+Description, etc mean.  For example:  
+Post Title ("Residential Plumbing Services")
+or
+Description (Provide more detail on the services your are offering, or the type of work you are looking for)
+
+Consider adding some kind of location or geographic area field, to indicate the areas serviced by the poster, 
+or the area in which the person needs help.  You may also want to indicate what fields appear public.  
+Address does not, phone number does.
+
+At some point, I lost the ability to view my current posting.  I know I was able to see it on the Dashboard at one point, 
+but I cannot now.  I did start to create a second post and not finish it, so maybe that is related.  
+
+I know this is in development and overlooked some of the obvious things that will get fixed later, 
+such as password show in plain text, data validation in fields, etc. 
