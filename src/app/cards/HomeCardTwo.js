@@ -33,7 +33,10 @@ const HomeCardTwo = () => {
           </Typography>
 
           <Typography variant="body2" component="p" color="textSecondary">
-            Need a job today?
+            Find a job
+          </Typography>
+          <Typography variant="body2" component="p" color="textSecondary">
+            Find good help
           </Typography>
         </div>
 

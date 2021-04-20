@@ -7,7 +7,9 @@ import HomeCardTwo from "./cards/HomeCardTwo";
 import Footer from "./Footer";
 
 
+
 export default function Home(props) {
+  console.log('home props:',props)
   return (
     <React.Fragment>
       <Grid container  >
@@ -33,7 +35,7 @@ export default function Home(props) {
                 <HomeCardThree></HomeCardThree>
               </Grid>
               <Grid item xs={12} sm={3}>
-                <HomeCardFour></HomeCardFour>
+                <HomeCardFour browse={props.browse}></HomeCardFour>
               </Grid>
               
             </Grid>
@@ -45,3 +47,4 @@ export default function Home(props) {
     </React.Fragment>
   );
 }
+

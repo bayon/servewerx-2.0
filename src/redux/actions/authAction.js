@@ -33,7 +33,7 @@ export const GET_CATEGORIES_FAIL = "GET_CATEGORIES_FAIL";
 const API_URL = config.url.API_URL
 
 export const registerUser = (authData) => {
-  const { fullName, email, password } = authData;
+  const { fullName, email, password , sms_secret} = authData;
   return async (dispatch) => {
     //benefit: can now make async http request to Register
     const result = await fetch(`${API_URL}/users/register`, {
@@ -45,6 +45,7 @@ export const registerUser = (authData) => {
         fullName,
         email,
         password,
+        sms_secret
       }),
     });
 

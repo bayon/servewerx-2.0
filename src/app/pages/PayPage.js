@@ -270,7 +270,7 @@ if (!inProgress) {
                             borderBottom: "solid 1px #ddd",
                             padding: "10px",
                           }}
-                          placeholder="Full Name"
+                          placeholder="Business Name or User Name"
                           onChange={props.handleChange("fullName")}
                           value={props.values.fullName}
                           onBlur={props.handleBlur("fullName")}

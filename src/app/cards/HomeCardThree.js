@@ -33,7 +33,10 @@ const HomeCardThree = () => {
           </Typography>
 
           <Typography variant="body2" component="p" color="textSecondary">
-            Need to hire some professionals.
+            Find a professional
+          </Typography>
+          <Typography variant="body2" component="p" color="textSecondary">
+            Find a subcontractor
           </Typography>
         </div>
       </animated.div>
