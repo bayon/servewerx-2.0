@@ -11,5 +11,5 @@ const dev = {
     HOST_URL: "http://localhost:4000"
   },
 };
-
+console.log('process.env:',process.env);
 export const config = process.env.NODE_ENV === "development" ? dev : prod;

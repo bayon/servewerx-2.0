@@ -20,8 +20,13 @@ import {
   GET_STATUS_COLOR,
   INIT_POST_FAIL,
   INIT_POST_SUCCESS,
-  SET_STATUS_BLUE,
+
+
+
+  PROXIMITY_POSTS_FAIL, PROXIMITY_POSTS_SUCCESS, SET_STATUS_BLUE,
   SET_STATUS_GREEN,
+
+
 
 
 
@@ -249,6 +254,18 @@ export default function (state = initialState, action) {
         ...state,
       };
     //=====================
+
+    case PROXIMITY_POSTS_SUCCESS:
+      return {
+        ...state,
+        posts: action.payload,
+        havePosts: true,
+      };
+    case PROXIMITY_POSTS_FAIL:
+      return {
+        ...state,
+        errors: true,
+      };
     default:
       break;
   }

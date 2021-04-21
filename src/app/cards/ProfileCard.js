@@ -46,6 +46,9 @@ const ProfileCard = (props) => {
             {seeDetails ? "Close My Profile" : "Edit My Profile"}
           </button>
         </Grid>
+        <Grid item xs={12}   >
+         <p>Your data here will be used to auto-fill your 'posts'.</p>
+        </Grid>
       </Grid>
 
       {seeDetails && (
@@ -102,7 +105,7 @@ const ProfileCard = (props) => {
                     >
                       <Grid item xs={12} sm={12} >
                         <Grid item xs={12} sm={6}>
-                          <label>Ful Name</label>
+                          <label>Full Name ( The name of you or your company.)</label>
                         </Grid>
                         <Grid item xs={12}>
                           <input
@@ -119,7 +122,7 @@ const ProfileCard = (props) => {
                         </Grid>
 
                         <Grid item xs={12}>
-                          <label>Email</label>
+                          <label>Email(*)</label>
                         </Grid>
                         <Grid item xs={12}>
                           <input
@@ -135,7 +138,7 @@ const ProfileCard = (props) => {
                           </div>
                         </Grid>
                         <Grid item xs={12}>
-                          <label>Phone</label>
+                          <label>Phone(*)</label>
                         </Grid>
                         <Grid item xs={12}>
                           <input
@@ -195,7 +198,7 @@ const ProfileCard = (props) => {
                           </select>
                         </Grid>
                         <Grid item xs={12}>
-                          <label>Zip</label>
+                          <label>Zip(* Important for other people to find you in their proximity searches.)</label>
                         </Grid>
                         <Grid item xs={12}>
                           <input
@@ -210,7 +213,7 @@ const ProfileCard = (props) => {
                           </div>
                         </Grid>
                         <Grid item xs={12}>
-                          <label>Website</label>
+                          <label>Website(*)</label>
                         </Grid>
                         <Grid item xs={12}>
                           <input
@@ -242,7 +245,9 @@ const ProfileCard = (props) => {
                 </Formik>
 
                 {/* //end  part 3*/}
+                <p>* = publicly available in your 'posts' unless you alter it.</p>
                 <p>Once your profile is set up, you can go to your Dashboard and create a Post.</p>
+
 
               </Grid>
             </Grid>
