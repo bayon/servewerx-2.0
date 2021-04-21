@@ -11,13 +11,24 @@ import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 import styled from "styled-components";
 import * as authAction from "../redux/actions/authAction";
 import * as postAction from "../redux/actions/postAction";
-import MenuCardOne from './cards/MenuCardOne';
 import Home from "./Home";
 import AllSitePostsPage from "./pages/AllSitePostsPage";
 import DashboardPage from "./pages/DashboardPage";
+// import RegisterPage from "./pages/RegisterPage";
+import FreeRegistrationPage from "./pages/FreeRegistrationPage";
 import LoginPage from "./pages/LoginPage";
 import ProfilePage from "./pages/ProfilePage";
-// import RegisterPage from "./pages/RegisterPage";
+
+
+const rere = () => {
+  console.log('ok did we hit rere or NOT?  this.props.history:',this.props.history)
+  // did not work  return <Redirect to='/profile' />
+  this.props.history.push('/profile')
+  
+}
+
+
+
 
 const LinkStyle = styled.section`
   padding: 0.3em;
@@ -29,7 +40,8 @@ const LinkStyle = styled.section`
   opacity: 0.8;
 `;
 
-export default function NavigationMenu() {
+export default function NavigationMenu(props) {
+  console.log('navigation menu props:',props)
   var auth = useSelector((state) => state.auth.authorized);
   const [user, setUser] = useState({});
   const [redirect,setRedirect] = useState(null)
@@ -62,19 +74,29 @@ const hideRegistrationPromt = () => {
   };
 
 
+  const CustomButton = () => {
+    const onClick = () => console.log("Clicked!");
+   // return <div onClick={onClick}>Click me!</div>
 
+    return (
+      <Router>
+          <LinkStyle>
+                <Link
+                  to="/profile"
+                  style={{ textDecoration: "none", color: "#222" }}
+                  onClick={onClick}
+                >
+                  My Profile
+                </Link>
+              </LinkStyle> 
+               <Route path="/profile" component={ProfilePage} /> 
+      </Router>
+     
+    )
+  };
 
  
-
-  const goToBrowse = () => {
-    console.log('function goToBrowse() ... ')
-   
-     
-   
-  
-
-    
-  }
+ 
 
   return (
     <div>
@@ -149,7 +171,7 @@ const hideRegistrationPromt = () => {
                         <Link
                           to="/profile"
                           style={{ textDecoration: "none", color: "#222" }}
-                        >
+                         >
                           My Profile
                         </Link>
                       </LinkStyle>
@@ -248,23 +270,31 @@ const hideRegistrationPromt = () => {
             </Grid>
             <Grid item sm={3} xs={12}> 
             {!auth && !hideRegister &&
-            
-            <MenuCardOne></MenuCardOne>
+            // <FreeRegistrationPage props={props}></FreeRegistrationPage>
+            // <MenuCardOne rere={rere} props={props}></MenuCardOne>
+            <LinkStyle>
+            <Link
+              to="/register"
+              style={{ textDecoration: "none", color: "#222" }}
+            >
+              Register
+            </Link>
+          </LinkStyle>
             }
-            </Grid>
+             </Grid>
            </Grid>
         </Toolbar>
 
-        <Route exact path="/" render={(props) => <Home {...props} browse={goToBrowse} title={`Props through render`} />} />
 
-        {/* <Route exact path="/" component={Home} />
-        <Route exact path="/build" component={Home}  /> */}
+        <Route exact path="/" component={Home} />
+        <Route exact path="/build" component={Home}  /> 
         <Route path="/login" component={LoginPage} />
         {/* <Route path="/register" component={RegisterPage} /> */}
         <Route path="/dashboard" component={DashboardPage} />
         <Route path="/profile" component={ProfilePage} />
         <Route path="/allSitePosts" component={AllSitePostsPage} />
         <Route path="/logout" component={Home} />
+        <Route path="/register" component={FreeRegistrationPage} />
       </Router>
     </div>
   );

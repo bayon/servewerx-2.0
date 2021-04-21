@@ -48,7 +48,7 @@ const MenuCardOne = (data) => {
             </>
           )}
 
-          {showRegister && <FreeRegistrationPage close={displayRegistration}></FreeRegistrationPage> }
+          {showRegister && <FreeRegistrationPage close={displayRegistration} rere={data.rere} props={data}></FreeRegistrationPage> }
 
         </div>
       {/* </animated.div> */}

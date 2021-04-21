@@ -24,7 +24,8 @@ const formSchema = yup.object({
 function ButtonComponent(props) {
   const { onClick, loading } = props;
   return (
-    <Button
+    <div>
+ <Button
       variant="contained"
       onClick={onClick}
       disabled={loading}
@@ -33,6 +34,8 @@ function ButtonComponent(props) {
       {loading && <CircularProgress size={14} />}
       {!loading && "Register"}
     </Button>
+     </div>
+   
   );
 }
 
@@ -40,9 +43,31 @@ export default function FreeRegistrationPage(props) {
 
   const [loading, setLoading] = useState(false);
   const [inProgress, setInProgress] = useState(false);
-
-
+  // const [regProps,setRegProps] = useState({})
+  // setRegProps(props)
   const dispatch = useDispatch() ;
+
+  const {history} = props;
+
+  const goBack = () => {
+    console.log('history:',history)
+    // console.log('fn GoBack.....')
+    // props.rere()
+    alert('You Are Registered, next go to your Profile page and fill in your info.')
+
+  }
+
+  const goBack2 = () => {
+    console.log('fn GoBack.2....')
+    
+
+  }
+
+  const goBack3 = () => {
+    console.log('fn GoBack..3...')
+    
+
+  }
   
     return (
 
@@ -94,11 +119,26 @@ export default function FreeRegistrationPage(props) {
                 if (result.success) {
                   setInProgress(true);
                   //setLoading(false)
-                  alert('You Are Registered, next go to your Profile page and fill in your info.')
+                 // console.log('----this.props:',props)
+                 // console.log(' looking for rere rerender..... ')
+                  //goBack()
+                  //FAIL history.push('/profile');
+                  // console.log(context);
+                  // console.log(context.history) 
+                  // console.log(history);
+                  // context.history.push('/profile')
+                  console.log('. . . . . . props:',props)
+                  history.push('/profile');
+
+ 
                 }
               })
               .catch((err) => console.log(err));
-          }}
+                goBack2()
+              console.log('dispatch is over ???  over?')
+          }
+          
+      }
         >
           {(props) => (
             <Card>

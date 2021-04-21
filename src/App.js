@@ -17,7 +17,7 @@ function App(props) {
           <React.Fragment>
             <CssBaseline />
             <Container maxWidth="lg">
-               <NavigationMenu></NavigationMenu>
+               <NavigationMenu props={props}></NavigationMenu>
             </Container>
           </React.Fragment>
            <StatusChecker></StatusChecker>
