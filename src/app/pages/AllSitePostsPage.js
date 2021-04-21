@@ -5,14 +5,53 @@ import { useDispatch, useSelector } from "react-redux";
 import * as postAction from "../../redux/actions/postAction";
 import AllSitePostsDisplayCard from "../cards/AllSitePostsDisplayCard";
 import PostDisplayCard from "../cards/PostDisplayCard";
+var zipcodes = require('zipcodes');
+
+
+
 
 const AllSitePostsPage = (props) => {
+
+
+
   var auth = useSelector((state) => state.auth.authorized);
 
   const dispatch = useDispatch();
 
+// Within Certain Radius
+const zipWithinRadius = (zipNo,miles) => {
+  var arrayOfZips = zipcodes.radius(zipNo, miles);
+  console.log('arrayOfZips Within Radius:',arrayOfZips); 
+  // select * from posts where zipcode ( IN arrayOfZips)
+  // db.inventory.find( { qty: { $in: [ 5, 15 ] } } )
+  //////////////////////////////////////////////////
+  // Posts.find( { zipcode: { $in: arrayOfZips } } )
+  ///////////////////////////////////////////////////
+  dispatch(postAction.postsWithinProximity(arrayOfZips))
+  .then( (res) => { 
+    console.log('result:',res)
+    setCurrentPosts(res);
+    setHaveCurrentPosts(true);
+  
+  })
+
+  .catch( (err) => console.log("error:",err))
+
+}
+
+
+
+
   const [currentPosts, setCurrentPosts] = useState([]);
   const [haveCurrentPosts, setHaveCurrentPosts] = useState(false);
+
+
+  const [miles,setMiles] = useState(null);
+  const [zipcode,setZipcode] = useState(null);
+
+
+
+
 
   const [sortName, setSortName] = useState(false);
   const [sortLatest, setSortLatest] = useState(false);
@@ -215,6 +254,29 @@ const AllSitePostsPage = (props) => {
   //   return <div>not authorized.</div>;
   // }
 
+
+  const handleZip = (e) => {
+    
+    console.log('e.target:',e.target);
+    setZipcode(e.target.value)
+
+  }
+
+  const handleMiles = (e) => {
+    
+    console.log('e.target:',e.target);
+    setMiles(e.target.value)
+
+  }
+
+  const handleProximityForm = (e) => {
+    e.preventDefault();
+    
+    console.log('handle proximity form....')
+    console.log(miles + 'from ' + zipcode)
+    zipWithinRadius(zipcode,miles)
+  }
+
   return (
     <Grid container spacing={0} className="main-component-container component-background-image"   >
       <Grid container spacing={0} style={{  position:"fixed",top:"50px",left:"0px",right:"0px" ,zIndex:"100",background:"#fff",paddingTop:"1em"}}>
@@ -264,6 +326,10 @@ const AllSitePostsPage = (props) => {
               onChange={setSortOption}
             />
             <label htmlFor="category" >Category</label> */}
+
+           <form ><label>Less than</label><input className="appTinyInput" placeholder="miles" onChange={handleMiles} value={miles} name="miles" ></input><label>from </label><input className="appTinyInput" placeholder="zipcode"  onChange={handleZip} name="zipcode" value={zipcode} /><button type="submit" onClick={handleProximityForm}>find</button>
+         
+           </form> 
           </span>
         </Grid>
         

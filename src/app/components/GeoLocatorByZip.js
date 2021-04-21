@@ -124,9 +124,9 @@ console.log('zip:',props.zip);
     </Grid>
   );
 }
-
+//process.env.REACT_APP_GOOGLE_API_KEY,
 export default GoogleApiWrapper({
-  apiKey: process.env.REACT_APP_GOOGLE_API_KEY,
+  apiKey: "AIzaSyAuC2WeupS3eQM5xkQUrpkr-O9NxzdihlY",
 })(GeoLocatorByZip);
 
 

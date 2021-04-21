@@ -56,6 +56,17 @@ body, html {
   font-size:.8em;
   width:auto;
 }
+ .appTinyInput{
+  border: none;
+  outline: none;
+  border: solid 1px #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  font-size:.8em;
+  width:50px;
+  max-width:50px;
+
+} 
 
 .appSelect{
   padding: .5em;

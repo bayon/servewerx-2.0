@@ -46,6 +46,10 @@ export const DELETE_POST_FAIL = "DELETE_POST_FAIL";
 export const UPDATE_CREATING_POST_SUCCESS = "UPDATE_CREATING_POST_SUCCESS";
 export const UPDATE_CREATING_POST_FAIL = "UPDATE_CREATING_POST_FAIL";
 
+export const PROXIMITY_POSTS_SUCCESS = "PROXIMITY_POSTS_SUCCESS";
+export const PROXIMITY_POSTS_FAIL = "PROXIMITY_POSTS_FAIL";
+
+
 
 export const allSitePosts = () => {
   return async (dispatch) => {
@@ -539,3 +543,31 @@ export const getStatusColor = () => {
   };
 };
 //////////////////////////////////
+
+export const postsWithinProximity = (arrayOfZips) => {
+  return async (dispatch) => {
+    const result = await fetch(`${API_URL}/posts/proximity`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        arrayOfZips,
+      }),
+    });
+
+    const resultData = await result.json();
+    if (resultData.success) {
+      dispatch({
+        type: PROXIMITY_POSTS_SUCCESS,
+        payload: resultData,
+      });
+    } else {
+      dispatch({
+        type: PROXIMITY_POSTS_FAIL,
+      });
+    }
+    return resultData;
+  };
+  
+};
