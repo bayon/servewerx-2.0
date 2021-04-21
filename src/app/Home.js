@@ -1,6 +1,5 @@
 import Grid from "@material-ui/core/Grid";
 import React from "react";
-import HomeCardFour from "./cards/HomeCardFour";
 import HomeCardOne from "./cards/HomeCardOne";
 import HomeCardThree from "./cards/HomeCardThree";
 import HomeCardTwo from "./cards/HomeCardTwo";
@@ -34,9 +33,9 @@ export default function Home(props) {
               <Grid item xs={12} sm={3}>
                 <HomeCardThree></HomeCardThree>
               </Grid>
-              <Grid item xs={12} sm={3}>
-                <HomeCardFour browse={props.browse}></HomeCardFour>
-              </Grid>
+              {/* <Grid item xs={12} sm={3}>
+              <HomeCardFour browse={props.browse}></HomeCardFour> 
+              </Grid> */}
               
             </Grid>
          

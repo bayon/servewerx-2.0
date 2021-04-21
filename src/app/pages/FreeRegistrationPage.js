@@ -1,6 +1,6 @@
 
  
-import { CircularProgress } from "@material-ui/core";
+import { CircularProgress, Icon } from "@material-ui/core";
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import Grid from "@material-ui/core/Grid";
@@ -24,7 +24,8 @@ const formSchema = yup.object({
 function ButtonComponent(props) {
   const { onClick, loading } = props;
   return (
-    <Button
+    <div>
+ <Button
       variant="contained"
       onClick={onClick}
       disabled={loading}
@@ -33,22 +34,45 @@ function ButtonComponent(props) {
       {loading && <CircularProgress size={14} />}
       {!loading && "Register"}
     </Button>
+     </div>
+   
   );
 }
 
-export default function FreeRegistrationPage() {
+export default function FreeRegistrationPage(props) {
 
   const [loading, setLoading] = useState(false);
   const [inProgress, setInProgress] = useState(false);
-
-
+  // const [regProps,setRegProps] = useState({})
+  // setRegProps(props)
   const dispatch = useDispatch() ;
+
+  const {history} = props;
+
+  const goBack = () => {
+    console.log('history:',history)
+    // console.log('fn GoBack.....')
+    // props.rere()
+    alert('You Are Registered, next go to your Profile page and fill in your info.')
+
+  }
+
+  const goBack2 = () => {
+    console.log('fn GoBack.2....')
+    
+
+  }
+
+  const goBack3 = () => {
+    console.log('fn GoBack..3...')
+    
+
+  }
   
     return (
 
 <>
-<h1>Great!</h1>
-<p>Once you register, you'll be able to create ads.</p>
+
 
 <React.Fragment>
   <Grid
@@ -57,15 +81,21 @@ export default function FreeRegistrationPage() {
     align="center"
     justify="center"
     direction="column"
+    style={{paddingBottom:"100px",fontSize:".8em"}}
   >
     
-      <Grid item xs={12} sm={6} style={{ marginTop: "15px" }}>
+    <h1>Great! 
+</h1>
+<p>Once you register, you'll be able to create ads.</p>
+    
+      <Grid item xs={12} sm={12} style={{ marginTop: "15px" }}>
         {/* //FORM AND REDUX  part 3 JSX*/}
-        <p>First, text 'servewerx' to </p>
-          <p style={{fontWeight:"bold"}}> 770-285-5486 </p>
-          <a href="sms:+17702855486&body=servewerx">text us!</a>
+       
+        <p>First, 'TEXT'  </p>
+          
+          <a href="sms:+17702855486&body=servewerx" style={{textDecoration:"none",fontWeight:"bold",}}>SERVEWERX <Icon>sms</Icon></a>
 
-              <p>Then, use 'Text code' to register with.</p>
+              <p>to get your code.</p>
               {/* <input name="sms_response" placeholder="sms response here."></input>
               <button onClick={ () => {console.log('need to verify user....phone....')} }>Submit Your Response</button> */}
         <Formik
@@ -89,11 +119,26 @@ export default function FreeRegistrationPage() {
                 if (result.success) {
                   setInProgress(true);
                   //setLoading(false)
-                  alert('You Are Registered, next go to your Profile page and fill in your info.')
+                 // console.log('----this.props:',props)
+                 // console.log(' looking for rere rerender..... ')
+                  //goBack()
+                  //FAIL history.push('/profile');
+                  // console.log(context);
+                  // console.log(context.history) 
+                  // console.log(history);
+                  // context.history.push('/profile')
+                  console.log('. . . . . . props:',props)
+                  history.push('/profile');
+
+ 
                 }
               })
               .catch((err) => console.log(err));
-          }}
+                goBack2()
+              console.log('dispatch is over ???  over?')
+          }
+          
+      }
         >
           {(props) => (
             <Card>
@@ -169,6 +214,7 @@ export default function FreeRegistrationPage() {
                     onClick={props.handleSubmit}
                     loading={loading}
                   />
+                 
                 </div>
               </div>
             </Card>
@@ -178,12 +224,12 @@ export default function FreeRegistrationPage() {
 
         {/* //end  part 3*/}
       </Grid>
-   
+      <p>Ads are <span style={{fontWeight:"bold"}}>$1.00</span> per month.</p>
+<p>All payments made securely via <a href="https://stripe.com/"  style={{textDecoration:"none"}}>Stripe.com</a> </p>
+<button onClick={props.close}>cancel</button>
   </Grid>
  
 </React.Fragment>
-<p>Ads are $1.00 per month.</p>
-<p>All payments made securely via <a href="https://stripe.com/"  style={{textDecoration:"none"}}>Stripe.com</a> </p>
 
 </>
 

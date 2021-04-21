@@ -14,10 +14,21 @@ import * as postAction from "../redux/actions/postAction";
 import Home from "./Home";
 import AllSitePostsPage from "./pages/AllSitePostsPage";
 import DashboardPage from "./pages/DashboardPage";
+// import RegisterPage from "./pages/RegisterPage";
+import FreeRegistrationPage from "./pages/FreeRegistrationPage";
 import LoginPage from "./pages/LoginPage";
 import ProfilePage from "./pages/ProfilePage";
-import RegisterPage from "./pages/RegisterPage";
- 
+
+
+const rere = () => {
+  console.log('ok did we hit rere or NOT?  this.props.history:',this.props.history)
+  // did not work  return <Redirect to='/profile' />
+  this.props.history.push('/profile')
+  
+}
+
+
+
 
 const LinkStyle = styled.section`
   padding: 0.3em;
@@ -29,16 +40,19 @@ const LinkStyle = styled.section`
   opacity: 0.8;
 `;
 
-export default function NavigationMenu() {
+export default function NavigationMenu(props) {
+  console.log('navigation menu props:',props)
   var auth = useSelector((state) => state.auth.authorized);
   const [user, setUser] = useState({});
   const [redirect,setRedirect] = useState(null)
-  
+  const [hideRegister,setHideRegister] = useState(false)
   const dispatch = useDispatch();
  
 
 
-
+const hideRegistrationPromt = () => {
+  setHideRegister(!hideRegister)
+}
 
   useEffect(() => {
     //check authorization
@@ -60,19 +74,29 @@ export default function NavigationMenu() {
   };
 
 
+  const CustomButton = () => {
+    const onClick = () => console.log("Clicked!");
+   // return <div onClick={onClick}>Click me!</div>
 
+    return (
+      <Router>
+          <LinkStyle>
+                <Link
+                  to="/profile"
+                  style={{ textDecoration: "none", color: "#222" }}
+                  onClick={onClick}
+                >
+                  My Profile
+                </Link>
+              </LinkStyle> 
+               <Route path="/profile" component={ProfilePage} /> 
+      </Router>
+     
+    )
+  };
 
  
-
-  const goToBrowse = () => {
-    console.log('function goToBrowse() ... ')
-   
-     
-   
-  
-
-    
-  }
+ 
 
   return (
     <div>
@@ -111,6 +135,7 @@ export default function NavigationMenu() {
                     <Link
                       to="/"
                       style={{ textDecoration: "none", color: "#222" }}
+                       
                     >
                       Home
                     </Link>
@@ -146,7 +171,7 @@ export default function NavigationMenu() {
                         <Link
                           to="/profile"
                           style={{ textDecoration: "none", color: "#222" }}
-                        >
+                         >
                           My Profile
                         </Link>
                       </LinkStyle>
@@ -166,7 +191,7 @@ export default function NavigationMenu() {
                         </Link>
                       </LinkStyle>
                     </MenuItem>
-                    <MenuItem onClick={handleClose}>
+                    {/* <MenuItem onClick={handleClose}>
                       {" "}
                       <LinkStyle>
                         <Link
@@ -176,7 +201,7 @@ export default function NavigationMenu() {
                           Register
                         </Link>
                       </LinkStyle>
-                    </MenuItem>
+                    </MenuItem> */}
                   </>
                 ) : (
                   <>
@@ -221,36 +246,55 @@ export default function NavigationMenu() {
                 )}
               </Menu>
             </Grid>
-            <Grid item sm={3} xs={8}>
+            <Grid item sm={4} xs={8}>
               <h3>SERVEWERX.COM</h3>
             </Grid>
-            <Grid item sm={8} xs={2}  >
+            <Grid item sm={3} xs={1}  >
               <Grid container alignItems="center" justify="center">
                 <Grid
                   item
                 >
-                  <h4><Link
-                    to="/allSitePosts"
-                    style={{ textDecoration: "none", color: "#222" }}
-                  >
-                    Browse
-                  </Link></h4>
+                   <button onClick={hideRegistrationPromt}>
+                   <Link
+                          to="/allSitePosts"
+                          style={{ textDecoration: "none", color: "#222" }}
+                        >
+                          Browse
+                        </Link>
+                   </button>
+                    
+                      
+                 
                 </Grid>
               </Grid>
             </Grid>
-          </Grid>
+            <Grid item sm={3} xs={12}> 
+            {!auth && !hideRegister &&
+            // <FreeRegistrationPage props={props}></FreeRegistrationPage>
+            // <MenuCardOne rere={rere} props={props}></MenuCardOne>
+            <LinkStyle>
+            <Link
+              to="/register"
+              style={{ textDecoration: "none", color: "#222" }}
+            >
+              Register
+            </Link>
+          </LinkStyle>
+            }
+             </Grid>
+           </Grid>
         </Toolbar>
 
-        <Route exact path="/" render={(props) => <Home {...props} browse={goToBrowse} title={`Props through render`} />} />
 
-        {/* <Route exact path="/" component={Home} />
-        <Route exact path="/build" component={Home}  /> */}
+        <Route exact path="/" component={Home} />
+        <Route exact path="/build" component={Home}  /> 
         <Route path="/login" component={LoginPage} />
-        <Route path="/register" component={RegisterPage} />
+        {/* <Route path="/register" component={RegisterPage} /> */}
         <Route path="/dashboard" component={DashboardPage} />
         <Route path="/profile" component={ProfilePage} />
         <Route path="/allSitePosts" component={AllSitePostsPage} />
         <Route path="/logout" component={Home} />
+        <Route path="/register" component={FreeRegistrationPage} />
       </Router>
     </div>
   );
