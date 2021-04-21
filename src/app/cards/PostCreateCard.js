@@ -122,12 +122,12 @@ const PostCreateCard = (props) => {
                     <Grid container className="PostCreateCardForm">
                       <Grid item xs={12} sm={12}>
                         <Grid item xs={12} className="cardLabelContainer">
-                          <label className="cardLabel">Post Title</label>
+                          <label className="cardLabel">Title ( ie. The name of your service.)</label>
                         </Grid>
                         <Grid item xs={12}>
                           <input
                             className="appInput"
-                            placeholder="Post Title"
+                            placeholder="Residential Plumbing Services"
                             onChange={props.handleChange("title")}
                             value={props.values.title}
                             onBlur={props.handleBlur("title")}
@@ -139,7 +139,7 @@ const PostCreateCard = (props) => {
                         </Grid>
 
                         <Grid item xs={12} className="cardLabelContainer">
-                          <label className="cardLabel">postType</label>
+                          <label className="cardLabel">Type ( ie. looking for work, looking to hire, etc.) </label>
                         </Grid>
                         <Grid item xs={12}>
                           <select
@@ -158,12 +158,12 @@ const PostCreateCard = (props) => {
                         </Grid>
 
                         <Grid item xs={12} className="cardLabelContainer">
-                          <label className="cardLabel">Description</label>
+                          <label className="cardLabel">Description ( Provide more detail on your services , or the job you want)</label>
                         </Grid>
                         <Grid item xs={12}>
                           <input
                             className="appInput"
-                            placeholder="Description"
+                            placeholder="No job too big or too small, etc..."
                             onChange={props.handleChange("description")}
                             value={props.values.description}
                             onBlur={props.handleBlur("description")}
@@ -175,7 +175,7 @@ const PostCreateCard = (props) => {
                         </Grid>
 
                         <Grid item xs={12} className="cardLabelContainer">
-                          <label className="cardLabel">Category</label>
+                          <label className="cardLabel">Category (Which industry is your service generally described as...)</label>
                         </Grid>
                         <Grid item xs={12}>
                           <select
@@ -272,7 +272,7 @@ const PostCreateCard = (props) => {
                           </select>
                         </Grid>
                         <Grid item xs={12} className="cardLabelContainer">
-                          <label className="cardLabel">Zip</label>
+                          <label className="cardLabel">Zip ( Important: *This determines your location for proximity searches.)</label>
                         </Grid>
                         <Grid item xs={12}>
                           <input

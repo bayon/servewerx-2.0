@@ -8,8 +8,11 @@ Consider splitting up First/Last name, or possibly renaming this field to "Full 
  I realize adding a couple extra data entry fields complicates the very simple signup process.  
  There is a lot of value in just 3 fields required for signup.  Maybe I am over thinking it.  
 
+
+###
 Javascript popup indicating "You are registered, ...".  I expect you will update that to either bring you 
 to your profile page directly, or prompt an email validation process.  
+
 
 During the post creation process, you will want to give a description or examples of what fields Post Title, 
 Description, etc mean.  For example:  
@@ -26,3 +29,24 @@ but I cannot now.  I did start to create a second post and not finish it, so may
 
 I know this is in development and overlooked some of the obvious things that will get fixed later, 
 such as password show in plain text, data validation in fields, etc. 
+
+
+
+
+
+ok other things I noticed... 
+registration, some ui elements have clear background and are hard to see. 
+the new image takes a long time to download, 
+there was still some issue with seeing your list of posts after creating a new one. 
+
+
+main steps needed now... 
+display the created time... 
+calculate the post expiration date. 
+add the 'payment' process to the post creation. 
+
+turn Stripe to LIVE....
+add tons of records and posts. ....
+
+website MISSING from the create post form. 
+

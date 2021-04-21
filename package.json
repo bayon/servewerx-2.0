@@ -13,6 +13,7 @@
     "axios": "^0.21.1",
     "blob-to-buffer": "^1.2.9",
     "formik": "^2.2.6",
+    "google-maps-react": "^2.0.6",
     "markdown-to-jsx": "^7.1.1",
     "react": "^17.0.1",
     "react-audio-player": "^0.16.1",
@@ -27,7 +28,8 @@
     "redux-thunk": "^2.3.0",
     "styled-components": "^5.2.3",
     "web-vitals": "^1.0.1",
-    "yup": "^0.32.9"
+    "yup": "^0.32.9",
+    "zipcodes": "^8.0.0"
   },
   "scripts": {
     "start": "react-scripts start",

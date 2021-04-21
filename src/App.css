@@ -20,6 +20,10 @@ body, html {
   font-size: .8em !important;
   margin-left:.8em;
 }
+.appAnchor{
+  text-decoration:none;
+  color:#222;
+}
 
  button{
   margin:1em;

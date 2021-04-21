@@ -4,6 +4,8 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import "../../App.css";
 import { config } from "../../Constants";
+import GeoLocatorByZip from "../components/GeoLocatorByZip";
+
 
 const AllSitePostsDisplayCard = (props) => {
   const HOST_URL = config.url.HOST_URL;
@@ -14,6 +16,28 @@ const AllSitePostsDisplayCard = (props) => {
   const [currentCategory, setCurrentCategory] = useState("");
   const [seeDetails, setSeeDetails] = useState(false);
   const [inProgress, setInProgress] = useState(false);
+
+  
+  // const  convertDateToReadableString = (date) => {
+  //   if (!date) return
+  //   const d = new Date(date.replace('-', '/'))
+  //   return d.toLocaleDateString('en-US', {
+  //     year: 'numeric',
+  //     month: 'long',
+  //     day: 'numeric'
+  //   })
+  // }
+
+  const displayMyIsoDateHumanStyle = (isoStringDate) => {
+    if(typeof isoStringDate != 'undefined'){
+      var date = isoStringDate.split("T")
+      console.log(typeof date)
+        return date[0]
+    }else {
+      return '';
+    }
+  
+  }
 
   console.log("inProgress:", inProgress);
   useEffect(() => {
@@ -26,8 +50,8 @@ const AllSitePostsDisplayCard = (props) => {
 
   return (
     <>
-      <Grid container direction="row"  className="cardCard"   >
-        <Grid item xs={12} sm={3}>
+      <Grid container direction="row" className="cardCard">
+        <Grid item xs={12} sm={6}>
           <p className="cardTitle">{props.post.title}</p>
 
           {props.post.postType === "1" && (
@@ -39,10 +63,18 @@ const AllSitePostsDisplayCard = (props) => {
 
           <p className="cardCategory">{currentCategory} </p>
         </Grid>
-        <Grid item xs={12} sm={3}  >
+        <Grid item xs={12} sm={6}   >
+          <img
+            src={`${HOST_URL}/public/images/posts/` + props.post.postImage} //+ props.props.post.postImage
+            alt="img"
+            className="cardImg"
+          />
+        </Grid>
+        <Grid item xs={12} sm={12}  >
           {seeDetails && (
             <>
-              <Grid item xs={12}  >
+            <Grid container direction="row" alignItems="center" justify="center" >
+            <Grid item xs={12} sm={6}  >
                 <div className="cardDescription">{props.post.description}</div>
                 <div className="cardContactInfo">
                   <a
@@ -61,20 +93,36 @@ const AllSitePostsDisplayCard = (props) => {
                     {props.post.phone}
                     <Icon className="cardIcon">phone</Icon>
                   </a>
-                  <a href={`http://`+props.post.website} target="blank" >{`http://`+props.post.website}</a>
                 </div>
+                <div className="cardContactInfo">
+                  <a
+                    href={`http://` + props.post.website}
+                    className="appAnchor"
+                    target="blank"
+                  >
+                    {`http://` + props.post.website}
+                    <Icon className="cardIcon">web</Icon>
+                  </a>
+                </div>
+                <div className="cardContactInfo">{props.post.zip}</div>
+                <div className="cardContactInfo">
+                   {displayMyIsoDateHumanStyle(props.post.dateCreated)} 
+                  
+                </div> 
+              
               </Grid>
+              <Grid item xs={12}  sm={6} style={{ minHeight:"200px"}} >
+                  <GeoLocatorByZip zip={props.post.zip}></GeoLocatorByZip>  
+              </Grid>
+
+            </Grid>
+            
             </>
           )}
         </Grid>
-        <Grid item xs={12} sm={3}  >
-          <img
-            src={`${HOST_URL}/public/images/posts/` + props.post.postImage} //+ props.props.post.postImage
-            alt="img"
-            className="cardImg"
-          />
-        </Grid>
-        <Grid item xs={12} sm={1}    >
+       
+       
+        <Grid item xs={12} sm={12}  >
           <button
             onClick={() => {
               setSeeDetails(!seeDetails);
