@@ -66,7 +66,11 @@ body, html {
 
 .component-full-background-image {
   /* The image used */
-  background-image: url(./app/assets/img/pexels-laurie-shaw-804392.jpg);
+  background-image: url(./app/assets/img/pexels-laurie-shaw-804392.jpg); 
+  /* background-image: url(./app/assets/img/BulletinBoard-2-unsat-transp.png); 
+  background-image: url(./app/assets/img/BulletinBoard-2-unsat.png);  */
+  /* background-image: url(./app/assets/img/BulletinBoard-2.png);  */
+  /* background-image: url(./app/assets/img/BulletinBoard-1blur.png);  */
 
   /* Full height */
   height: 100%; 
@@ -74,6 +78,17 @@ body, html {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+.component-background-image {
+  background-image: url(./app/assets/img/BulletinBoard-1blur.png); 
+
+   
+  height: 100%; 
+  
+   background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; 
 }
 
 .main-component-container{

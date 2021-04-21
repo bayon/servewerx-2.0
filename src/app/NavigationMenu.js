@@ -11,13 +11,13 @@ import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 import styled from "styled-components";
 import * as authAction from "../redux/actions/authAction";
 import * as postAction from "../redux/actions/postAction";
+import MenuCardOne from './cards/MenuCardOne';
 import Home from "./Home";
 import AllSitePostsPage from "./pages/AllSitePostsPage";
 import DashboardPage from "./pages/DashboardPage";
 import LoginPage from "./pages/LoginPage";
 import ProfilePage from "./pages/ProfilePage";
-import RegisterPage from "./pages/RegisterPage";
- 
+// import RegisterPage from "./pages/RegisterPage";
 
 const LinkStyle = styled.section`
   padding: 0.3em;
@@ -33,12 +33,14 @@ export default function NavigationMenu() {
   var auth = useSelector((state) => state.auth.authorized);
   const [user, setUser] = useState({});
   const [redirect,setRedirect] = useState(null)
-  
+  const [hideRegister,setHideRegister] = useState(false)
   const dispatch = useDispatch();
  
 
 
-
+const hideRegistrationPromt = () => {
+  setHideRegister(!hideRegister)
+}
 
   useEffect(() => {
     //check authorization
@@ -111,6 +113,7 @@ export default function NavigationMenu() {
                     <Link
                       to="/"
                       style={{ textDecoration: "none", color: "#222" }}
+                       
                     >
                       Home
                     </Link>
@@ -166,7 +169,7 @@ export default function NavigationMenu() {
                         </Link>
                       </LinkStyle>
                     </MenuItem>
-                    <MenuItem onClick={handleClose}>
+                    {/* <MenuItem onClick={handleClose}>
                       {" "}
                       <LinkStyle>
                         <Link
@@ -176,7 +179,7 @@ export default function NavigationMenu() {
                           Register
                         </Link>
                       </LinkStyle>
-                    </MenuItem>
+                    </MenuItem> */}
                   </>
                 ) : (
                   <>
@@ -221,24 +224,35 @@ export default function NavigationMenu() {
                 )}
               </Menu>
             </Grid>
-            <Grid item sm={3} xs={8}>
+            <Grid item sm={4} xs={8}>
               <h3>SERVEWERX.COM</h3>
             </Grid>
-            <Grid item sm={8} xs={2}  >
+            <Grid item sm={3} xs={1}  >
               <Grid container alignItems="center" justify="center">
                 <Grid
                   item
                 >
-                  <h4><Link
-                    to="/allSitePosts"
-                    style={{ textDecoration: "none", color: "#222" }}
-                  >
-                    Browse
-                  </Link></h4>
+                   <button onClick={hideRegistrationPromt}>
+                   <Link
+                          to="/allSitePosts"
+                          style={{ textDecoration: "none", color: "#222" }}
+                        >
+                          Browse
+                        </Link>
+                   </button>
+                    
+                      
+                 
                 </Grid>
               </Grid>
             </Grid>
-          </Grid>
+            <Grid item sm={3} xs={12}> 
+            {!auth && !hideRegister &&
+            
+            <MenuCardOne></MenuCardOne>
+            }
+            </Grid>
+           </Grid>
         </Toolbar>
 
         <Route exact path="/" render={(props) => <Home {...props} browse={goToBrowse} title={`Props through render`} />} />
@@ -246,7 +260,7 @@ export default function NavigationMenu() {
         {/* <Route exact path="/" component={Home} />
         <Route exact path="/build" component={Home}  /> */}
         <Route path="/login" component={LoginPage} />
-        <Route path="/register" component={RegisterPage} />
+        {/* <Route path="/register" component={RegisterPage} /> */}
         <Route path="/dashboard" component={DashboardPage} />
         <Route path="/profile" component={ProfilePage} />
         <Route path="/allSitePosts" component={AllSitePostsPage} />

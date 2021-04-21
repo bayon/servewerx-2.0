@@ -216,7 +216,7 @@ const AllSitePostsPage = (props) => {
   // }
 
   return (
-    <Grid container spacing={0} className="main-component-container" >
+    <Grid container spacing={0} className="main-component-container component-background-image"   >
       <Grid container spacing={0} style={{  position:"fixed",top:"50px",left:"0px",right:"0px" ,zIndex:"100",background:"#fff",paddingTop:"1em"}}>
         <Grid item xs={12}  >
           <span>

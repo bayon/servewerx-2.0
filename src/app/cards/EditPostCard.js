@@ -395,16 +395,16 @@ _id: "60730537d09d5d33501fc987"
 
                     {/* UPLOAD AN IMAGE: https://www.youtube.com/watch?v=SAUvlkTDMM4 */}
                     <Grid container direction="row">
-                      <Grid item xs={12} sm={4}>
+                      <Grid item xs={10} sm={4}>
                         <button
                          className="cardButton"
                           onClick={props.handleSubmit}
-                          style={{ color: "green" }}
+                          style={{ color: "green" ,width:"90%",marginRight:"15px"}}
                         >
                           Update
                         </button>
                       </Grid>
-                      <Grid item xs={12} sm={4}>
+                      <Grid item xs={2} sm={4}>
                         <AreYouSureModal
                           data={props.values}
                           deleteItem={deleteItem}
@@ -419,7 +419,7 @@ _id: "60730537d09d5d33501fc987"
             {/* //end  part 3*/}
           </Grid>
           <Grid item xs={12} sm={1}>
-            <button  className="cardButton" onClick={props.closeEdit} style={{ color: "orange" }}>
+            <button  className="cardButton" onClick={props.closeEdit} style={{ color: "orange" ,width:"90%"}}>
               cancel
             </button>
           </Grid>
