@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import "../../App.css";
 import { config } from "../../Constants";
-import GeoLocatorByZip from "../components/GeoLocatorByZip";
+// import GeoLocatorByZip from "../components/GeoLocatorByZip";
 
 
 const AllSitePostsDisplayCard = (props) => {
@@ -112,7 +112,7 @@ const AllSitePostsDisplayCard = (props) => {
               
               </Grid>
               <Grid item xs={12}  sm={6} style={{ minHeight:"200px"}} >
-                  <GeoLocatorByZip zip={props.post.zip}></GeoLocatorByZip>  
+                  {/* <GeoLocatorByZip zip={props.post.zip}></GeoLocatorByZip>   */}
               </Grid>
 
             </Grid>

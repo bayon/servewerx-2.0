@@ -9,6 +9,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 import styled from "styled-components";
+//import logo from "../assets/img/servewerx_level_scale-1.0-h200.png)";
 import * as authAction from "../redux/actions/authAction";
 import * as postAction from "../redux/actions/postAction";
 import Home from "./Home";
@@ -18,7 +19,6 @@ import DashboardPage from "./pages/DashboardPage";
 import FreeRegistrationPage from "./pages/FreeRegistrationPage";
 import LoginPage from "./pages/LoginPage";
 import ProfilePage from "./pages/ProfilePage";
-
 
 const rere = () => {
   console.log('ok did we hit rere or NOT?  this.props.history:',this.props.history)
@@ -111,7 +111,7 @@ const hideRegistrationPromt = () => {
             background: "#fff",
           }}
         >
-          <Grid container spacing={1}>
+          <Grid container spacing={1} alignItems="center" justify="center">
             <Grid item sm={1}>
               <IconButton
                 edge="start"
@@ -246,9 +246,12 @@ const hideRegistrationPromt = () => {
                 )}
               </Menu>
             </Grid>
-            <Grid item sm={4} xs={8}>
-              <h3>SERVEWERX.COM</h3>
+            <Grid item sm={2} xs={8}>
+              <h3>SERVEWERX.COM  </h3>
+
+             
             </Grid>
+            <Grid item sm={1} ><div className="logo" ></div></Grid>
             <Grid item sm={3} xs={1}  >
               <Grid container alignItems="center" justify="center">
                 <Grid
