@@ -126,6 +126,7 @@ export default function LoginPage(props) {
                             borderBottom: "solid 1px #ddd",
                             padding: "10px",
                           }}
+                          type="password"
                           placeholder="Password"
                           onChange={props.handleChange("password")}
                           value={props.values.password}

@@ -1,0 +1,71 @@
+4/22/2021 
+
+unable to build servewerx latest. 
+issue might be node version. 
+going to try and uninstall it 
+then install nvm 
+https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-18-04
+
+removed node 
+install nvm 
+curl -sL https://raw.githubusercontent.com/creationix/nvm/v0.38.0/install.sh -o install_nvm.sh
+
+downloads the script file 
+ran it with ... 
+sh install_nvm.sh 
+
+then ran nvm install v15.2.0 
+
+then 
+npm install -g npm@7.10.0
+
+
+THINK GOOGLE MAPS legacy dependency might be an issue... 
+/////////////////
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /home/bayon/.npm/_logs/2021-04-22T14_28_38_069Z-debug.log
+bayon@ubuntu-s-1vcpu-2gb-nyc1-01:/var/www/html/servewerx-2.0$ sudo nano package.json
+bayon@ubuntu-s-1vcpu-2gb-nyc1-01:/var/www/html/servewerx-2.0$ npm install 
+npm ERR! code ERESOLVE
+npm ERR! ERESOLVE unable to resolve dependency tree
+npm ERR! 
+npm ERR! While resolving: bloggy@0.1.0
+npm ERR! Found: react@17.0.2
+npm ERR! node_modules/react
+npm ERR!   react@"^17.0.1" from the root project
+npm ERR! 
+npm ERR! Could not resolve dependency:
+npm ERR! peer react@"~0.14.8 || ^15.0.0 || ^16.0.0" from google-maps-react@2.0.6
+npm ERR! node_modules/google-maps-react
+npm ERR!   google-maps-react@"^2.0.6" from the root project
+npm ERR! 
+npm ERR! Fix the upstream dependency conflict, or retry
+npm ERR! this command with --force, or --legacy-peer-deps
+npm ERR! to accept an incorrect (and potentially broken) dependency resolution.
+npm ERR! 
+npm ERR! See /home/bayon/.npm/eresolve-report.txt for a full report.
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /home/bayon/.npm/_logs/2021-04-22T14_29_35_948Z-debug.log
+bayon@ubuntu-s-1vcpu-2gb-nyc1-01:/var/www/html/servewerx-2.0$ npm install  --legacy-peer-deps
+/////////////////////
+
+
+problem running sudo npm install 
+
+tried this 
+sudo chown -R $(whoami) ~/.npm
+NOPE: 
+tried 
+npm install --legacy-peer-deps 
+
+deactivated nvm 
+
+installed node and npm via ...
+sudo apt install nodejs
+
+sudo apt install npm
+
+NOW trying to install npm ... 
+appears to have worked ...but i'm going to add the legacy tag. 
+sudo npm install --legacy-peer-deps 

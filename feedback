@@ -13,7 +13,7 @@ Consider splitting up First/Last name, or possibly renaming this field to "Full 
 Javascript popup indicating "You are registered, ...".  I expect you will update that to either bring you 
 to your profile page directly, or prompt an email validation process.  
 
-
+####
 During the post creation process, you will want to give a description or examples of what fields Post Title, 
 Description, etc mean.  For example:  
 Post Title ("Residential Plumbing Services")
