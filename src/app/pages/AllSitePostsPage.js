@@ -18,26 +18,26 @@ const AllSitePostsPage = (props) => {
 
   const dispatch = useDispatch();
 
-// Within Certain Radius
-const zipWithinRadius = (zipNo,miles) => {
-  var arrayOfZips = zipcodes.radius(zipNo, miles);
-  console.log('arrayOfZips Within Radius:',arrayOfZips); 
-  // select * from posts where zipcode ( IN arrayOfZips)
-  // db.inventory.find( { qty: { $in: [ 5, 15 ] } } )
-  //////////////////////////////////////////////////
-  // Posts.find( { zipcode: { $in: arrayOfZips } } )
-  ///////////////////////////////////////////////////
-  dispatch(postAction.postsWithinProximity(arrayOfZips))
-  .then( (res) => { 
-    console.log('result:',res)
-    setCurrentPosts(res);
-    setHaveCurrentPosts(true);
+// // Within Certain Radius
+// const zipWithinRadius = (zipNo,miles) => {
+//   var arrayOfZips = zipcodes.radius(zipNo, miles);
+//   console.log('arrayOfZips Within Radius:',arrayOfZips); 
+//   // select * from posts where zipcode ( IN arrayOfZips)
+//   // db.inventory.find( { qty: { $in: [ 5, 15 ] } } )
+//   //////////////////////////////////////////////////
+//   // Posts.find( { zipcode: { $in: arrayOfZips } } )
+//   ///////////////////////////////////////////////////
+//   dispatch(postAction.postsWithinProximity(arrayOfZips))
+//   .then( (res) => { 
+//     console.log('result:',res)
+//     setCurrentPosts(res);
+//     setHaveCurrentPosts(true);
   
-  })
+//   })
 
-  .catch( (err) => console.log("error:",err))
+//   .catch( (err) => console.log("error:",err))
 
-}
+// }
 
 
 
