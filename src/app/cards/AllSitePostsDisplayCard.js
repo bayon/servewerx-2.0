@@ -51,7 +51,7 @@ const AllSitePostsDisplayCard = (props) => {
   return (
     <>
       <Grid container direction="row" className="cardCard">
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} sm={6} style={{textAlign:"left"}}>
           <p className="cardTitle">{props.post.title}</p>
 
           {props.post.postType === "1" && (
@@ -73,8 +73,8 @@ const AllSitePostsDisplayCard = (props) => {
         <Grid item xs={12} sm={12}  >
           {seeDetails && (
             <>
-            <Grid container direction="row" alignItems="center" justify="center" >
-            <Grid item xs={12} sm={6}  >
+            <Grid container direction="row" alignItems="center" justify="left" >
+            <Grid item xs={12} sm={6}  style={{textAlign:"left"}}>
                 <div className="cardDescription">{props.post.description}</div>
                 <div className="cardContactInfo">
                   <a
