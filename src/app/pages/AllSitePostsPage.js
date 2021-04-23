@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import * as postAction from "../../redux/actions/postAction";
 import AllSitePostsDisplayCard from "../cards/AllSitePostsDisplayCard";
 import PostDisplayCard from "../cards/PostDisplayCard";
-var zipcodes = require('zipcodes');
+// var zipcodes = require('zipcodes');
 
 
 
@@ -269,13 +269,13 @@ const zipWithinRadius = (zipNo,miles) => {
 
   }
 
-  const handleProximityForm = (e) => {
-    e.preventDefault();
+  // const handleProximityForm = (e) => {
+  //   e.preventDefault();
     
-    console.log('handle proximity form....')
-    console.log(miles + 'from ' + zipcode)
-    zipWithinRadius(zipcode,miles)
-  }
+  //   console.log('handle proximity form....')
+  //   console.log(miles + 'from ' + zipcode)
+  //   zipWithinRadius(zipcode,miles)
+  // }
 
   return (
     <Grid container spacing={0} className="main-component-container component-background-image"   >
@@ -327,7 +327,7 @@ const zipWithinRadius = (zipNo,miles) => {
             />
             <label htmlFor="category" >Category</label> */}
 
-           <form ><label>Less than</label><input className="appTinyInput" placeholder="miles" onChange={handleMiles} value={miles} name="miles" ></input><label>from </label><input className="appTinyInput" placeholder="zipcode"  onChange={handleZip} name="zipcode" value={zipcode} /><button type="submit" onClick={handleProximityForm}>find</button>
+           {/* <form ><label>Less than</label><input className="appTinyInput" placeholder="miles" onChange={handleMiles} value={miles} name="miles" ></input><label>from </label><input className="appTinyInput" placeholder="zipcode"  onChange={handleZip} name="zipcode" value={zipcode} /><button type="submit" onClick={handleProximityForm}>find</button> */}
          
            </form> 
           </span>
