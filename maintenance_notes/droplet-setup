@@ -62,7 +62,7 @@ sudo ufw allow 'Nginx HTTP'
 
 sudo ufw status
 
-vsystemctl status nginx
+systemctl status nginx
 
 sudo apt-get install curl
 
@@ -115,7 +115,9 @@ https://www.digitalocean.com/community/tutorials/how-to-set-up-a-node-js-applica
 INSTALL NODE:
 
 cd ~
-curl -sL https://deb.nodesource.com/setup_6.x -o nodesource_setup.sh
+// curl -sL https://deb.nodesource.com/setup_6.x -o nodesource_setup.sh
+// CHECK LATEST: https://github.com/nodesource/distributions 
+
 nano nodesource_setup.sh
 sudo bash nodesource_setup.sh
 sudo apt-get install nodejs
@@ -159,3 +161,7 @@ when I created the certs I had to comment out the "non-www" just to get one of t
 as root user 
 screwed up password for non root user bayon , fix later. 
 apt-get update 
+sudo apt-get install nginx
+
+curl -fsSL https://deb.nodesource.com/setup_15.x | sudo -E bash -
+sudo apt-get install -y nodejs
