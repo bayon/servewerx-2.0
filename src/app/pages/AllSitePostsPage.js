@@ -329,7 +329,7 @@ const zipWithinRadius = (zipNo,miles) => {
 
            {/* <form ><label>Less than</label><input className="appTinyInput" placeholder="miles" onChange={handleMiles} value={miles} name="miles" ></input><label>from </label><input className="appTinyInput" placeholder="zipcode"  onChange={handleZip} name="zipcode" value={zipcode} /><button type="submit" onClick={handleProximityForm}>find</button> */}
          
-           </form> 
+           {/* </form>  */}
           </span>
         </Grid>
         
