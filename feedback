@@ -37,18 +37,31 @@ such as password show in plain text, data validation in fields, etc.
 
 
 ok other things I noticed... 
-registration, some ui elements have clear background and are hard to see. 
-the new image takes a long time to download, 
-there was still some issue with seeing your list of posts after creating a new one. 
+####   registration, some ui elements have clear background and are hard to see. REGISTRATION:
+#### ALSO::: MAKE REGISTRATION RED ORANGE WASY TO SEE ...very quiret on iphone last I looked. 
+
+### the new image takes a long time to download, 
+
+
+
+*** ??? **** there was still some issue with seeing your list of posts after creating a new one. 
 
 
 main steps needed now... 
-display the created time... 
-calculate the post expiration date. 
+### display the created time... 
+### calculate the post expiration date. 
+
 add the 'payment' process to the post creation. 
 
 turn Stripe to LIVE....
-add tons of records and posts. ....
-
 website MISSING from the create post form. 
 
+
+
+
+SET IMAGE LIMITATIONS: 
+FIX IMAGE ROTATIONS: 
+BE ABLE TO EDIT IMAGE IN POST: 
+MAKE TWILIO CODE RANDOM: 
+
+add tons of records and posts. ....

@@ -278,7 +278,7 @@ const hideRegistrationPromt = () => {
             <LinkStyle>
             <Link
               to="/register"
-              style={{ textDecoration: "none", color: "#222" }}
+              style={{ textDecoration: "none", color: "red",fontWeight:"bold" }}
             >
               Register
             </Link>

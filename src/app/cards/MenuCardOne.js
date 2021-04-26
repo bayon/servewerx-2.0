@@ -22,6 +22,7 @@ const MenuCardOne = (data) => {
   }));
 
   const displayRegistration = () => {
+    console.log('displayRegistration...')
     setShowRegister(!showRegister);
   };
  
@@ -48,7 +49,7 @@ const MenuCardOne = (data) => {
             </>
           )}
 
-          {showRegister && <FreeRegistrationPage close={displayRegistration} rere={data.rere} props={data}></FreeRegistrationPage> }
+          {showRegister && <FreeRegistrationPage closeRegistration={displayRegistration} rere={data.rere} props={data}></FreeRegistrationPage> }
 
         </div>
       {/* </animated.div> */}
