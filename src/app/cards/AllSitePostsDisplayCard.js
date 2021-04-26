@@ -27,17 +27,26 @@ const AllSitePostsDisplayCard = (props) => {
   //     day: 'numeric'
   //   })
   // }
-
-  const displayMyIsoDateHumanStyle = (isoStringDate) => {
-    if(typeof isoStringDate != 'undefined'){
-      var date = isoStringDate.split("T")
-      console.log(typeof date)
-        return date[0]
-    }else {
-      return '';
+  /**/ 
+const date_today_formatted = (isoStringDate) => {
+   let sp = "/"
+    if (typeof isoStringDate === "undefined") {
+        sp = "/";
     }
+    //let today = new Date();
+    let currentDate  = new Date(isoStringDate);
+    var dd = currentDate.getDate();
+    var mm = currentDate.getMonth() + 1; //As January is 0.
+    var yyyy = currentDate.getFullYear();
+
+    if (dd < 10) dd = '0' + dd;
+    if (mm < 10) mm = '' + mm;
+    return (mm + sp + dd + sp + yyyy);
+
+}
   
-  }
+
+   
 
   console.log("inProgress:", inProgress);
   useEffect(() => {
@@ -59,6 +68,9 @@ const AllSitePostsDisplayCard = (props) => {
           )}
           {props.post.postType === "2" && (
             <p classname="cardPostType">"Hiring" </p>
+          )}
+           {props.post.postType === "3" && (
+            <p classname="cardPostType">"Open For Business" </p>
           )}
 
           <p className="cardCategory">{currentCategory} </p>
@@ -106,7 +118,7 @@ const AllSitePostsDisplayCard = (props) => {
                 </div>
                 <div className="cardContactInfo">{props.post.zip}</div>
                 <div className="cardContactInfo">
-                   {displayMyIsoDateHumanStyle(props.post.dateCreated)} 
+                   {date_today_formatted(props.post.dateCreated)} 
                   
                 </div> 
               

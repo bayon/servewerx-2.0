@@ -64,7 +64,7 @@ const PostCreateCard = (props) => {
     dispatch(postAction.setStatusGreen()).catch((err) => console.error(err));
   };
 
-  const post_types = ["select one", "looking for work", "looking to hire"];
+  const post_types = ["select one", "Looking for Work", "Looking to Hire", "Open for Business"];
   return (
     
      

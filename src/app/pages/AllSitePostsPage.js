@@ -104,7 +104,9 @@ const AllSitePostsPage = (props) => {
     posts
       .sort((a, b) => (a.title > b.title ? 1 : -1))
       .map((post, i) => {
+       
         return <PostDisplayCard key={i} post={post}></PostDisplayCard>;
+       
         // return (
         //   <AllSitePostsDisplayCard
         //     key={i}
@@ -168,17 +170,28 @@ const AllSitePostsPage = (props) => {
 
   const displayPosts = () => {
     if (haveCurrentPosts) {
+
+
+      
       if (sortName) {
         return currentPosts
           .sort((a, b) => (a.title > b.title ? 1 : -1))
           .map((post, i) => {
-            return (
-              // <PostDisplayCard key={i} post={post} ></PostDisplayCard>
-              <AllSitePostsDisplayCard
-                key={i}
-                post={post}
-              ></AllSitePostsDisplayCard>
-            );
+           
+           
+          
+            if(post.dateCreated === "2021-04-21T20:57:36.385Z"){
+              return <>EXPIRED</>
+            }else {
+              return (
+                // <PostDisplayCard key={i} post={post} ></PostDisplayCard>
+                <AllSitePostsDisplayCard
+                  key={i}
+                  post={post}
+                ></AllSitePostsDisplayCard>
+              );
+            }
+          
           });
       }
       if (sortLatest) {
