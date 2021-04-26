@@ -1,11 +1,15 @@
 import Grid from "@material-ui/core/Grid";
 import Icon from "@material-ui/core/Icon";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "../../App.css";
 import { config } from "../../Constants";
 import * as postAction from "../../redux/actions/postAction";
+import PayPage from '../pages/PayPage';
 
+const stripePromise = loadStripe("pk_test_7aHY16H2I0thccZMQJIDUNpi");
 
 const CreatePostDisplayCard = (props) => {
 
@@ -13,6 +17,8 @@ const CreatePostDisplayCard = (props) => {
   const [readyToComplete, setAllowEdit] = useState(false);
    //const Kolor = useSelector((state) => state.post.statusColor);
   const dispatch = useDispatch();
+
+  const [beginPay, setBeginPay] = useState(false);
 
   // const [inProgress, setInProgress] = useState(false);
   const IMG_URL = config.url.IMG_URL;
@@ -74,7 +80,6 @@ const CreatePostDisplayCard = (props) => {
                    
                 >
 
-                  
                   <Grid item xs={12} sm={8} style={{textAlign:"left",padding:"1em"}}>
                     <p className="cardTitle">{currentPost.title}</p>
                     <p className="cardDescription">{currentPost.description}</p>
@@ -118,13 +123,19 @@ const CreatePostDisplayCard = (props) => {
                   onClick={() => {
                      //initEdit()
                      console.log("ACCEPT THE NEW POST")
+                     setBeginPay(true)
                      //dispatch to new post action postAccepted
                      // set postStepone and postStepTwo back to false. call it good.
-                     dispatch(postAction.acceptPost(currentPost._id))
-                     .then((res) => {
-                       console.log('accept post result: res:',res)
-                     })
-                     .catch((err) => console.error(err))
+
+                     // DO NOT DISPATCH UNTIL POST IS PAID FOR://////////////////////////////////////////
+                    //  dispatch(postAction.acceptPost(currentPost._id))
+                    //  .then((res) => {
+                    //    console.log('accept post result: res:',res)
+
+                    //  })
+                    //  .catch((err) => console.error(err))
+                     ////////////////////////////////////////////////////////////////////////////////////
+
                   }}
                   style={{ color: "blue" }}
                 >
@@ -133,6 +144,7 @@ const CreatePostDisplayCard = (props) => {
                   <button
                   onClick={() => {
                      //initEdit()
+                    
                      console.log("CANCEL THE NEW POST")
                       //dispatch to new post action postCanceled
                       dispatch(postAction.cancelPost(currentPost._id)).catch((err) => console.error(err))
@@ -149,9 +161,13 @@ const CreatePostDisplayCard = (props) => {
               )}
             </Grid>
           </Grid>
-          {readyToComplete && (
+          {beginPay && (
             <>
              COMPLETE THE SAVE.
+             call the stripe payment code.
+             <Elements stripe={stripePromise}>
+            <PayPage prop={props}  currentPost={currentPost}/>
+          </Elements>
             </>
           )}
         </Grid>
