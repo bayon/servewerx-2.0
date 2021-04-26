@@ -20,6 +20,8 @@ Post Title ("Residential Plumbing Services")
 or
 Description (Provide more detail on the services your are offering, or the type of work you are looking for)
 
+
+### zipcode and google maps led to npm library issues.... 
 Consider adding some kind of location or geographic area field, to indicate the areas serviced by the poster, 
 or the area in which the person needs help.  You may also want to indicate what fields appear public.  
 Address does not, phone number does.
