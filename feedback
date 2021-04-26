@@ -70,3 +70,26 @@ BE ABLE TO EDIT IMAGE IN POST:
 MAKE TWILIO CODE RANDOM: 
 
 add tons of records and posts. ....
+
+
+///////////
+// 20210426164200
+// https://api.stripe.com/v1/payment_intents/pi_1IkbF1KxNNqNmAYU95kHMw3s/confirm
+
+{
+  "error": {
+    "message": "You did not provide an API key. You need to provide your API key in the Authorization header, using Bearer auth (e.g. 'Authorization: Bearer YOUR_SECRET_KEY'). See https://stripe.com/docs/api#authentication for details, or we can help at https://support.stripe.com/.",
+    "type": "invalid_request_error"
+  }
+}
+
+(e.g. 'Authorization: Bearer YOUR_SECRET_KEY')
+
+
+Created THESE: on APr 26th 2021
+THE servewerx post fee of One Dollar:
+PRODUCT ID: prod_JNM5GGCsBlwjR7
+API ID: price_1IkbN8KxNNqNmAYUQb82BQjY
+
+may need to brush up on this you tube tutorial about stripe. 
+https://www.youtube.com/watch?v=JkSgXgqRH6k
