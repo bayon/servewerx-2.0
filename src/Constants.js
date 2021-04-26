@@ -1,7 +1,7 @@
 // Constants.js
 const prod = {
   url: {
-    API_URL: "https://servewerx.com",
+    API_URL: "https://servewerx.com/api",
     IMG_URL:"https://servewerx-space-1.nyc3.digitaloceanspaces.com"
   },
 };
