@@ -47,7 +47,7 @@ const initialState = {
   postStepTwo: false,
   postStepThree: false,
   postStepsAvailable: true,
-  postType: ["select type", "Looking For Work", "Hiring", "Advertising"],
+  postType: ["select type", "Looking For Work", "Hiring", "Open For Business"],
   categories: [
     "select category",
     "construction",

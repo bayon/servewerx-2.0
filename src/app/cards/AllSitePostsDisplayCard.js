@@ -60,6 +60,9 @@ const AllSitePostsDisplayCard = (props) => {
           {props.post.postType === "2" && (
             <p classname="cardPostType">"Hiring" </p>
           )}
+           {props.post.postType === "3" && (
+            <p classname="cardPostType">"Open For Business" </p>
+          )}
 
           <p className="cardCategory">{currentCategory} </p>
         </Grid>

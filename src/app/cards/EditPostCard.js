@@ -81,7 +81,7 @@ _id: "60730537d09d5d33501fc987"
     setInProgress(inProgress);
   }, [inProgress]);
 
-  const post_categories = ["select one", "looking for work", "looking to hire"];
+  const post_categories = ["select one", "Looking for Work", "Looking to Hire","Open for Business"];
   const activatedOptions = ["Set Activation", "activated", "deactivated"];
   console.log("EditPostCard.js props:", props);
   const deleteItem = () => {
