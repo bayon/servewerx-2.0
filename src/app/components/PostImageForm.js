@@ -24,7 +24,7 @@ const PostImageForm = (props) => {
   };
 
   const API_URL = config.url.API_URL;
-  const HOST_URL = config.url.HOST_URL;
+  const IMG_URL = config.url.IMG_URL;
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -88,7 +88,7 @@ const PostImageForm = (props) => {
 
           {/* {props.props.post &&
             <img
-              src={`${HOST_URL}/public/images/posts/` + props.props.post.postImage}
+              src={`${IMG_URL}/` + props.props.post.postImage}
               alt="img"
               style={{ height: "200px", width: "auto", borderRadius: "15px" }}
             />

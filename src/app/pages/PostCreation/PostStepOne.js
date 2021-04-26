@@ -7,7 +7,7 @@ import { config } from "../../../Constants";
 import * as postAction from "../../../redux/actions/postAction";
 import PostCreateCard from "../../cards/PostCreateCard";
 import PostStepTwo from "./PostStepTwo";
-const HOST_URL = config.url.HOST_URL;
+const IMG_URL = config.url.IMG_URL;
 
 const LinkStyle = styled.section`
   padding: 0.3em;

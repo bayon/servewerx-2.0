@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { config } from "../../../Constants";
 import CreatePostDisplayCard from "../../cards/CreatePostDisplayCard";
  
-const HOST_URL = config.url.HOST_URL;
+const IMG_URL = config.url.IMG_URL;
 const LinkStyle = styled.section`
   padding: 0.3em;
   height: 35px;

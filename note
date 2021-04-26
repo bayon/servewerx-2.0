@@ -117,3 +117,36 @@ ok.
  hadn't implemented this yet...updateCreatingPost 
 
  first post works fine, 2nd will not open up 'create post' button.
+
+
+ 2021:4-25 
+ https://www.digitalocean.com/community/tutorials/how-to-upload-a-file-to-object-storage-with-node-js 
+
+ CREATE A SPACE: 
+ https://www.digitalocean.com/community/tutorials/how-to-create-a-digitalocean-space-and-api-key
+
+ https://servewerx-space-1.nyc3.digitaloceanspaces.com
+space api key:
+personal access token: 
+ servewerx-space-token = 321309bba8b12ec1a27607875c39f8d0f0e3a2dfffcc9bffaa0d48056ae8d7af
+ ^ personal access 
+servewerx-space-key 
+NEXT: 
+create a credentials file, to place the access key and secret access key you obtained when you created your DigitalOcean Space. The file will be located at ~/.aws/credentials on Mac and Linux
+
+Install NPM dependencies: in project: 
+sudo npm install aws-sdk express multer multer-s3 
+npm install aws-sdk express multer multer-s3 
+
+npm install aws-sdk multer-s3
+
+
+
+Spaces access keys
+Keys you have generated to connect with third party clients or to access the Spaces API.
+
+Name	Key	Created	
+servewerx-space-access-key-2	
+HAEFYFNNHKJKKG2JVKTX Copy	Just now	More 
+Secret	
+PIw8/1AZiPosqVtTCMdzRTlKES2wLOt8jdWdDkGLjLA Copy

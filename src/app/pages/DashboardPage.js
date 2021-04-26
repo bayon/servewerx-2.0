@@ -18,7 +18,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 
 */
-const HOST_URL = config.url.HOST_URL;
+const IMG_URL = config.url.IMG_URL;
 
 const LinkStyle = styled.section`
   padding: 0.3em;
@@ -62,7 +62,7 @@ export default function DashboardPage(props) {
               </Grid>
               <Grid item sm={2} className="pageGreeting">
                 <img
-                  src={`${HOST_URL}/public/images/` + user.data.profileImage} //+ props.props.post.postImage
+                  src={`${IMG_URL}/` + user.data.profileImage} //+ props.props.post.postImage
                   alt="img"
                   style={{
                     height: "100px",

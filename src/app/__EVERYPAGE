@@ -2,7 +2,7 @@
 import { config } from "../../Constants";
 import { useSelector } from "react-redux";
 
-const HOST_URL = config.url.HOST_URL;
+const IMG_URL = config.url.IMG_URL;
  var auth = useSelector((state) => state.auth.authorized);
   var user = useSelector((state) => state.auth.user);
 

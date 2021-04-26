@@ -15,9 +15,9 @@ const PostDisplayCard = (props) => {
   const dispatch = useDispatch();
 
   // const [inProgress, setInProgress] = useState(false);
-  const HOST_URL = config.url.HOST_URL;
+  const IMG_URL = config.url.IMG_URL;
   console.log("PostDisplayCard - props:", props); //good to here.
-  //console.log("HOST_URL:", HOST_URL);
+  //console.log("IMG_URL:", IMG_URL);
  
 
   var user = useSelector((state) => state.auth.user);
@@ -94,7 +94,7 @@ const PostDisplayCard = (props) => {
                   <Grid item xs={12} sm={4} className="cardImageGrid" >
                     <img
                       src={
-                        `${HOST_URL}/public/images/posts/` + props.post.postImage
+                        `${IMG_URL}/` + props.post.postImage
                       } //+ props.props.post.postImage
                       alt="img"
                     className="cardImg"

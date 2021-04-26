@@ -8,7 +8,7 @@ import { config } from "../../Constants";
 
 
 const AllSitePostsDisplayCard = (props) => {
-  const HOST_URL = config.url.HOST_URL;
+  const IMG_URL = config.url.IMG_URL;
   var auth = useSelector((state) => state.auth.authorized);
   var user = useSelector((state) => state.auth.user);
   const categories = useSelector((state) => state.post.categories);
@@ -65,7 +65,7 @@ const AllSitePostsDisplayCard = (props) => {
         </Grid>
         <Grid item xs={12} sm={6}   >
           <img
-            src={`${HOST_URL}/public/images/posts/` + props.post.postImage} //+ props.props.post.postImage
+            src={`${IMG_URL}/` + props.post.postImage} //+ props.props.post.postImage
             alt="img"
             className="cardImg"
           />
