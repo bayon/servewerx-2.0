@@ -1,13 +1,13 @@
 // Constants.js
 const prod = {
   url: {
-    API_URL: "https://servewerx.com/api",
+    API_URL: "https://servewerx.com",
     IMG_URL:"https://servewerx-space-1.nyc3.digitaloceanspaces.com"
   },
 };
 const dev = {
   url: {
-    API_URL: "http://localhost:4000/api",
+    API_URL: "http://localhost:4000",
     IMG_URL: "https://servewerx-space-1.nyc3.digitaloceanspaces.com"
   },
 };
