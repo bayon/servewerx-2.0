@@ -116,6 +116,7 @@ const API_URL = config.url.API_URL
 
     if (result.error) {
       // Show error to your customer (e.g., insufficient funds)
+      // nos such payment_intent: 'pi_1IkbF1KxNNqNmAYU95kHMw3s'
       console.log(result.error.message);
     } else {
       // The payment has been processed!
