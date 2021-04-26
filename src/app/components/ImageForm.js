@@ -20,7 +20,7 @@ const ImageForm = (props) => {
   };
 
   const API_URL = config.url.API_URL;
-  const HOST_URL = config.url.HOST_URL;
+  const IMG_URL = config.url.IMG_URL;
 
   const handleSubmit = async (event) => {
    
@@ -38,7 +38,7 @@ const ImageForm = (props) => {
     // try to use multer code within a scope. 
     
     axios.post(`${API_URL}/uploadUserImage`, data).then((res) => {
-      // setImgFile(`${HOST_URL}/public/images/` + res.data);
+      // setImgFile(`${IMG_URL}/` + res.data);
       const profileImage = res.data;
       user.data.profileImage = profileImage;
       const values = user.data;
@@ -83,7 +83,7 @@ const ImageForm = (props) => {
 
           {
             <img
-              src={`${HOST_URL}/public/images/` + props.props.user.profileImage}
+              src={`${IMG_URL}/` + props.props.user.profileImage}
               alt="img"
               style={{ height: "150px", width: "auto", borderRadius: "15px" }}
             />

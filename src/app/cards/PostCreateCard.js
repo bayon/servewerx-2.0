@@ -9,7 +9,7 @@ import { config } from "../../Constants";
 import * as authAction from "../../redux/actions/authAction";
 import * as postAction from "../../redux/actions/postAction";
 
-const HOST_URL = config.url.HOST_URL;
+const IMG_URL = config.url.IMG_URL;
 
 const formSchema = yup.object({
   title: yup.string().required().min(3),

@@ -7,7 +7,7 @@ import { config } from "../../../Constants";
 import PostImageForm from "../../components/PostImageForm";
 import PostStepThree from "./PostStepThree";
 
-const HOST_URL = config.url.HOST_URL;
+const IMG_URL = config.url.IMG_URL;
 const LinkStyle = styled.section`
   padding: 0.3em;
   height: 35px;
