@@ -273,9 +273,7 @@ const hideRegistrationPromt = () => {
             </Grid>
             <Grid item sm={3} xs={12}> 
             {!auth && !hideRegister &&
-            // <FreeRegistrationPage props={props}></FreeRegistrationPage>
-            // <MenuCardOne rere={rere} props={props}></MenuCardOne>
-            <LinkStyle>
+             <LinkStyle>
             <Link
               to="/register"
               style={{ textDecoration: "none", color: "red",fontWeight:"bold" }}

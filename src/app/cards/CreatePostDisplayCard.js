@@ -9,7 +9,7 @@ import { config } from "../../Constants";
 import * as postAction from "../../redux/actions/postAction";
 import PayPage from '../pages/PayPage';
 
-const stripePromise = loadStripe("pk_test_7aHY16H2I0thccZMQJIDUNpi");
+const stripePromise = loadStripe("pk_live_c03o8lC0VMl6y5eBpZ1eov45");
 
 const CreatePostDisplayCard = (props) => {
 

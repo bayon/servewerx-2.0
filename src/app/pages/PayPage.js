@@ -24,7 +24,7 @@ import Home from "../Home";
 const useStyles = makeStyles({
   root: {
     maxWidth: 500,
-    margin: '35vh auto',
+    margin: '5vh auto',
   },
   content: {
     display: 'flex',
