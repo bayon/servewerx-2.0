@@ -9,7 +9,7 @@ import PayPage from "./PayPage";
 
 
 
-const stripePromise = loadStripe("pk_test_7aHY16H2I0thccZMQJIDUNpi");
+const stripePromise = loadStripe("pk_live_c03o8lC0VMl6y5eBpZ1eov45");
 
 export default function RegisterPage(props) {
   return (

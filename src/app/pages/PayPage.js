@@ -3,21 +3,16 @@ import { CircularProgress } from "@material-ui/core";
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
-import Grid from "@material-ui/core/Grid";
-import Paper from "@material-ui/core/Paper";
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import axios from 'axios';
-//FORM AND REDUX part 1: in header
-import { Formik } from "formik";
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from "react-redux";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import * as yup from "yup";
 import { config } from '../../Constants';
-import * as authAction from "../../redux/actions/authAction";
-import logo from "../assets/img/pexels-pixabay-159201.jpg";
+import * as postAction from "../../redux/actions/postAction";
 import CardInput from '../components/CardInput';
 import Home from "../Home";
 
@@ -29,7 +24,7 @@ import Home from "../Home";
 const useStyles = makeStyles({
   root: {
     maxWidth: 500,
-    margin: '35vh auto',
+    margin: '5vh auto',
   },
   content: {
     display: 'flex',
@@ -72,7 +67,7 @@ function ButtonComponent(props) {
 
 
 function PayPage(props) {
-
+  console.log('payPage props:',props)
   const [inProgress, setInProgress] = useState(false);
   console.log("inProgress:", inProgress);
   useEffect(() => {
@@ -125,8 +120,14 @@ const API_URL = config.url.API_URL
     } else {
       // The payment has been processed!
       if (result.paymentIntent.status === 'succeeded') {
-        console.log('Money is in the bank!');
+        console.log('Money is in the bank! 000');
         setPaid(true)
+        dispatch(postAction.acceptPost(props.currentPost._id))
+        .then((res) => {
+          console.log('accept post result: res:',res)
+
+        })
+        .catch((err) => console.error(err))
         // Show a success message to your customer
         // There's a risk of the customer closing the window before callback
         // execution. Set up a webhook or plugin to listen for the
@@ -170,6 +171,12 @@ const API_URL = config.url.API_URL
             console.log('You got the money 1!');
             // Show a success message to your customer
             setPaid(true)
+                dispatch(postAction.acceptPost(props.currentPost._id))
+                     .then((res) => {
+                       console.log('accept post result: res:',res)
+
+                     })
+                     .catch((err) => console.error(err))
           }
         });
       } else {
@@ -177,6 +184,12 @@ const API_URL = config.url.API_URL
         // No additional information was needed
         // Show a success message to your customer
         setPaid(true)
+        dispatch(postAction.acceptPost(props.currentPost._id))
+        .then((res) => {
+          console.log('accept post result: res:',res)
+
+        })
+        .catch((err) => console.error(err))
       }
     }
   };
@@ -213,122 +226,124 @@ if (!inProgress) {
 
     } 
     { paid && 
-    <>
-      <h1>Welcome!</h1>
-      <p>Now you just need to create your password.</p>
-      <React.Fragment>
-        <Grid
-          container
-          spacing={0}
-          align="center"
-          justify="center"
-          direction="column"
-        >
-          <Paper
-            style={{
-              backgroundImage: `url(${logo})`,
-              backgroundSize: "cover",
-              height: "400px",
-            }}
-          >
-            <Grid item xs={12} sm={6} style={{ marginTop: "15px" }}>
-              {/* //FORM AND REDUX  part 3 JSX*/}
-              <Formik
-                initialValues={{
-                  fullName: "",
-                  email: email,
-                  password: "",
-                }}
-                validationSchema={formSchema}
-                onSubmit={(values) => {
-                  console.log("values:", values);
-                  setInProgress(true);
-                  setLoading(true);
-                  dispatch(authAction.registerUser(values))
-                    .then(async (result) => {
-                      console.log("register result:", result);
-                      localStorage.setItem("forteworksToken", result.token);
-                      localStorage.setItem("registerToken", result.token);
-                      setTimeout(() => setLoading(false), 3000);
-                      if (result.success) {
-                        setInProgress(true);
-                        //setLoading(false)
-                      }
-                    })
-                    .catch((err) => console.log(err));
-                }}
-              >
-                {(props) => (
-                  <Card>
-                    <div>
-                      <div style={{ textAlign: "center" }}>
-                        <input
-                          style={{
-                            marginTop: "15px",
-                            border: "none",
-                            outline: "none",
-                            borderBottom: "solid 1px #ddd",
-                            padding: "10px",
-                          }}
-                          placeholder="Business Name or User Name"
-                          onChange={props.handleChange("fullName")}
-                          value={props.values.fullName}
-                          onBlur={props.handleBlur("fullName")}
-                        />
-                        <div style={{ color: "salmon" }}>
-                          {props.touched.fullName && props.errors.fullName}
-                        </div>
-                        <input
-                          style={{
-                            marginTop: "15px",
-                            border: "none",
-                            outline: "none",
-                            borderBottom: "solid 1px #ddd",
-                            padding: "10px",
-                          }}
-                          placeholder="Email"
-                          onChange={props.handleChange("email")}
-                          value={props.values.email}
-                          onBlur={props.handleBlur("email")}
-                        />
-                        <div style={{ color: "salmon" }}>
-                          {props.touched.email && props.errors.email}
-                        </div>
-                        <input
-                          style={{
-                            marginTop: "15px",
-                            border: "none",
-                            outline: "none",
-                            borderBottom: "solid 1px #ddd",
-                            padding: "10px",
-                          }}
-                          placeholder="Password"
-                          onChange={props.handleChange("password")}
-                          value={props.values.password}
-                          onBlur={props.handleBlur("password")}
-                        />
-                        <div style={{ color: "salmon" }}>
-                          {props.touched.password && props.errors.password}
-                        </div>
 
-                        <ButtonComponent
-                          onClick={props.handleSubmit}
-                          loading={loading}
-                        />
-                      </div>
-                    </div>
-                  </Card>
-                )}
-              </Formik>
+    <><h1>NOTIFY THE USER OF SUCCESS {props.currentPost.id}</h1></>
+    // <>
+    //   <h1>Welcome!</h1>
+    //   <p>Now you just need to create your password.</p>
+    //   <React.Fragment>
+    //     <Grid
+    //       container
+    //       spacing={0}
+    //       align="center"
+    //       justify="center"
+    //       direction="column"
+    //     >
+    //       <Paper
+    //         style={{
+    //           backgroundImage: `url(${logo})`,
+    //           backgroundSize: "cover",
+    //           height: "400px",
+    //         }}
+    //       >
+    //         <Grid item xs={12} sm={6} style={{ marginTop: "15px" }}>
+    //           {/* //FORM AND REDUX  part 3 JSX*/}
+    //           <Formik
+    //             initialValues={{
+    //               fullName: "",
+    //               email: email,
+    //               password: "",
+    //             }}
+    //             validationSchema={formSchema}
+    //             onSubmit={(values) => {
+    //               console.log("values:", values);
+    //               setInProgress(true);
+    //               setLoading(true);
+    //               dispatch(authAction.registerUser(values))
+    //                 .then(async (result) => {
+    //                   console.log("register result:", result);
+    //                   localStorage.setItem("forteworksToken", result.token);
+    //                   localStorage.setItem("registerToken", result.token);
+    //                   setTimeout(() => setLoading(false), 3000);
+    //                   if (result.success) {
+    //                     setInProgress(true);
+    //                     //setLoading(false)
+    //                   }
+    //                 })
+    //                 .catch((err) => console.log(err));
+    //             }}
+    //           >
+    //             {(props) => (
+    //               <Card>
+    //                 <div>
+    //                   <div style={{ textAlign: "center" }}>
+    //                     <input
+    //                       style={{
+    //                         marginTop: "15px",
+    //                         border: "none",
+    //                         outline: "none",
+    //                         borderBottom: "solid 1px #ddd",
+    //                         padding: "10px",
+    //                       }}
+    //                       placeholder="Business Name or User Name"
+    //                       onChange={props.handleChange("fullName")}
+    //                       value={props.values.fullName}
+    //                       onBlur={props.handleBlur("fullName")}
+    //                     />
+    //                     <div style={{ color: "salmon" }}>
+    //                       {props.touched.fullName && props.errors.fullName}
+    //                     </div>
+    //                     <input
+    //                       style={{
+    //                         marginTop: "15px",
+    //                         border: "none",
+    //                         outline: "none",
+    //                         borderBottom: "solid 1px #ddd",
+    //                         padding: "10px",
+    //                       }}
+    //                       placeholder="Email"
+    //                       onChange={props.handleChange("email")}
+    //                       value={props.values.email}
+    //                       onBlur={props.handleBlur("email")}
+    //                     />
+    //                     <div style={{ color: "salmon" }}>
+    //                       {props.touched.email && props.errors.email}
+    //                     </div>
+    //                     <input
+    //                       style={{
+    //                         marginTop: "15px",
+    //                         border: "none",
+    //                         outline: "none",
+    //                         borderBottom: "solid 1px #ddd",
+    //                         padding: "10px",
+    //                       }}
+    //                       placeholder="Password"
+    //                       onChange={props.handleChange("password")}
+    //                       value={props.values.password}
+    //                       onBlur={props.handleBlur("password")}
+    //                     />
+    //                     <div style={{ color: "salmon" }}>
+    //                       {props.touched.password && props.errors.password}
+    //                     </div>
+
+    //                     <ButtonComponent
+    //                       onClick={props.handleSubmit}
+    //                       loading={loading}
+    //                     />
+    //                   </div>
+    //                 </div>
+    //               </Card>
+    //             )}
+    //           </Formik>
              
 
-              {/* //end  part 3*/}
-            </Grid>
-          </Paper>
-        </Grid>
+    //           {/* //end  part 3*/}
+    //         </Grid>
+    //       </Paper>
+    //     </Grid>
        
-      </React.Fragment>
-      </>
+    //   </React.Fragment>
+    //   </>
       
     }
     </>

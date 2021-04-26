@@ -66,7 +66,7 @@ const comeOn = () => {
             </>
           )}
 
-          {showRegister && <FreeRegistrationPage></FreeRegistrationPage>}
+          {showRegister && <FreeRegistrationPage closeRegistration={displayRegistration}></FreeRegistrationPage>}
         </div>
       </animated.div>
     </div>
