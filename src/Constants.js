@@ -7,8 +7,8 @@ const prod = {
 };
 const dev = {
   url: {
-    API_URL: "https://servewerx.com/api",
-    HOST_URL: "https://servewerx.com"
+    API_URL: "http://localhost:4000/api",
+    HOST_URL: "http://localhost:4000"
   },
 };
 console.log('process.env:',process.env);
