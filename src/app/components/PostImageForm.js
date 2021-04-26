@@ -88,7 +88,7 @@ const PostImageForm = (props) => {
 
           {/* {props.props.post &&
             <img
-              src={`${IMG_URL}/posts/` + props.props.post.postImage}
+              src={`${IMG_URL}/` + props.props.post.postImage}
               alt="img"
               style={{ height: "200px", width: "auto", borderRadius: "15px" }}
             />
