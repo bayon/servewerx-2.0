@@ -35,29 +35,27 @@ const AllSitePostsPage = (props) => {
   const dispatch = useDispatch();
 
   // Within Certain Radius
-  const zipWithinRadius = (zip,miles) => {
-   // var arrayOfZips = zipcodes.radius(zip, miles);
-  //  console.log('arrayOfZips Within Radius:',arrayOfZips);
+  const zipWithinRadius = (zip, miles) => {
+    // var arrayOfZips = zipcodes.radius(zip, miles);
+    //  console.log('arrayOfZips Within Radius:',arrayOfZips);
     // select * from posts where zipcode ( IN arrayOfZips)
     // db.inventory.find( { qty: { $in: [ 5, 15 ] } } )
     //////////////////////////////////////////////////
     // Posts.find( { zipcode: { $in: arrayOfZips } } )
     ///////////////////////////////////////////////////
-    dispatch(postAction.postsWithinProximity(zip,miles))
-    .then( (res) => {
-      console.log('result:',res)
-      setCurrentPosts(res);
-      setHaveCurrentPosts(true);
+    dispatch(postAction.postsWithinProximity(zip, miles))
+      .then((res) => {
+        console.log("result:", res);
+        setCurrentPosts(res);
+        setHaveCurrentPosts(true);
+      })
 
-    })
-
-    .catch( (err) => console.log("error:",err))
-
-  }
+      .catch((err) => console.log("error:", err));
+  };
 
   const [currentPosts, setCurrentPosts] = useState([]);
   const [haveCurrentPosts, setHaveCurrentPosts] = useState(false);
-
+  const [show, setShow] = useState(false);
   const [miles, setMiles] = useState(null);
   const [zipcode, setZipcode] = useState(null);
 
@@ -75,7 +73,11 @@ const AllSitePostsPage = (props) => {
   const [filterKey, setFilterKey] = useState("");
 
   const searchInputEl = useRef(null);
-
+  const milesInput = useRef(null);
+  const zipInput = useRef(null);
+  const toggleShow = () => {
+    setShow(!show);
+  };
   const getDefaultPosts = () => {
     //Function needed to handle case where search input empty or a space.
     dispatch(postAction.allSitePosts())
@@ -263,6 +265,15 @@ const AllSitePostsPage = (props) => {
     //  setNoSort(true);
     // displayPosts()
   };
+
+  const resetProximity = async () => {
+    console.log("resetting proximity ...");
+    getDefaultPosts();
+    milesInput.current.value = "";
+    zipInput.current.focus();
+    //  setNoSort(true);
+    // displayPosts()
+  };
   // if (!auth) {
   //   return <div>not authorized.</div>;
   // }
@@ -277,15 +288,13 @@ const AllSitePostsPage = (props) => {
     setMiles(e.target.value);
   };
 
-
-  
   const handleProximityForm = (e) => {
     e.preventDefault();
 
-    console.log('handle proximity form....')
-    console.log(miles + 'from ' + zipcode)
-    zipWithinRadius(zipcode,miles)
-  }
+    console.log("handle proximity form....");
+    console.log(miles + "from " + zipcode);
+    zipWithinRadius(zipcode, miles);
+  };
 
   return (
     <Grid
@@ -298,61 +307,66 @@ const AllSitePostsPage = (props) => {
         spacing={0}
         style={{
           position: "fixed",
-          top: "50px",
+          top: "90px",
           left: "0px",
           right: "0px",
           zIndex: "100",
           background: "#fff",
           paddingTop: "1em",
+          fontSize: ".7em",
+          border: "dotted red 1px",
         }}
       >
-        <Grid item xs={12}>
-          <span>
-            <input
-              type="radio"
-              id="name"
-              name="sortOption"
-              value="name"
-              onChange={setSortOption}
-              className="radioInput"
-            />
-            <label htmlFor="name" className="radioLabel">
-              Title
-            </label>
-            <input
-              type="radio"
-              id="latest"
-              name="sortOption"
-              value="latest"
-              onChange={setSortOption}
-              className="radioInput"
-            />
-            <label htmlFor="latest" className="radioLabel">
-              Latest
-            </label>
-            <input
-              type="radio"
-              id="postType1"
-              name="sortOption"
-              value="postType1"
-              onChange={setSortOption}
-              className="radioInput"
-            />
-            <label htmlFor="postType1" className="radioLabel">
-              Looking For Work
-            </label>
-            <input
-              type="radio"
-              id="postType2"
-              name="sortOption"
-              value="postType2"
-              onChange={setSortOption}
-              className="radioInput"
-            />
-            <label htmlFor="postType2" className="radioLabel">
-              Hiring
-            </label>
-            {/* <input
+        <button onClick={toggleShow}>{show ? "hide" : "filter"}</button>
+        {show && (
+          <>
+            <Grid item xs={12}>
+              <span>
+                <input
+                  type="radio"
+                  id="name"
+                  name="sortOption"
+                  value="name"
+                  onChange={setSortOption}
+                  className="radioInput"
+                />
+                <label htmlFor="name" className="radioLabel">
+                  Title
+                </label>
+                <input
+                  type="radio"
+                  id="latest"
+                  name="sortOption"
+                  value="latest"
+                  onChange={setSortOption}
+                  className="radioInput"
+                />
+                <label htmlFor="latest" className="radioLabel">
+                  Latest
+                </label>
+                <input
+                  type="radio"
+                  id="postType1"
+                  name="sortOption"
+                  value="postType1"
+                  onChange={setSortOption}
+                  className="radioInput"
+                />
+                <label htmlFor="postType1" className="radioLabel">
+                  Looking For Work
+                </label>
+                <input
+                  type="radio"
+                  id="postType2"
+                  name="sortOption"
+                  value="postType2"
+                  onChange={setSortOption}
+                  className="radioInput"
+                />
+                <label htmlFor="postType2" className="radioLabel">
+                  Hiring
+                </label>
+                {/* <input
               type="radio"
               id="category"
               name="sortOption"
@@ -360,30 +374,57 @@ const AllSitePostsPage = (props) => {
               onChange={setSortOption}
             />
             <label htmlFor="category" >Category</label> */}
+              </span>
+            </Grid>
 
-            <form ><label>Under</label><input className="appTinyInput" placeholder="miles" onChange={handleMiles} value={miles} name="miles" ></input><label>miles from zipcode</label><input className="appTinyInput" placeholder="zipcode"  onChange={handleZip} name="zipcode" value={zipcode} /><button type="submit" onClick={handleProximityForm}>find</button> 
-
-             </form> 
-          </span>
-        </Grid>
-
-        <Grid container alignItems="center" justify="center">
-          <input
-            className="appInputAuto"
-            type="text"
-            id="filterKey"
-            name="filterKey"
-            onBlur={setFilterOption}
-            ref={searchInputEl}
-          />
-          <button className=" filterButton">
-            <Icon style={{ fontSize: "1em" }}>search</Icon>
-          </button>
-          <button onClick={resetAll} className=" filterButton">
-            <Icon style={{ fontSize: "1em" }}>clear</Icon>
-          </button>
-        </Grid>
-        
+            <Grid container alignItems="center" justify="center">
+              <input
+                className="appInputAuto"
+                type="text"
+                id="filterKey"
+                name="filterKey"
+                onBlur={setFilterOption}
+                ref={searchInputEl}
+              />
+              <button className=" filterButton">
+                <Icon style={{ fontSize: "1em" }}>search</Icon>
+              </button>
+              <button onClick={resetAll} className=" filterButton">
+                <Icon style={{ fontSize: "1em" }}>refresh</Icon>
+              </button>
+            </Grid>
+            <Grid container alignItems="center" justify="center">
+              <form style={{ fontSize: ".7em" }}>
+                <label></label>
+                <input
+                  type="number"
+                  className="appTinyInput"
+                  placeholder="miles"
+                  onChange={handleMiles}
+                  value={miles}
+                  name="miles"
+                  ref={milesInput}
+                ></input>
+                <label> from </label>
+                <input
+                  type="text"
+                  className="appTinyInput"
+                  placeholder="zipcode"
+                  onChange={handleZip}
+                  name="zipcode"
+                  value={zipcode}
+                  ref={zipInput}
+                />
+                <button type="submit" onClick={handleProximityForm}>
+                  find
+                </button>
+                <button onClick={resetProximity} className="filterButton">
+                  <Icon style={{ fontSize: "1em" }}>refresh</Icon>
+                </button>
+              </form>
+            </Grid>
+          </>
+        )}
       </Grid>
 
       <Grid item xs={12} style={{ marginTop: "200px" }}>
