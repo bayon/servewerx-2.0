@@ -544,7 +544,9 @@ export const getStatusColor = () => {
 };
 //////////////////////////////////
 
-export const postsWithinProximity = (arrayOfZips) => {
+export const postsWithinProximity = (zip,miles) => {
+
+  const data = {"zip":zip,"miles":miles};
   return async (dispatch) => {
     const result = await fetch(`${API_URL}/posts/proximity`, {
       method: "POST",
@@ -552,7 +554,7 @@ export const postsWithinProximity = (arrayOfZips) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        arrayOfZips,
+        data,
       }),
     });
 

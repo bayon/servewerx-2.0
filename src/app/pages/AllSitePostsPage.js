@@ -1,57 +1,65 @@
 import Grid from "@material-ui/core/Grid";
 import Icon from "@material-ui/core/Icon";
+// var zipcodes = require('zipcodes');
+import haversine from "haversine-distance";
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as postAction from "../../redux/actions/postAction";
 import AllSitePostsDisplayCard from "../cards/AllSitePostsDisplayCard";
 import PostDisplayCard from "../cards/PostDisplayCard";
-// var zipcodes = require('zipcodes');
-
-
-
 
 const AllSitePostsPage = (props) => {
+  const metersToMiles = (i) => {
+    return i * 0.000621371192;
+  };
+  const milesToMeters = (i) => {
+    return i * 1609.344;
+  };
+  const testZip = () => {
+    const usZips = require("us-zips");
+    console.log("zip results:---------------------");
+    console.log(usZips["54301"]);
+    var zipGeo = usZips["47115"];
+    var zipGeo2 = usZips["40202"];
+    console.log(zipGeo);
 
+    const a = { latitude: zipGeo.latitude, longitude: zipGeo.longitude };
+    const b = { latitude: zipGeo2.latitude, longitude: zipGeo2.longitude };
 
-
+    console.log("haversine results: ----------------------");
+    console.log(haversine(a, b)); // 714504.18 (in meters)
+    console.log(metersToMiles(haversine(a, b))); //in miles
+  };
   var auth = useSelector((state) => state.auth.authorized);
 
   const dispatch = useDispatch();
 
-// // Within Certain Radius
-// const zipWithinRadius = (zipNo,miles) => {
-//   var arrayOfZips = zipcodes.radius(zipNo, miles);
-//   console.log('arrayOfZips Within Radius:',arrayOfZips); 
-//   // select * from posts where zipcode ( IN arrayOfZips)
-//   // db.inventory.find( { qty: { $in: [ 5, 15 ] } } )
-//   //////////////////////////////////////////////////
-//   // Posts.find( { zipcode: { $in: arrayOfZips } } )
-//   ///////////////////////////////////////////////////
-//   dispatch(postAction.postsWithinProximity(arrayOfZips))
-//   .then( (res) => { 
-//     console.log('result:',res)
-//     setCurrentPosts(res);
-//     setHaveCurrentPosts(true);
-  
-//   })
+  // Within Certain Radius
+  const zipWithinRadius = (zip,miles) => {
+   // var arrayOfZips = zipcodes.radius(zip, miles);
+  //  console.log('arrayOfZips Within Radius:',arrayOfZips);
+    // select * from posts where zipcode ( IN arrayOfZips)
+    // db.inventory.find( { qty: { $in: [ 5, 15 ] } } )
+    //////////////////////////////////////////////////
+    // Posts.find( { zipcode: { $in: arrayOfZips } } )
+    ///////////////////////////////////////////////////
+    dispatch(postAction.postsWithinProximity(zip,miles))
+    .then( (res) => {
+      console.log('result:',res)
+      setCurrentPosts(res);
+      setHaveCurrentPosts(true);
 
-//   .catch( (err) => console.log("error:",err))
+    })
 
-// }
+    .catch( (err) => console.log("error:",err))
 
-
-
+  }
 
   const [currentPosts, setCurrentPosts] = useState([]);
   const [haveCurrentPosts, setHaveCurrentPosts] = useState(false);
 
-
-  const [miles,setMiles] = useState(null);
-  const [zipcode,setZipcode] = useState(null);
-
-
-
-
+  const [miles, setMiles] = useState(null);
+  const [zipcode, setZipcode] = useState(null);
 
   const [sortName, setSortName] = useState(false);
   const [sortLatest, setSortLatest] = useState(false);
@@ -104,9 +112,8 @@ const AllSitePostsPage = (props) => {
     posts
       .sort((a, b) => (a.title > b.title ? 1 : -1))
       .map((post, i) => {
-       
         return <PostDisplayCard key={i} post={post}></PostDisplayCard>;
-       
+
         // return (
         //   <AllSitePostsDisplayCard
         //     key={i}
@@ -170,19 +177,13 @@ const AllSitePostsPage = (props) => {
 
   const displayPosts = () => {
     if (haveCurrentPosts) {
-
-
-      
       if (sortName) {
         return currentPosts
           .sort((a, b) => (a.title > b.title ? 1 : -1))
           .map((post, i) => {
-           
-           
-          
-            if(post.dateCreated === "2021-04-21T20:57:36.385Z"){
-              return <>EXPIRED</>
-            }else {
+            if (post.dateCreated === "2021-04-21T20:57:36.385Z") {
+              return <>EXPIRED</>;
+            } else {
               return (
                 // <PostDisplayCard key={i} post={post} ></PostDisplayCard>
                 <AllSitePostsDisplayCard
@@ -191,7 +192,6 @@ const AllSitePostsPage = (props) => {
                 ></AllSitePostsDisplayCard>
               );
             }
-          
           });
       }
       if (sortLatest) {
@@ -267,33 +267,46 @@ const AllSitePostsPage = (props) => {
   //   return <div>not authorized.</div>;
   // }
 
-
   const handleZip = (e) => {
-    
-    console.log('e.target:',e.target);
-    setZipcode(e.target.value)
-
-  }
+    console.log("e.target:", e.target);
+    setZipcode(e.target.value);
+  };
 
   const handleMiles = (e) => {
-    
-    console.log('e.target:',e.target);
-    setMiles(e.target.value)
+    console.log("e.target:", e.target);
+    setMiles(e.target.value);
+  };
 
+
+  
+  const handleProximityForm = (e) => {
+    e.preventDefault();
+
+    console.log('handle proximity form....')
+    console.log(miles + 'from ' + zipcode)
+    zipWithinRadius(zipcode,miles)
   }
 
-  // const handleProximityForm = (e) => {
-  //   e.preventDefault();
-    
-  //   console.log('handle proximity form....')
-  //   console.log(miles + 'from ' + zipcode)
-  //   zipWithinRadius(zipcode,miles)
-  // }
-
   return (
-    <Grid container spacing={0} className="main-component-container component-background-image"   >
-      <Grid container spacing={0} style={{  position:"fixed",top:"50px",left:"0px",right:"0px" ,zIndex:"100",background:"#fff",paddingTop:"1em"}}>
-        <Grid item xs={12}  >
+    <Grid
+      container
+      spacing={0}
+      className="main-component-container component-background-image"
+    >
+      <Grid
+        container
+        spacing={0}
+        style={{
+          position: "fixed",
+          top: "50px",
+          left: "0px",
+          right: "0px",
+          zIndex: "100",
+          background: "#fff",
+          paddingTop: "1em",
+        }}
+      >
+        <Grid item xs={12}>
           <span>
             <input
               type="radio"
@@ -303,7 +316,9 @@ const AllSitePostsPage = (props) => {
               onChange={setSortOption}
               className="radioInput"
             />
-            <label htmlFor="name" className="radioLabel" >Title</label>
+            <label htmlFor="name" className="radioLabel">
+              Title
+            </label>
             <input
               type="radio"
               id="latest"
@@ -312,7 +327,9 @@ const AllSitePostsPage = (props) => {
               onChange={setSortOption}
               className="radioInput"
             />
-            <label htmlFor="latest"  className="radioLabel" >Latest</label>
+            <label htmlFor="latest" className="radioLabel">
+              Latest
+            </label>
             <input
               type="radio"
               id="postType1"
@@ -321,7 +338,9 @@ const AllSitePostsPage = (props) => {
               onChange={setSortOption}
               className="radioInput"
             />
-            <label htmlFor="postType1"  className="radioLabel" >Looking For Work</label>
+            <label htmlFor="postType1" className="radioLabel">
+              Looking For Work
+            </label>
             <input
               type="radio"
               id="postType2"
@@ -330,7 +349,9 @@ const AllSitePostsPage = (props) => {
               onChange={setSortOption}
               className="radioInput"
             />
-            <label htmlFor="postType2"  className="radioLabel" >Hiring</label>
+            <label htmlFor="postType2" className="radioLabel">
+              Hiring
+            </label>
             {/* <input
               type="radio"
               id="category"
@@ -340,36 +361,40 @@ const AllSitePostsPage = (props) => {
             />
             <label htmlFor="category" >Category</label> */}
 
-           {/* <form ><label>Less than</label><input className="appTinyInput" placeholder="miles" onChange={handleMiles} value={miles} name="miles" ></input><label>from </label><input className="appTinyInput" placeholder="zipcode"  onChange={handleZip} name="zipcode" value={zipcode} /><button type="submit" onClick={handleProximityForm}>find</button> */}
-         
-           {/* </form>  */}
+            <form ><label>Less than</label><input className="appTinyInput" placeholder="miles" onChange={handleMiles} value={miles} name="miles" ></input><label>from </label><input className="appTinyInput" placeholder="zipcode"  onChange={handleZip} name="zipcode" value={zipcode} /><button type="submit" onClick={handleProximityForm}>find</button> 
+
+             </form> 
           </span>
         </Grid>
+
+        <Grid container alignItems="center" justify="center">
+          <input
+            className="appInputAuto"
+            type="text"
+            id="filterKey"
+            name="filterKey"
+            onBlur={setFilterOption}
+            ref={searchInputEl}
+          />
+          <button className=" filterButton">
+            <Icon style={{ fontSize: "1em" }}>search</Icon>
+          </button>
+          <button onClick={resetAll} className=" filterButton">
+            <Icon style={{ fontSize: "1em" }}>clear</Icon>
+          </button>
+        </Grid>
+        <Grid container style={{ backgroundColor: "green" }}>
+          zipcode form here: x miles from z zipcode
         
-          <Grid container alignItems="center" justify="center" >
-            <input
-              className="appInputAuto"
-              type="text"
-              id="filterKey"
-              name="filterKey"
-              onBlur={setFilterOption}
-              ref={searchInputEl}
-              
-            />
-            <button className=" filterButton" >
-                <Icon style={{fontSize:"1em"}} >search</Icon>
-            </button>
-            <button onClick={resetAll}  className=" filterButton" >
-              <Icon  style={{fontSize:"1em"}} >clear</Icon>
-            </button>
-          </Grid>
-        
+          <button onClick={testZip}>test</button>
+        </Grid>
       </Grid>
-      <Grid item xs={12} style={{marginTop:"200px"}} >
+
+      <Grid item xs={12} style={{ marginTop: "200px" }}>
         {haveCurrentPosts && displayPosts()}
       </Grid>
 
-      <p className="cardDevNote" >AllSitePostsPage</p>
+      <p className="cardDevNote">AllSitePostsPage</p>
     </Grid>
   );
 };
