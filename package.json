@@ -14,6 +14,7 @@
     "axios": "^0.21.1",
     "blob-to-buffer": "^1.2.9",
     "formik": "^2.2.6",
+    "haversine-distance": "^1.2.1",
     "markdown-to-jsx": "^7.1.1",
     "multer-s3": "^2.9.0",
     "react": "^17.0.1",
@@ -27,6 +28,7 @@
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.3.0",
     "styled-components": "^5.2.3",
+    "us-zips": "^4.0.2",
     "web-vitals": "^1.0.1",
     "yup": "^0.32.9"
   },
