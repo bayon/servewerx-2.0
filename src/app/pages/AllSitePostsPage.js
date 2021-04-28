@@ -361,7 +361,7 @@ const AllSitePostsPage = (props) => {
             />
             <label htmlFor="category" >Category</label> */}
 
-            <form ><label>Less than</label><input className="appTinyInput" placeholder="miles" onChange={handleMiles} value={miles} name="miles" ></input><label>from </label><input className="appTinyInput" placeholder="zipcode"  onChange={handleZip} name="zipcode" value={zipcode} /><button type="submit" onClick={handleProximityForm}>find</button> 
+            <form ><label>Under</label><input className="appTinyInput" placeholder="miles" onChange={handleMiles} value={miles} name="miles" ></input><label>miles from zipcode</label><input className="appTinyInput" placeholder="zipcode"  onChange={handleZip} name="zipcode" value={zipcode} /><button type="submit" onClick={handleProximityForm}>find</button> 
 
              </form> 
           </span>
@@ -383,11 +383,7 @@ const AllSitePostsPage = (props) => {
             <Icon style={{ fontSize: "1em" }}>clear</Icon>
           </button>
         </Grid>
-        <Grid container style={{ backgroundColor: "green" }}>
-          zipcode form here: x miles from z zipcode
         
-          <button onClick={testZip}>test</button>
-        </Grid>
       </Grid>
 
       <Grid item xs={12} style={{ marginTop: "200px" }}>
