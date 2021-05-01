@@ -7,6 +7,22 @@ import { config } from "../../Constants";
 import * as postAction from "../../redux/actions/postAction";
 import EditPostCard from "./EditPostCard";
 
+const formatIsoStringDate = (isoStringDate) => {
+  let sp = "/"
+   if (typeof isoStringDate === "undefined") {
+       sp = "/";
+   }
+   //let today = new Date();
+   let currentDate  = new Date(isoStringDate);
+   var dd = currentDate.getDate();
+   var mm = currentDate.getMonth() + 1; //As January is 0.
+   var yyyy = currentDate.getFullYear();
+
+   if (dd < 10) dd = '0' + dd;
+   if (mm < 10) mm = '' + mm;
+   return (mm + sp + dd + sp + yyyy);
+
+}
 
 const PostDisplayCard = (props) => {
   const [seeDetails, setSeeDetails] = useState(false);
@@ -88,6 +104,8 @@ const PostDisplayCard = (props) => {
                         {props.post.phone}
                         <Icon className="cardIcon" >phone</Icon>
                       </a>
+                      <p>Date Created:{formatIsoStringDate(props.post.dateCreated)}</p>
+                      <p>Activated:{props.post.activated ? ("YES") : ("NO")}</p>
                     </div>
                   </Grid>
                   <Grid item xs={12} sm={4} className="cardImageGrid" >

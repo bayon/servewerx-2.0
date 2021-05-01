@@ -3,13 +3,33 @@ import Grid from "@material-ui/core/Grid";
 import axios from "axios";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import FadeLoader from "react-spinners/FadeLoader";
 import { config } from "../../Constants";
 import * as authAction from "../../redux/actions/authAction";
+
+
+
+/*
+TO GO: SPINNER: 
+deps:
+import FadeLoader from "react-spinners/FadeLoader";
+
+fn:
+let [loading, setLoading] = useState(false);
+let [color, setColor] = useState("red");
+
+jsx:
+<div style={{position:"absolute",bottom:"25%",left:"50%"}} >
+<FadeLoader color={color} loading={loading}  size={1} height={4} width={2}   />
+</div>
+*/
+
+
 
 const ImageForm = (props) => {
   const dispatch = useDispatch();
   console.log("PROPS: ", props);
-
+  let [loading, setLoading] = useState(false);
   const [file, setFile] = useState(null);
   // const [imgFile, setImgFile] = useState(null);
   //const [id, setId] = useState(props.props.user._id);
@@ -25,9 +45,11 @@ const ImageForm = (props) => {
   const handleSubmit = async (event) => {
    
     event.preventDefault();
+
     if (!file) {
       return false;
     }
+    setLoading(true)
     const data = new FormData();
     data.append("_id", props.props.user._id);
     for (var x = 0; x < file.length; x++) {
@@ -46,6 +68,7 @@ const ImageForm = (props) => {
         .then(async (result) => {
           if (result.success) {
             //code
+            setLoading(false)
           }
           props.props.refresh();
           props.close()
@@ -106,6 +129,9 @@ const ImageForm = (props) => {
           <button className="appButton" onClick={handleSubmit} style={{width:"90%"}}>
             Update Your Profile Image
           </button>
+          <div style={{position:"absolute",bottom:"25%",left:"50%"}} >
+<FadeLoader color={"red"} loading={loading}  size={1} height={4} width={2}   />
+</div>
         </Grid>
       </form>
       <p className="cardDevNote" >ImageForm</p>

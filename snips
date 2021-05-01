@@ -1,0 +1,14 @@
+/*
+TO GO: SPINNER: 
+deps:
+import FadeLoader from "react-spinners/FadeLoader";
+
+fn:
+let [loading, setLoading] = useState(false);
+let [color, setColor] = useState("red");
+
+jsx:
+<div style={{position:"absolute",bottom:"25%",left:"50%"}} >
+<FadeLoader color={"red"} loading={loading}  size={1} height={4} width={2}   />
+</div>
+*/
