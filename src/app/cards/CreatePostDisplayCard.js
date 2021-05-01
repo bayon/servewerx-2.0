@@ -163,8 +163,6 @@ const CreatePostDisplayCard = (props) => {
           </Grid>
           {beginPay && (
             <>
-             COMPLETE THE SAVE.
-             call the stripe payment code.
              <Elements stripe={stripePromise}>
             <PayPage prop={props}  currentPost={currentPost}/>
           </Elements>
