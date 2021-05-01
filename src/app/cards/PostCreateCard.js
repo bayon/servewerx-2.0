@@ -15,6 +15,7 @@ const formSchema = yup.object({
   title: yup.string().required().min(3),
   email: yup.string().email().required(),
   phone: yup.string().min(10),
+  zip: yup.string().max(5)
 });
 
 const PostCreateCard = (props) => {
@@ -95,6 +96,8 @@ const PostCreateCard = (props) => {
                     city: user.data.city,
                     state: user.data.state,
                     zip: user.data.zip,
+                    website: user.data.website,
+                    activated: "1",
                     //postImage: user.data.profileImage
                   }}
                   // !PostImage REQUIRED here so as to not get deleted accidentally.
@@ -296,6 +299,21 @@ const PostCreateCard = (props) => {
                             {props.touched.zip && props.errors.zip}
                           </div>
                         </Grid>
+                        <Grid item xs={12} className="cardLabelContainer">
+                          <label className="cardLabel">Website</label>
+                        </Grid>
+                        <Grid item xs={12}>
+                          <input
+                            className="appInput"
+                            placeholder="Website"
+                            onChange={props.handleChange("website")}
+                            value={props.values.website}
+                            onBlur={props.handleBlur("website")}
+                          />
+                          <div style={{ color: "salmon" }}>
+                            {props.touched.website && props.errors.website}
+                          </div>
+                        </Grid>
                         {/* <input
                              type="hidden"
                             onChange={()=>{}}
@@ -306,6 +324,12 @@ const PostCreateCard = (props) => {
                           type="hidden"
                           onChange={() => {}}
                           value={user._id}
+                          disabled
+                        />
+                         <input
+                          type="hidden"
+                          onChange={() => {}}
+                          value={props.values.activated}
                           disabled
                         />
 
