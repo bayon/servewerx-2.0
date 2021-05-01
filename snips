@@ -12,3 +12,8 @@ jsx:
 <FadeLoader color={"red"} loading={loading}  size={1} height={4} width={2}   />
 </div>
 */
+
+
+
+//npm i multer-sharp-s3 
+//https://stackoverflow.com/questions/40494050/uploading-image-to-amazon-s3-using-multer-s3-nodejs

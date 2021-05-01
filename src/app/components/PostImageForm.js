@@ -45,8 +45,8 @@ const [fileSize,setFileSize] = useState(0);
     let file_name = event.target.files[0].name;
     let file_type = event.target.files[0].type;
 
-    if(event.target.files[0].size > 1000000){
-      alert('file size exceeds 1 MB')
+    if(event.target.files[0].size > 5000000){
+      alert('file size exceeds 5 MB')
       //event.target.files.filter(file => file.size <= 1000000);
     }
     setFileSize(file_size)
@@ -90,8 +90,8 @@ const [fileSize,setFileSize] = useState(0);
     if (!file) {
       return false;
     }
-    if(fileSize > 1000000){
-      alert('Choose a file less than 1 MB.')
+    if(fileSize > 5000000){
+      alert('Choose a file less than 5 MB.')
       setLoading(false);
       return false;
     }
@@ -175,7 +175,7 @@ const [fileSize,setFileSize] = useState(0);
           />
         </Grid>
         <Grid xs={12}>
-          <p>Max Image Size: 1 MB</p>
+          <p>Max Image Size: 5 MB</p>
           <button className="btn btn-primary mt-3" onClick={handleSubmit}>
             Save and Continue
           </button>

@@ -91,6 +91,7 @@ export const createPost = (postData) => {
     state,
     zip,
     postImage,
+    activated,
   } = postData;
   return async (dispatch) => {
     const result = await fetch(`${API_URL}/posts/create`, {
@@ -111,6 +112,7 @@ export const createPost = (postData) => {
         state,
         zip,
         postImage,
+        activated,
       }),
     });
 
