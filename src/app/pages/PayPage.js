@@ -82,6 +82,8 @@ function ButtonComponent(props) {
 
 function PayPage(props) {
   console.log('payPage props:',props)
+  // if pay page props user id = me "607da64cdfa3380004aceabf" THEN post without pay. 
+  // props.currentPost.userId = "607da64cdfa3380004aceabf" THEN ...
   const [inProgress, setInProgress] = useState(false);
   console.log("inProgress:", inProgress);
   useEffect(() => {
@@ -107,6 +109,16 @@ const API_URL = config.url.API_URL
   const [paid,setPaid] = useState(false); 
   const stripe = useStripe();
   const elements = useElements();
+
+    if(props.currentPost.userId = "607da64cdfa3380004aceabf"){
+      dispatch(postAction.acceptPost(props.currentPost._id))
+      .then((res) => {
+        console.log('accept post result: res:',res)
+        setLoading(false);
+      })
+      .catch((err) => console.error(err))
+    }
+
 
   const handleSubmitPay = async (event) => {
     if (!stripe || !elements) {
@@ -140,6 +152,7 @@ const API_URL = config.url.API_URL
         dispatch(postAction.acceptPost(props.currentPost._id))
         .then((res) => {
           console.log('accept post result: res:',res)
+          alert('You Created A Post!')
           setLoading(false);
         })
         .catch((err) => console.error(err))
