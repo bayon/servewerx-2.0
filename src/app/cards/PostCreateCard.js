@@ -21,7 +21,7 @@ const PostCreateCard = (props) => {
   const dispatch = useDispatch();
   const [seeDetails, setSeeDetails] = useState(false);
   const [inProgress, setInProgress] = useState(false);
-  const [categories, setCategories] = useState([])
+  const [categories, setCategories] = useState([]);
   const [submitComplete, setSumbitComplete] = useState(false);
   const [currentPost, setCurrentPost] = useState(false);
 
@@ -30,27 +30,25 @@ const PostCreateCard = (props) => {
   var us_states = useSelector((state) => state.auth.usstates);
   //var categories = useSelector((state) => state.post.categories);
   var haveCategories = useSelector((state) => state.auth.haveCategories);
-  
+
   useEffect(() => {
     console.log("post data changed:", post);
   }, [post]);
 
-  useEffect( () => {
-    //get initial categories 
+  useEffect(() => {
+    //get initial categories
     dispatch(authAction.getCategories())
-    .then((results) => {
-      console.log("category results:",results)
-      setCategories(results)
-    })
-    .catch((err) => console.error(err));
-
-  },[])
+      .then((results) => {
+        console.log("category results:", results);
+        setCategories(results);
+      })
+      .catch((err) => console.error(err));
+  }, []);
 
   //console.log("STATE---------user:",user)
   useEffect(() => {
     setInProgress(inProgress);
   }, [inProgress]);
-
 
   const initEdit = () => {
     console.log(". . . . . . . .init edit ");
@@ -64,17 +62,17 @@ const PostCreateCard = (props) => {
     dispatch(postAction.setStatusGreen()).catch((err) => console.error(err));
   };
 
-  const post_types = ["select one", "Looking for Work", "Looking to Hire", "Open for Business"];
+  const post_types = [
+    "select one",
+    "Looking for Work",
+    "Looking to Hire",
+    "Open for Business",
+  ];
   return (
-    
-     
-
-     
-        <React.Fragment>
-        <>
-       
-          {!post.postStepOne && haveCategories  && (
-             <div className="card-plain">
+    <React.Fragment>
+      <>
+        {!post.postStepOne && haveCategories && (
+          <div className="card-plain">
             <Grid
               container
               spacing={1}
@@ -122,7 +120,9 @@ const PostCreateCard = (props) => {
                     <Grid container className="PostCreateCardForm">
                       <Grid item xs={12} sm={12}>
                         <Grid item xs={12} className="cardLabelContainer">
-                          <label className="cardLabel">Title ( ie. The name of your service.)</label>
+                          <label className="cardLabel">
+                            Title ( ie. The name of your service.)
+                          </label>
                         </Grid>
                         <Grid item xs={12}>
                           <input
@@ -139,7 +139,9 @@ const PostCreateCard = (props) => {
                         </Grid>
 
                         <Grid item xs={12} className="cardLabelContainer">
-                          <label className="cardLabel">Type ( ie. looking for work, looking to hire, etc.) </label>
+                          <label className="cardLabel">
+                            Type ( ie. looking for work, looking to hire, etc.){" "}
+                          </label>
                         </Grid>
                         <Grid item xs={12}>
                           <select
@@ -158,7 +160,10 @@ const PostCreateCard = (props) => {
                         </Grid>
 
                         <Grid item xs={12} className="cardLabelContainer">
-                          <label className="cardLabel">Description ( Provide more detail on your services , or the job you want)</label>
+                          <label className="cardLabel">
+                            Description ( Provide more detail on your services ,
+                            or the job you want)
+                          </label>
                         </Grid>
                         <Grid item xs={12}>
                           <input
@@ -175,7 +180,10 @@ const PostCreateCard = (props) => {
                         </Grid>
 
                         <Grid item xs={12} className="cardLabelContainer">
-                          <label className="cardLabel">Category (Which industry is your service generally described as...)</label>
+                          <label className="cardLabel">
+                            Category (Which industry is your service generally
+                            described as...)
+                          </label>
                         </Grid>
                         <Grid item xs={12}>
                           <select
@@ -272,7 +280,9 @@ const PostCreateCard = (props) => {
                           </select>
                         </Grid>
                         <Grid item xs={12} className="cardLabelContainer">
-                          <label className="cardLabel">Zip ( Important: *This determines your location for proximity searches.)</label>
+                          <label className="cardLabel">
+                            Zip <span style={{color:"green"}}>** </span><span style={{fontSize:".8em",color:"#444"}}>Important for people to find you.</span>
+                          </label>
                         </Grid>
                         <Grid item xs={12}>
                           <input
@@ -301,7 +311,19 @@ const PostCreateCard = (props) => {
 
                         {/* UPLOAD AN IMAGE: https://www.youtube.com/watch?v=SAUvlkTDMM4 */}
                         <Grid item xs={12}>
-                          <button onClick={props.handleSubmit}>Continue to Step 2</button>
+                          <button onClick={props.handleSubmit}>
+                            Continue to Step 2
+                          </button>
+                          <button
+                            onClick={() => {
+                              dispatch(
+                                postAction.cancelPost(currentPost._id)
+                              ).catch((err) => console.error(err));
+                            }}
+                            style={{ color: "blue" }}
+                          >
+                            CANCEL
+                          </button>
                         </Grid>
                       </Grid>
                     </Grid>
@@ -312,16 +334,10 @@ const PostCreateCard = (props) => {
               </Grid>
               <p className="appDevNote">PostCreateCard</p>
             </Grid>
-            </div>
-          )}
-         
-           </>
-        </React.Fragment>
-     
-
-       
-     
-    
+          </div>
+        )}
+      </>
+    </React.Fragment>
   );
 };
 

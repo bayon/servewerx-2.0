@@ -6,7 +6,6 @@ import styled from "styled-components";
 import "../../App.css";
 import { config } from "../../Constants";
 import * as postAction from "../../redux/actions/postAction";
-import StatusChecker from "../components/StatusChecker";
 import PostStepOne from "./PostCreation/PostStepOne";
 import UsersPostsPage from "./UsersPostsPage";
 
@@ -49,15 +48,15 @@ export default function DashboardPage(props) {
   return (
     <React.Fragment>
       <Grid container className="main-component-container">
-        <Grid container alignItems="center" justify="center">
-          <Grid item xs={8} className="pageTitle ">
-            <h1 className="trim">Dashboard</h1>
-            <StatusChecker></StatusChecker>
-          </Grid>
+        <Grid container alignItems="center" justify="center" style={{background:"#fff",borderRadius:"10px",padding:".5em 0 .5em 0",margin:".5em 0 .5em 0"}}>
+         
+          <Grid item xs={8} className="pageTitle " >
+             <h1 className="trim">Dashboard</h1>
+           </Grid>
 
           {haveUser && (
             <>
-              <Grid item sm={2} className="pageGreeting">
+               <Grid item sm={2} className="pageGreeting" >
                 <h3 className="trim" >Hello,</h3> <p className="trim">{user.data.fullName}</p>
               </Grid>
               <Grid item sm={2} className="pageGreeting">
@@ -71,15 +70,16 @@ export default function DashboardPage(props) {
                   }}
                 />
               </Grid>
-            </>
+             </>
           )}
+          
         </Grid>
-        <Grid container>
+        <Grid container style={{background:"#FFF",padding:".5em 0 .5em 0",margin:".5em 0 .5em 0",borderRadius:"10px"}}>
           <Grid item xs={12} sm={6}>
             {/* <PostCreatePage></PostCreatePage> */}
 
             <Router>
-              <Grid item xs={12} sm={12}>
+              <Grid item xs={12} sm={12} >
                 <h3>Create A Post</h3>
                 <Link
                   style={{

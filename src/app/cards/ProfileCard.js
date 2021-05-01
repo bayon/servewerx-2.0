@@ -3,11 +3,26 @@ import Grid from "@material-ui/core/Grid";
 import { Formik } from "formik";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import FadeLoader from "react-spinners/FadeLoader";
 import * as yup from "yup";
 import "../../App.css";
 import * as authAction from "../../redux/actions/authAction";
 import ImageForm from "../components/ImageForm";
 
+/*
+TO GO: SPINNER: 
+deps:
+import FadeLoader from "react-spinners/FadeLoader";
+
+fn:
+let [loading, setLoading] = useState(false);
+let [color, setColor] = useState("red");
+
+jsx:
+<div style={{position:"absolute",bottom:"25%",left:"50%"}} >
+<FadeLoader color={"red"} loading={loading}  size={1} height={4} width={2}   />
+</div>
+*/
 const formSchema = yup.object({
   fullName: yup.string().required().min(3),
   email: yup.string().email().required(),
@@ -15,7 +30,8 @@ const formSchema = yup.object({
 });
 
 const ProfileCard = (props) => {
-   
+  let [loading, setLoading] = useState(false);
+
   const dispatch = useDispatch();
   const [seeDetails, setSeeDetails] = useState(false);
   const [inProgress, setInProgress] = useState(false);
@@ -23,21 +39,25 @@ const ProfileCard = (props) => {
   useEffect(() => {
     setInProgress(inProgress);
   }, [inProgress]);
-  var us_states = useSelector( (state) => state.auth.usstates)
+  var us_states = useSelector((state) => state.auth.usstates);
   const close = () => {
     setSeeDetails(!seeDetails);
-  }
- 
+  };
+
   return (
-    <Grid container  alignItems="center" justify="center"  style={{background:"#fff",borderRadius:"10px",padding:"15px"}}>
-       
-      <Grid container spacing={0} direction="row"  >
-        <Grid item xs={12} sm={9}  >
+    <Grid
+      container
+      alignItems="center"
+      justify="center"
+      style={{ background: "#fff", borderRadius: "10px", padding: "15px" }}
+    >
+      <Grid container spacing={0} direction="row">
+        <Grid item xs={12} sm={9}>
           <Typography variant="h5" component="h2">
             {props.user.fullName}
           </Typography>
         </Grid>
-        <Grid item xs={12} sm={3}  >
+        <Grid item xs={12} sm={3}>
           <button
             onClick={() => {
               setSeeDetails(!seeDetails);
@@ -46,8 +66,8 @@ const ProfileCard = (props) => {
             {seeDetails ? "Close My Profile" : "Edit My Profile"}
           </button>
         </Grid>
-        <Grid item xs={12}   >
-         <p>Your data here will be used to auto-fill your 'posts'.</p>
+        <Grid item xs={12}>
+          <p>Your data here will be used to auto-fill your 'posts'.</p>
         </Grid>
       </Grid>
 
@@ -60,9 +80,8 @@ const ProfileCard = (props) => {
               align="center"
               justify="center"
               direction="row"
-               
             >
-              <Grid item xs={12} sm={5} >
+              <Grid item xs={12} sm={5}>
                 <ImageForm props={props} close={close}></ImageForm>
               </Grid>
               <Grid item xs={12} sm={5}>
@@ -79,37 +98,45 @@ const ProfileCard = (props) => {
                     profileImage: props.user.profileImage,
                     website: props.user.website,
                     created: props.user.created,
-                    lastUpdated: props.user.lastUpdated
+                    lastUpdated: props.user.lastUpdated,
                   }}
                   validationSchema={formSchema}
                   onSubmit={(values) => {
                     console.log("values:", values);
                     setInProgress(true);
-                     dispatch(authAction.updateUser(values))
+                    setLoading(true);
+                    dispatch(authAction.updateUser(values))
                       .then(async (result) => {
                         console.log("update result:", result);
 
                         if (result.success) {
                           setInProgress(true);
+                          //TODO: I don't think we are getting a 'success' option back from the request.
                         }
                         props.refresh();
-                        setSeeDetails(!seeDetails)
+                        setSeeDetails(!seeDetails);
+                        setLoading(false)
                       })
                       .catch((err) => console.log(err));
                   }}
                 >
                   {(props) => (
-                    <Grid container spacing={2} className="ProfileCardForm" 
-                    align="center"
-                    justify="center"
+                    <Grid
+                      container
+                      spacing={2}
+                      className="ProfileCardForm"
+                      align="center"
+                      justify="center"
                     >
-                      <Grid item xs={12} sm={12} >
+                      <Grid item xs={12} sm={12}>
                         <Grid item xs={12} sm={6}>
-                          <label>Full Name ( The name of you or your company.)</label>
+                          <label>
+                            Full Name <span style={{color:"#444",fontSize:".8em"}}>( The name of you or your company.)</span>
+                          </label>
                         </Grid>
                         <Grid item xs={12}>
                           <input
-                          className="appInput"
+                            className="appInput"
                             placeholder="Business Name or User Name"
                             onChange={props.handleChange("fullName")}
                             value={props.values.fullName}
@@ -122,11 +149,11 @@ const ProfileCard = (props) => {
                         </Grid>
 
                         <Grid item xs={12}>
-                          <label>Email(*)</label>
+                          <label>Email <span style={{color:"red",fontSize:".8em"}}>*</span></label>
                         </Grid>
                         <Grid item xs={12}>
                           <input
-                          className="appInput"
+                            className="appInput"
                             placeholder="Email"
                             onChange={props.handleChange("email")}
                             value={props.values.email}
@@ -138,11 +165,11 @@ const ProfileCard = (props) => {
                           </div>
                         </Grid>
                         <Grid item xs={12}>
-                          <label>Phone(*)</label>
+                          <label>Phone<span style={{color:"red",fontSize:".8em"}}>*</span></label>
                         </Grid>
                         <Grid item xs={12}>
                           <input
-                          className="appInput"
+                            className="appInput"
                             placeholder="Phone"
                             onChange={props.handleChange("phone")}
                             value={props.values.phone}
@@ -157,7 +184,7 @@ const ProfileCard = (props) => {
                         </Grid>
                         <Grid item xs={12}>
                           <input
-                          className="appInput"
+                            className="appInput"
                             placeholder="Address"
                             onChange={props.handleChange("address")}
                             value={props.values.address}
@@ -172,7 +199,7 @@ const ProfileCard = (props) => {
                         </Grid>
                         <Grid item xs={12}>
                           <input
-                          className="appInput"
+                            className="appInput"
                             placeholder="City"
                             onChange={props.handleChange("city")}
                             value={props.values.city}
@@ -186,23 +213,28 @@ const ProfileCard = (props) => {
                           <label>State</label>
                         </Grid>
                         <Grid item xs={12}>
-                        <select value={props.values.state} onChange={props.handleChange("state")} className="appSelect"  >
-                            
-                            {
-                              us_states.map( (item,index ) => {
-                                return(
-                                  <option key={index} value={index}  >{item}</option>
-                                )
-                              })
-                            }
+                          <select
+                            value={props.values.state}
+                            onChange={props.handleChange("state")}
+                            className="appSelect"
+                          >
+                            {us_states.map((item, index) => {
+                              return (
+                                <option key={index} value={index}>
+                                  {item}
+                                </option>
+                              );
+                            })}
                           </select>
                         </Grid>
                         <Grid item xs={12}>
-                          <label>Zip(* Important for other people to find you in their proximity searches.)</label>
+                          <label>
+                            Zip<span style={{color:"green",fontSize:".8em"}}>**</span>
+                          </label>
                         </Grid>
                         <Grid item xs={12}>
                           <input
-                          className="appInput"
+                            className="appInput"
                             placeholder="Zip"
                             onChange={props.handleChange("zip")}
                             value={props.values.zip}
@@ -213,11 +245,11 @@ const ProfileCard = (props) => {
                           </div>
                         </Grid>
                         <Grid item xs={12}>
-                          <label>Website(*)</label>
+                          <label>Website<span style={{color:"red",fontSize:".8em"}}>*</span></label>
                         </Grid>
                         <Grid item xs={12}>
                           <input
-                          className="appInput"
+                            className="appInput"
                             placeholder="Website"
                             onChange={props.handleChange("website")}
                             value={props.values.website}
@@ -228,16 +260,30 @@ const ProfileCard = (props) => {
                           </div>
                         </Grid>
                         <input
-                            type="hidden"
-                            onChange={()=>{}}
-                            value={props.values.profileImage}
-                            disabled
-                          />
-                        
+                          type="hidden"
+                          onChange={() => {}}
+                          value={props.values.profileImage}
+                          disabled
+                        />
 
                         {/* UPLOAD AN IMAGE: https://www.youtube.com/watch?v=SAUvlkTDMM4 */}
                         <Grid item xs={12}>
                           <button onClick={props.handleSubmit}>Update</button>
+                          <div
+                            style={{
+                              position: "absolute",
+                              bottom: "25%",
+                              left: "50%",
+                            }}
+                          >
+                            <FadeLoader
+                              color={"red"}
+                              loading={loading}
+                              size={1}
+                              height={4}
+                              width={2}
+                            />
+                          </div>
                         </Grid>
                       </Grid>
                     </Grid>
@@ -245,19 +291,24 @@ const ProfileCard = (props) => {
                 </Formik>
 
                 {/* //end  part 3*/}
-                <p>* = publicly available in your 'posts' unless you alter it.</p>
-                <p>Once your profile is set up, you can go to your Dashboard and create a Post.</p>
-
-
+                <p>
+                <span style={{color:"red"}}>* </span>= Auto -Completed and 'publicly' available in your 'posts/ads' unless you alter it.
+                </p>
+                <p>
+                <span style={{color:"green"}}>** </span>= Important for other people to find you in proximity searches.
+                </p>
+                <p>
+                  Once your profile is set up, you can go to your 'Dashboard' and
+                  create a Post.
+                </p>
               </Grid>
             </Grid>
           </React.Fragment>
         </>
       )}
-               
-               <p className="cardDevNote" >ProfileCard</p>
+
+      <p className="cardDevNote">ProfileCard</p>
     </Grid>
-   
   );
 };
 

@@ -28,7 +28,7 @@ const AllSitePostsDisplayCard = (props) => {
   //   })
   // }
   /**/ 
-const date_today_formatted = (isoStringDate) => {
+const formatIsoStringDate = (isoStringDate) => {
    let sp = "/"
     if (typeof isoStringDate === "undefined") {
         sp = "/";
@@ -118,7 +118,7 @@ const date_today_formatted = (isoStringDate) => {
                 </div>
                 <div className="cardContactInfo">{props.post.zip}</div>
                 <div className="cardContactInfo">
-                   {date_today_formatted(props.post.dateCreated)} 
+                   {formatIsoStringDate(props.post.dateCreated)} 
                   
                 </div> 
               

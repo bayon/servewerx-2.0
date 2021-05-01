@@ -47,6 +47,7 @@ const PostStepTwo = () => {
           >
             <LinkStyle>Step 3</LinkStyle>
           </Link>
+         
         </Grid>
 
         <Route path="/postStepThree" component={PostStepThree} post={post} />

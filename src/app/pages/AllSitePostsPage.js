@@ -4,11 +4,31 @@ import Icon from "@material-ui/core/Icon";
 import haversine from "haversine-distance";
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import FadeLoader from "react-spinners/FadeLoader";
 import * as postAction from "../../redux/actions/postAction";
 import AllSitePostsDisplayCard from "../cards/AllSitePostsDisplayCard";
 import PostDisplayCard from "../cards/PostDisplayCard";
 
+ /*
+TO GO: SPINNER: 
+deps:
+import FadeLoader from "react-spinners/FadeLoader";
+
+fn:
+let [loading, setLoading] = useState(false);
+let [color, setColor] = useState("red");
+
+jsx:
+<div style={{position:"absolute",bottom:"25%",left:"50%"}} >
+<FadeLoader color={"red"} loading={loading}  size={1} height={4} width={2}   />
+</div>
+*/
+ 
+
 const AllSitePostsPage = (props) => {
+  let [loading, setLoading] = useState(false);
+  let [color, setColor] = useState("red");
+
   const metersToMiles = (i) => {
     return i * 0.000621371192;
   };
@@ -48,6 +68,7 @@ const AllSitePostsPage = (props) => {
         console.log("result:", res);
         setCurrentPosts(res);
         setHaveCurrentPosts(true);
+        setLoading(false);
       })
 
       .catch((err) => console.log("error:", err));
@@ -101,11 +122,13 @@ const AllSitePostsPage = (props) => {
 
   useEffect(() => {
     //initial gets all users once.
+    setLoading(true)
     dispatch(postAction.allSitePosts())
       .then(async (result) => {
         console.log("ALL POSTS RESULTS USEEFFECT:", result);
         setCurrentPosts(result);
         setHaveCurrentPosts(true);
+        setLoading(false)
       })
       .catch((err) => console.log(err));
   }, []);
@@ -290,7 +313,7 @@ const AllSitePostsPage = (props) => {
 
   const handleProximityForm = (e) => {
     e.preventDefault();
-
+    setLoading(true);
     console.log("handle proximity form....");
     console.log(miles + "from " + zipcode);
     zipWithinRadius(zipcode, miles);
@@ -302,19 +325,21 @@ const AllSitePostsPage = (props) => {
       spacing={0}
       className="main-component-container component-background-image"
     >
+      <div style={{position:"absolute",bottom:"25%",left:"50%"}} >
+<FadeLoader color={"red"} loading={loading}  size={1} height={4} width={2}   />
+</div>
       <Grid
         container
         spacing={0}
         style={{
           position: "fixed",
-          top: "90px",
+          top: "60px",
           left: "0px",
           right: "0px",
           zIndex: "100",
           background: "#fff",
           paddingTop: "1em",
           fontSize: ".7em",
-          border: "dotted red 1px",
         }}
       >
         <button onClick={toggleShow}>{show ? "hide" : "filter"}</button>
@@ -418,6 +443,7 @@ const AllSitePostsPage = (props) => {
                 <button type="submit" onClick={handleProximityForm}>
                   find
                 </button>
+               
                 <button onClick={resetProximity} className="filterButton">
                   <Icon style={{ fontSize: "1em" }}>refresh</Icon>
                 </button>
@@ -437,3 +463,4 @@ const AllSitePostsPage = (props) => {
 };
 
 export default AllSitePostsPage;
+ 

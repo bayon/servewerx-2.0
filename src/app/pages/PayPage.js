@@ -10,6 +10,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from "react-redux";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import FadeLoader from "react-spinners/FadeLoader";
 import * as yup from "yup";
 import { config } from '../../Constants';
 import * as postAction from "../../redux/actions/postAction";
@@ -18,7 +19,20 @@ import Home from "../Home";
 
 
 
+/*
+TO GO: SPINNER: 
+deps:
+import FadeLoader from "react-spinners/FadeLoader";
 
+fn:
+let [loading, setLoading] = useState(false);
+let [color, setColor] = useState("red");
+
+jsx:
+<div style={{position:"absolute",bottom:"25%",left:"50%"}} >
+<FadeLoader color={"red"} loading={loading}  size={1} height={4} width={2}   />
+</div>
+*/
 
 
 const useStyles = makeStyles({
@@ -100,7 +114,7 @@ const API_URL = config.url.API_URL
       // Make sure to disable form submission until Stripe.js has loaded.
       return;
     }
-
+    setLoading(true)
     const res = await axios.post(`${API_URL}/pay`, {email: email});
 
     const clientSecret = res.data['client_secret'];
@@ -126,7 +140,7 @@ const API_URL = config.url.API_URL
         dispatch(postAction.acceptPost(props.currentPost._id))
         .then((res) => {
           console.log('accept post result: res:',res)
-
+          setLoading(false);
         })
         .catch((err) => console.error(err))
         // Show a success message to your customer
@@ -136,6 +150,7 @@ const API_URL = config.url.API_URL
         // post-payment actions.
       }
     }
+    
   };
 
 
@@ -200,6 +215,9 @@ if (!inProgress) {
     <>
     { !paid && 
       <Card className={classes.root}>
+        <div style={{position:"absolute",bottom:"25%",left:"50%"}} >
+<FadeLoader color={"red"} loading={loading}  size={1} height={4} width={2}   />
+</div>
       <CardContent className={classes.content}>
         <TextField
           label='Email'
@@ -215,12 +233,13 @@ if (!inProgress) {
         />
         <CardInput />
         <div className={classes.div}>
+          <p>One Post $1.00 per month starting on date submitted.</p>
           <Button variant="contained" color="primary" className={classes.button} onClick={handleSubmitPay}>
             Pay
           </Button>
-          <Button variant="contained" color="primary" className={classes.button} onClick={handleSubmitSub}>
+          {/* <Button variant="contained" color="primary" className={classes.button} onClick={handleSubmitSub}>
             Subscription
-          </Button>
+          </Button> */}
         </div>
       </CardContent>
     </Card>

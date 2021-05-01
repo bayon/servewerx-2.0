@@ -1,23 +1,44 @@
 import Grid from "@material-ui/core/Grid";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import FadeLoader from "react-spinners/FadeLoader";
 import * as authAction from "../../redux/actions/authAction";
 import * as postAction from "../../redux/actions/postAction";
 import PostDisplayCard from "../cards/PostDisplayCard";
 
+/*
+TO GO: SPINNER: 
+deps:
+import FadeLoader from "react-spinners/FadeLoader";
+
+fn:
+let [loading, setLoading] = useState(false);
+let [color, setColor] = useState("red");
+
+jsx:
+<div style={{position:"absolute",bottom:"25%",left:"50%"}} >
+<FadeLoader color={"red"} loading={loading}  size={1} height={4} width={2}   />
+</div>
+*/
+
 const UsersPostsPage = (props) => {
+  let [loading, setLoading] = useState(false);
   var auth = useSelector((state) => state.auth.authorized);
   const [user, setUser] = useState({});
   const dispatch = useDispatch();
   const Kolor = useSelector((state) => state.post.statusColor);
-const postStepsAvailable = useSelector((state) => state.post.postStepsAvailable)
+  const postStepsAvailable = useSelector(
+    (state) => state.post.postStepsAvailable
+  );
   // I NEED A USE EFFECT TO LISTEN FOR CHANGES ON LOWER COMPONENTS.
 
   useEffect(() => {
+    setLoading(true)
     dispatch(authAction.userProfile())
       .then(async (result) => {
         //console.log("AUTH CHECK: profile to check auth ...result:", result);
         setUser(result.data);
+        setLoading(false)
       })
       .catch((err) => console.log(err));
   }, []);
@@ -55,40 +76,42 @@ const postStepsAvailable = useSelector((state) => state.post.postStepsAvailable)
       .catch((err) => console.log(err));
   };
 
-  useEffect(() => {
-    //initial gets all users posts once.
-    dispatch(postAction.allUserPosts(user._id))
-      .then(async (result) => {
-        setCurrentPosts(result);
-        setHaveCurrentPosts(true);
-      })
-      .catch((err) => console.log(err));
-  }, [user]); // user or post post broke something ? yes.
+  //THIS IS DUPLICATE:
+  // useEffect(() => {
+  //   //initial gets all users posts once.
+  //   dispatch(postAction.allUserPosts(user._id))
+  //     .then(async (result) => {
+  //       setCurrentPosts(result);
+  //       setHaveCurrentPosts(true);
+  //     })
+  //     .catch((err) => console.log(err));
+  // }, []); // user or post post broke something ? yes. just removed 'user' from brackets.
 
   useEffect(() => {
+    setLoading(true)
     dispatch(postAction.allUserPosts(user._id))
       .then(async (result) => {
         setCurrentPosts(result);
         setHaveCurrentPosts(true);
+        setLoading(false)
       })
       .catch((err) => console.log(err));
   }, [Kolor]);
 
   useEffect(() => {
+    setLoading(true)
     //initial gets all users posts once.
     dispatch(postAction.allUserPosts(user._id))
       .then(async (result) => {
         setCurrentPosts(result);
         setHaveCurrentPosts(true);
+        setLoading(false)
       })
       .catch((err) => console.log(err));
-  }, []); // get new ones when posted...did NOT solve the problem ....
-// ??????  [postStepsAvailable]  as condition ^^^
+  }, [user]); // get new ones when posted...did NOT solve the problem ....
+  // ??????  [postStepsAvailable]  as condition ^^^
 
-
-
-
-// MAY NEED TO USE 
+  // MAY NEED TO USE
   //HERE?
   // whenever currentPosts update I'd like to update state posts as well. (havePost and posts)
   // ? I creates userPosts array in reducer...now how does AllSitePostsPage page do it. ?
@@ -175,7 +198,7 @@ const postStepsAvailable = useSelector((state) => state.post.postStepsAvailable)
 
   const displayPosts = () => {
     //console.log("DISPLAY currentPosts:",currentPosts);
-    if(currentPosts.length > 0){
+    if (currentPosts.length > 0) {
       //console.log("UsersPostsPage.js currentPosts:",currentPosts);
     }
     if (haveCurrentPosts) {
@@ -220,22 +243,32 @@ const postStepsAvailable = useSelector((state) => state.post.postStepsAvailable)
   }
 
   return (
-    //className="card-plain" 
-    <Grid container direction="column" alignItems="center" justify="center" className="appPage">
-        <Grid item>
-          <span>
-            <h2>Current Posts</h2>
-           
-        
-           
-          </span>
-        </Grid>
-        <Grid item>
-         
-        </Grid>
+    //className="card-plain"
+    <Grid
+      container
+      direction="column"
+      alignItems="center"
+      justify="center"
+      className="appPage"
+    >
+      <div style={{ position: "absolute", bottom: "25%", left: "50%" }}>
+        <FadeLoader
+          color={"red"}
+          loading={loading}
+          size={5}
+          height={4}
+          width={2}
+        />
+      </div>
+      <Grid item>
+        <span>
+          <h2>Current Posts</h2>
+        </span>
+      </Grid>
+      <Grid item></Grid>
 
-        {haveCurrentPosts && displayPosts()}
-        <p className="cardDevNote">UsersPostPage</p>
+      {haveCurrentPosts && displayPosts()}
+      <p className="cardDevNote">UsersPostPage</p>
     </Grid>
   );
 };

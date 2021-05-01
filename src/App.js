@@ -4,7 +4,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import React from "react";
 import { Provider } from "react-redux";
 import "./App.css";
-import StatusChecker from "./app/components/StatusChecker";
+// import StatusChecker from "./app/components/StatusChecker";
 import NavigationMenu from "./app/NavigationMenu";
 import store from "./redux/store";
 
@@ -20,7 +20,7 @@ function App(props) {
                <NavigationMenu props={props}></NavigationMenu>
             </Container>
           </React.Fragment>
-           <StatusChecker></StatusChecker>
+           {/* <StatusChecker></StatusChecker> */}
         </div>
     </Provider>
   );

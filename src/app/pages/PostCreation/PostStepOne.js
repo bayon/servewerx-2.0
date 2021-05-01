@@ -59,8 +59,9 @@ useEffect( () => {
             to="/postStepTwo"
           >
             <LinkStyle>Step 2</LinkStyle>
+            
           </Link>
-
+         
         </Grid>
 
         <Route path="/postStepTwo" component={PostStepTwo}  />
