@@ -17,7 +17,10 @@ const AllSitePostsDisplayCard = (props) => {
   const [seeDetails, setSeeDetails] = useState(false);
   const [inProgress, setInProgress] = useState(false);
 
-  
+  //SET DEFAULT IMAGE IF NON EXISTS.
+   if(props.post.postImage == "default"){
+     props.post.postImage = "servewerx_level_scale-1.0-h100.png";
+  }
   // const  convertDateToReadableString = (date) => {
   //   if (!date) return
   //   const d = new Date(date.replace('-', '/'))
@@ -76,6 +79,7 @@ const formatIsoStringDate = (isoStringDate) => {
           <p className="cardCategory">{currentCategory} </p>
         </Grid>
         <Grid item xs={12} sm={6}   >
+          
           <img
             src={`${IMG_URL}/` + props.post.postImage} //+ props.props.post.postImage
             alt="img"
