@@ -326,12 +326,7 @@ const PostCreateCard = (props) => {
                           value={user._id}
                           disabled
                         />
-                         <input
-                          type="hidden"
-                          onChange={() => {}}
-                          value={props.values.activated}
-                          disabled
-                        />
+                      
 
                         {/* UPLOAD AN IMAGE: https://www.youtube.com/watch?v=SAUvlkTDMM4 */}
                         <Grid item xs={12}>

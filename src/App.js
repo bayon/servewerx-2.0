@@ -5,6 +5,7 @@ import React from "react";
 import { Provider } from "react-redux";
 import "./App.css";
 // import StatusChecker from "./app/components/StatusChecker";
+import AppFooter from "./app/components/AppFooter";
 import NavigationMenu from "./app/NavigationMenu";
 import store from "./redux/store";
 
@@ -21,6 +22,7 @@ function App(props) {
             </Container>
           </React.Fragment>
            {/* <StatusChecker></StatusChecker> */}
+           <AppFooter></AppFooter>
         </div>
     </Provider>
   );

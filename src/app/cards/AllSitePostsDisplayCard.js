@@ -76,7 +76,7 @@ const formatIsoStringDate = (isoStringDate) => {
             <p classname="cardPostType">"Open For Business" </p>
           )}
 
-          <p className="cardCategory">{currentCategory} </p>
+          <p className="cardCategory">{props.post.category} </p>
         </Grid>
         <Grid item xs={12} sm={6}   >
           
@@ -112,11 +112,11 @@ const formatIsoStringDate = (isoStringDate) => {
                 </div>
                 <div className="cardContactInfo">
                   <a
-                    href={`http://` + props.post.website}
+                    href={ props.post.website}
                     className="appAnchor"
                     target="blank"
                   >
-                    {`http://` + props.post.website}
+                    {props.post.website}
                     <Icon className="cardIcon">web</Icon>
                   </a>
                 </div>
