@@ -367,7 +367,7 @@ _id: "60730537d09d5d33501fc987"
                       disabled
                     />
 
-                    <Grid item xs={12} sm={4}>
+                    {/* <Grid item xs={12} sm={4}>
                       <div>
                         <label className="cardLabel" htmlFor="activationStatus">
                           Status:
@@ -391,7 +391,7 @@ _id: "60730537d09d5d33501fc987"
                           Will not be seen if deactivated.
                         </p>
                       </div>
-                    </Grid>
+                    </Grid> */}
 
                     {/* UPLOAD AN IMAGE: https://www.youtube.com/watch?v=SAUvlkTDMM4 */}
                     <Grid container direction="row">

@@ -8,21 +8,20 @@ import * as postAction from "../../redux/actions/postAction";
 import EditPostCard from "./EditPostCard";
 
 const formatIsoStringDate = (isoStringDate) => {
-  let sp = "/"
-   if (typeof isoStringDate === "undefined") {
-       sp = "/";
-   }
-   //let today = new Date();
-   let currentDate  = new Date(isoStringDate);
-   var dd = currentDate.getDate();
-   var mm = currentDate.getMonth() + 1; //As January is 0.
-   var yyyy = currentDate.getFullYear();
+  let sp = "/";
+  if (typeof isoStringDate === "undefined") {
+    sp = "/";
+  }
+  //let today = new Date();
+  let currentDate = new Date(isoStringDate);
+  var dd = currentDate.getDate();
+  var mm = currentDate.getMonth() + 1; //As January is 0.
+  var yyyy = currentDate.getFullYear();
 
-   if (dd < 10) dd = '0' + dd;
-   if (mm < 10) mm = '' + mm;
-   return (mm + sp + dd + sp + yyyy);
-
-}
+  if (dd < 10) dd = "0" + dd;
+  if (mm < 10) mm = "" + mm;
+  return mm + sp + dd + sp + yyyy;
+};
 
 const PostDisplayCard = (props) => {
   const [seeDetails, setSeeDetails] = useState(false);
@@ -33,7 +32,6 @@ const PostDisplayCard = (props) => {
   // const [inProgress, setInProgress] = useState(false);
   const IMG_URL = config.url.IMG_URL;
   console.log("PostDisplayCard - props:", props); //good to here.
-  
 
   var user = useSelector((state) => state.auth.user);
   //console.log("STATE---------user:", user);
@@ -42,20 +40,17 @@ const PostDisplayCard = (props) => {
   // }, [inProgress]);
 
   const initEdit = () => {
-    console.log('. . . . . . . .init edit ')
-    dispatch(postAction.setStatusBlue()).catch((err) => console.error(err))
+    console.log(". . . . . . . .init edit ");
+    dispatch(postAction.setStatusBlue()).catch((err) => console.error(err));
     setAllowEdit(!allowEdit);
-  }
+  };
   const closeEdit = () => {
     setAllowEdit(!allowEdit);
-    dispatch(postAction.setStatusGreen()).catch((err) => console.error(err))
-
+    dispatch(postAction.setStatusGreen()).catch((err) => console.error(err));
   };
 
   return (
     <Grid container spacing={0}>
-            
-
       <Grid item xs={12} sm={10}>
         <p className="cardTitle"> {props.post.title}</p>
       </Grid>
@@ -79,11 +74,13 @@ const PostDisplayCard = (props) => {
                   align="center"
                   justify="center"
                   className="cardDetailsContainer"
-                   
                 >
-
-                  
-                  <Grid item xs={12} sm={8} style={{textAlign:"left",padding:"1em"}}>
+                  <Grid
+                    item
+                    xs={12}
+                    sm={8}
+                    style={{ textAlign: "left", padding: "1em" }}
+                  >
                     <p className="cardTitle">{props.post.title}</p>
                     <p className="cardDescription">{props.post.description}</p>
                     <div className="cardContactInfo">
@@ -92,7 +89,7 @@ const PostDisplayCard = (props) => {
                         style={{ color: "#222", textDecoration: "none" }}
                       >
                         {props.post.email}{" "}
-                        <Icon className="cardIcon"  >email</Icon>
+                        <Icon className="cardIcon">email</Icon>
                       </a>
                     </div>
 
@@ -102,14 +99,23 @@ const PostDisplayCard = (props) => {
                         style={{ color: "#222", textDecoration: "none" }}
                       >
                         {props.post.phone}
-                        <Icon className="cardIcon" >phone</Icon>
+                        <Icon className="cardIcon">phone</Icon>
                       </a>
-                      <p>Date Created:{formatIsoStringDate(props.post.dateCreated)}</p>
-                      <p>Activated:{props.post.activated ? ("YES") : ("NO")}</p>
+                      <p>
+                        Date Created:
+                        {formatIsoStringDate(props.post.dateCreated)}
+                      </p>
+                      {/* <p>Activated:{props.post.activated ? ("YES") : ("NO")}</p> */}
                     </div>
                   </Grid>
-                  <Grid item xs={12} sm={4} className="cardImageGrid" >
-                    {
+                  <Grid item xs={12} sm={4} className="cardImageGrid">
+                    <img
+                      src={`${IMG_URL}/` + props.post.postImage} //+ props.props.post.postImage
+                      alt="img"
+                      className="cardImg"
+                    />
+
+                    {/* {
                       props.post.postImage ? 
                       ( <img
                         src={
@@ -127,10 +133,9 @@ const PostDisplayCard = (props) => {
                       className="cardImg"
                       />)
 
-                    }
-                   
+                    } */}
                   </Grid>
-                  <p className="cardDevNote" >PostDisplayCard</p>
+                  <p className="cardDevNote">PostDisplayCard</p>
                 </Grid>
               )}
             </Grid>
@@ -139,7 +144,7 @@ const PostDisplayCard = (props) => {
                 <button
                   onClick={() => {
                     //setAllowEdit(!allowEdit);
-                    initEdit()
+                    initEdit();
                   }}
                   style={{ color: "blue" }}
                 >

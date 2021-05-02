@@ -150,3 +150,14 @@ servewerx-space-access-key-2
 HAEFYFNNHKJKKG2JVKTX Copy	Just now	More 
 Secret	
 PIw8/1AZiPosqVtTCMdzRTlKES2wLOt8jdWdDkGLjLA Copy
+
+
+5-2-2021
+the following link works:
+<img src="https://servewerx-space-1.nyc3.digitaloceanspaces.com/servewerx_level_scale-1.0-h100.png" alt="img" class="cardImg">
+but same image from Dashboard does not. 
+<img src="https://servewerx-space-1.nyc3.digitaloceanspaces.com/default" alt="img" class="cardImg">
+
+condition at :  AllSitePostsDisplayCard
+needs to be applied to: PostDisplayCard
+actually there was a bad condition in PostDisplayCard.
