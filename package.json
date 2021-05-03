@@ -32,8 +32,7 @@
     "styled-components": "^5.2.3",
     "us-zips": "^4.0.2",
     "web-vitals": "^1.0.1",
-    "yup": "^0.32.9",
-    "zipcodes": "^8.0.0"
+    "yup": "^0.32.9"
   },
   "scripts": {
     "start": "react-scripts start",

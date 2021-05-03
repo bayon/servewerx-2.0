@@ -5,7 +5,6 @@ import { useSelector } from "react-redux";
 import FadeLoader from "react-spinners/FadeLoader";
 import "../../App.css";
 import { config } from "../../Constants";
-import GeoLocatorByZip from "../components/GeoLocatorByZip";
 
 const AllSitePostsDisplayCard = (props) => {
   let [loading, setLoading] = useState(false);
@@ -155,7 +154,7 @@ const AllSitePostsDisplayCard = (props) => {
                   </div>
                 </Grid>
 
-                <Grid container justify="left">
+                {/* <Grid container justify="left">
                   <Grid>
                     {seeDetails && (
                       <button
@@ -176,8 +175,10 @@ const AllSitePostsDisplayCard = (props) => {
                     )}
                     {loading && <p>...loading...</p>}
                   </Grid>
-                </Grid>
+                </Grid> */}
 
+                {/* 
+                npm package zipcodes !? 
                 <Grid
                   item
                   xs={12}
@@ -201,7 +202,7 @@ const AllSitePostsDisplayCard = (props) => {
                       ></GeoLocatorByZip>
                     </Grid>
                   )}
-                </Grid>
+                </Grid> */}
               </Grid>
             </>
           )}
