@@ -14,6 +14,7 @@
     "axios": "^0.21.1",
     "blob-to-buffer": "^1.2.9",
     "formik": "^2.2.6",
+    "google-maps-react": "^2.0.6",
     "haversine-distance": "^1.2.1",
     "markdown-to-jsx": "^7.1.1",
     "multer-s3": "^2.9.0",
@@ -31,7 +32,8 @@
     "styled-components": "^5.2.3",
     "us-zips": "^4.0.2",
     "web-vitals": "^1.0.1",
-    "yup": "^0.32.9"
+    "yup": "^0.32.9",
+    "zipcodes": "^8.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
