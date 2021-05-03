@@ -340,12 +340,14 @@ const AllSitePostsPage = (props) => {
           background: "#fff",
           paddingTop: "1em",
           fontSize: ".7em",
+          boxShadow:"1px 1px 4px #333"
         }}
+        className="filter-grid"  
       >
         <button onClick={toggleShow}>{show ? "hide" : "filter"}</button>
         {show && (
           <>
-            <Grid item xs={12}>
+            <Grid item xs={12} >
               <span>
                 <input
                   type="radio"
@@ -419,7 +421,7 @@ const AllSitePostsPage = (props) => {
               </button>
             </Grid>
             <Grid container alignItems="center" justify="center">
-              <form style={{ fontSize: ".7em" }}>
+              <form style={{ fontSize: "1em" }}>
                 <label></label>
                 <input
                   type="number"

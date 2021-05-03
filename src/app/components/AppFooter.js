@@ -32,9 +32,9 @@ export default function AppFooter() {
       .catch((err) => console.log("error:", err));
   };
   return (
-    <div style={{position:"fixed",bottom:"0px",left:"0px",background:"#000",opacity:".8", width:"100%", height:"25px"}}>
-      <p style={{color:"#fff",fontSize:".5em"}}>Servewerx is created by small business for small business by 
-      &nbsp;<a href="https://www.forteworks.com"  style={{textDecoration:"none",color:"orange"}} target="blank">forteworks.com</a> .
+    <div style={{position:"fixed",bottom:"0px",left:"0px",background:"#000",opacity:".8", width:"100%", height:"45px"}}>
+      <p style={{color:"#fff",fontSize:".7em"}}>Servewerx is created <span style={{fontWeight:"bold",fontStyle:"italic"}}>by small business for small business</span>. 
+      &nbsp;<a href="https://www.forteworks.com"  style={{textDecoration:"none",color:"orange",cursor:"pointer"}} target="blank">forteworks.com</a> 
       </p>
     </div>
   );

@@ -9,7 +9,6 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 import styled from "styled-components";
-//import logo from "../assets/img/servewerx_level_scale-1.0-h200.png)";
 import * as authAction from "../redux/actions/authAction";
 import * as postAction from "../redux/actions/postAction";
 import Home from "./Home";
@@ -20,15 +19,7 @@ import FreeRegistrationPage from "./pages/FreeRegistrationPage";
 import LoginPage from "./pages/LoginPage";
 import ProfilePage from "./pages/ProfilePage";
 
-const rere = () => {
-  console.log('ok did we hit rere or NOT?  this.props.history:',this.props.history)
-  // did not work  return <Redirect to='/profile' />
-  this.props.history.push('/profile')
-  
-}
-
-
-
+ 
 
 const LinkStyle = styled.section`
   padding: 0.3em;
@@ -73,28 +64,6 @@ const hideRegistrationPromt = () => {
     setAnchorEl(null);
   };
 
-
-  const CustomButton = () => {
-    const onClick = () => console.log("Clicked!");
-   // return <div onClick={onClick}>Click me!</div>
-
-    return (
-      <Router>
-          <LinkStyle>
-                <Link
-                  to="/profile"
-                  style={{ textDecoration: "none", color: "#222" }}
-                  onClick={onClick}
-                >
-                  My Profile
-                </Link>
-              </LinkStyle> 
-               <Route path="/profile" component={ProfilePage} /> 
-      </Router>
-     
-    )
-  };
-
  
  
 
@@ -119,6 +88,7 @@ const hideRegistrationPromt = () => {
                 aria-haspopup="true"
                 aria-label="menu"
                 onClick={handleClick}
+                 
               >
                 <MenuIcon />
               </IconButton>
@@ -128,8 +98,9 @@ const hideRegistrationPromt = () => {
                 keepMounted
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
+                 
               >
-                <MenuItem onClick={handleClose}>
+                <MenuItem onClick={handleClose}  >
                   {" "}
                   <LinkStyle>
                     <Link
@@ -246,12 +217,12 @@ const hideRegistrationPromt = () => {
                 )}
               </Menu>
             </Grid>
-            <Grid item sm={2} xs={8}>
-              <h3>SERVEWERX.COM  </h3>
-
+            <Grid item sm={6} xs={8}>
+              {/* <div className="brandname">Servewerx.com  </div> */}
+              <div className="brand_name_logo"></div>
              
             </Grid>
-            <Grid item sm={1} ><div className="logo" ></div></Grid>
+          
             <Grid item sm={3} xs={1}  >
               <Grid container alignItems="center" justify="center">
                 <Grid
@@ -269,8 +240,10 @@ const hideRegistrationPromt = () => {
                       
                  
                 </Grid>
+                
               </Grid>
             </Grid>
+            <Grid item sm={1} ><div className="server_logo" ></div></Grid>
             <Grid item sm={3} xs={12}> 
             {!auth && !hideRegister &&
              <LinkStyle>

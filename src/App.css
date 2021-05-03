@@ -82,10 +82,7 @@ body, html {
 .component-full-background-image {
   /* The image used */
   background-image: url(./app/assets/img/pexels-laurie-shaw-804392.jpg); 
-  /* background-image: url(./app/assets/img/BulletinBoard-2-unsat-transp.png); 
-  background-image: url(./app/assets/img/BulletinBoard-2-unsat.png);  */
-  /* background-image: url(./app/assets/img/BulletinBoard-2.png);  */
-  /* background-image: url(./app/assets/img/BulletinBoard-1blur.png);  */
+
 
   /* Full height */
   height: 100%; 
@@ -96,7 +93,7 @@ body, html {
 }
 
 .component-background-image {
-  background-image: url(./app/assets/img/BulletinBoard-1blur.png); 
+  background-image: url(./app/assets/img/BulletinBoard-1blur.jpg); 
 
    
   height: 100%; 
@@ -105,7 +102,16 @@ body, html {
   background-repeat: no-repeat;
   background-size: cover; 
 }
-
+.brandname{
+  color:#f7b72b;
+  /* font-family:'Courier New', Courier, monospace; */
+  font-family:Arial, Helvetica, sans-serif;
+  font-size:1.7em;
+  font-weight:bold;
+  text-shadow: .5px 0px 1px #222;
+  padding: 0 ;
+  margin: 0;
+}
 .logo {
   background-image: url(./app/assets/img/servewerx_level_scale-1.0-h100.png); 
   height: 40px;
@@ -113,7 +119,22 @@ body, html {
   background-repeat: no-repeat;
   background-size: contain; 
 }
+ 
+.server_logo {
+  background-image: url(./app/assets/img/waiter_saw_finished_resize_200.jpg); 
+  height: 60px;
+   /* background-position: center; */
+  background-repeat: no-repeat;
+  background-size: contain; 
+}
 
+.brand_name_logo {
+  background-image: url(./app/assets/img/servewerx_with_saw_croped.png); 
+  height: 50px;
+   /* background-position: center; */
+  background-repeat: no-repeat;
+  background-size: contain; 
+}
 
 .main-component-container{
    
