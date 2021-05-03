@@ -344,7 +344,7 @@ const AllSitePostsPage = (props) => {
         }}
         className="filter-grid"  
       >
-        <button onClick={toggleShow}>{show ? "hide" : "filter"}</button>
+        <button onClick={toggleShow} style={{cursor:"button"}}>{show ? "hide" : "filter"}</button>
         {show && (
           <>
             <Grid item xs={12} >
@@ -413,10 +413,10 @@ const AllSitePostsPage = (props) => {
                 onBlur={setFilterOption}
                 ref={searchInputEl}
               />
-              <button className=" filterButton">
+              <button className=" filterButton" style={{cursor:"button"}}>
                 <Icon style={{ fontSize: "1em" }}>search</Icon>
               </button>
-              <button onClick={resetAll} className=" filterButton">
+              <button onClick={resetAll} style={{cursor:"button"}} className=" filterButton">
                 <Icon style={{ fontSize: "1em" }}>refresh</Icon>
               </button>
             </Grid>
@@ -442,7 +442,7 @@ const AllSitePostsPage = (props) => {
                   value={zipcode}
                   ref={zipInput}
                 />
-                <button type="submit" onClick={handleProximityForm}>
+                <button type="submit" className="filterButton" onClick={handleProximityForm} style={{cursor:"button"}}>
                   find
                 </button>
                
