@@ -69,6 +69,7 @@ const AllSitePostsPage = (props) => {
         setCurrentPosts(res);
         setHaveCurrentPosts(true);
         setLoading(false);
+        window.scrollTo(0, 0)
       })
 
       .catch((err) => console.log("error:", err));
@@ -116,6 +117,8 @@ const AllSitePostsPage = (props) => {
         console.log(" --oo--  FILTERED POSTS RESULTS:", result);
         setCurrentPosts(result);
         setHaveCurrentPosts(true);
+        window.scrollTo(0, 0)
+
       })
       .catch((err) => console.log(err));
   };
@@ -185,6 +188,8 @@ const AllSitePostsPage = (props) => {
         setNoSort(true);
         break;
     }
+    window.scrollTo(0, 0)
+
   };
 
   const setFilterOption = (e) => {
@@ -344,7 +349,7 @@ const AllSitePostsPage = (props) => {
         }}
         className="filter-grid"  
       >
-        <button onClick={toggleShow} style={{cursor:"button"}}>{show ? "hide" : "filter"}</button>
+        <button onClick={toggleShow}   style={{cursor:"button",fontSize:"1.2em"}}>{show ? "Hide" : "Filter"}</button>
         {show && (
           <>
             <Grid item xs={12} >

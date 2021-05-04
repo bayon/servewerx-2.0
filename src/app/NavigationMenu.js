@@ -80,7 +80,7 @@ const hideRegistrationPromt = () => {
             background: "#fff",
           }}
         >
-          <Grid container spacing={1} alignItems="center" justify="center">
+          <Grid container spacing={1} alignItems="center" justify="center" style={{padding:".2em 0 0 0"}}>
             <Grid item sm={1}>
               <IconButton
                 edge="start"
