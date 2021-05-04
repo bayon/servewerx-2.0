@@ -97,6 +97,7 @@ export default function Home(props) {
               </Grid>
               <Grid item>
                 <p>post as many ads as you'd like.</p>
+                <p>Find Help or Find Work near your zipcode.</p>
               </Grid>
             </Grid>
           </ParallaxLayer>
