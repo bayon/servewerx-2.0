@@ -217,7 +217,7 @@ const AllSitePostsDisplayCard = (props) => {
           />
         </div>
       </Grid>
-      <p className="cardDevNote">AllSitePostsDisplayCard</p>
+      <p className="appDevNote">AllSitePostsDisplayCard</p>
     </>
   );
 };
