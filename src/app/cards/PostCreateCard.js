@@ -330,7 +330,7 @@ const PostCreateCard = (props) => {
 
                         {/* UPLOAD AN IMAGE: https://www.youtube.com/watch?v=SAUvlkTDMM4 */}
                         <Grid item xs={12}>
-                          <button onClick={props.handleSubmit}>
+                          <button onClick={props.handleSubmit} style={{background:"orange",color:"#fff"}}>
                             Continue to Step 2
                           </button>
                           <button

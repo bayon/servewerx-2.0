@@ -25,12 +25,13 @@ export default function Footer(props) {
   return (
     <footer
       style={{
-        height: "100px",
+        height: "200px",
         marginBottom: "50px",
+        width:"100%"
         
       }}
     >
-      <Container maxWidth="lg">
+      <Container maxWidth="lg" style={{background:"#fff"}}>
         <Grid container>
           <Grid item xs={12} sm={4}>
             <div style={{ textAlign: "center", marginTop: "20px" }}>
