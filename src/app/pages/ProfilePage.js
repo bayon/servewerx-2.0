@@ -1,9 +1,9 @@
 import Grid from "@material-ui/core/Grid";
+import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as authAction from "../../redux/actions/authAction";
 import ProfileCard from "../cards/ProfileCard";
-
 
 const ProfilePage = (props) => {
   var auth = useSelector((state) => state.auth.authorized);
@@ -12,7 +12,7 @@ const ProfilePage = (props) => {
   //var haveUser = useSelector((state) => state.auth.haveUser);
   const dispatch = useDispatch();
 
-   useEffect(() => {
+  useEffect(() => {
     dispatch(authAction.userProfile())
       .then(async (result) => {
         console.log("result:", result);
@@ -33,27 +33,95 @@ const ProfilePage = (props) => {
       .catch((err) => console.log(err));
   };
 
-  
-
   return (
-    
-    
-        <Grid
-          container
-          spacing={0}
-          // align="center"
-          // justify="center"
-          direction="column"
-          className="main-component-container"
-        >
-        
-        <h3>My Profile</h3>
+    <Grid
+      container
+      spacing={0}
+      // align="center"
+      // justify="center"
+      direction="column"
+      className="main-component-container"
+    >
+      <h3>My Profile</h3>
 
-        <ProfileCard user={user} refresh={getUserProfile}></ProfileCard>
-        <p className="cardDevNote" >ProfilePage</p>
-        </Grid>
-    
+      <ProfileCard user={user} refresh={getUserProfile}></ProfileCard>
+      <p className="cardDevNote">ProfilePage</p>
+      <Parallax pages={2} style={{ top: "0", left: "0" }}>
+        <ParallaxLayer
+          offset={0}
+          speed={2.5}
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <p>Scroll down</p>
+        </ParallaxLayer>
+
+        <ParallaxLayer
+          offset={1}
+          speed={2}
+          style={{ backgroundColor: "#ff6d6d" }}
+        />
+
+        <ParallaxLayer
+          offset={1}
+          speed={0.5}
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            color: "white",
+          }}
+        >
+          <p>Scroll up</p>
+        </ParallaxLayer>
+      </Parallax>
+    </Grid>
   );
 };
 
 export default ProfilePage;
+
+
+/*
+TO GO: reat-spring Parallax 
+
+import { Parallax, ParallaxLayer } from "@react-spring/parallax";
+
+
+ <Parallax pages={2} style={{ top: "0", left: "0" }}>
+        <ParallaxLayer
+          offset={0}
+          speed={2.5}
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <p>Scroll down</p>
+        </ParallaxLayer>
+
+        <ParallaxLayer
+          offset={1}
+          speed={2}
+          style={{ backgroundColor: "#ff6d6d" }}
+        />
+
+        <ParallaxLayer
+          offset={1}
+          speed={0.5}
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            color: "white",
+          }}
+        >
+          <p>Scroll up</p>
+        </ParallaxLayer>
+      </Parallax>
+
+*/

@@ -102,6 +102,14 @@ body, html {
   background-repeat: no-repeat;
   background-size: cover; 
 }
+
+.server-background-image {
+  background-image: url(./app/assets/img/waiter_saw_finished_resize_blur_1000_transp.png); 
+  height: 100%; 
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; 
+}
 .brandname{
   color:#f7b72b;
   /* font-family:'Courier New', Courier, monospace; */
@@ -124,6 +132,14 @@ body, html {
   background-image: url(./app/assets/img/waiter_saw_finished_resize_200.jpg); 
   height: 60px;
    /* background-position: center; */
+  background-repeat: no-repeat;
+  background-size: contain; 
+}
+
+.server-logo-transparent {
+  background-image: url(./app/assets/img/waiter_saw_finished_resize_986_transp.png); 
+  height: 500px ;
+    background-position: center; 
   background-repeat: no-repeat;
   background-size: contain; 
 }

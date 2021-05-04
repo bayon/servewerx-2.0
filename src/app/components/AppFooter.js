@@ -1,3 +1,4 @@
+import Icon from "@material-ui/core/Icon";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import * as postAction from "../../redux/actions/postAction";
@@ -35,6 +36,20 @@ export default function AppFooter() {
     <div style={{position:"fixed",bottom:"0px",left:"0px",background:"#000",opacity:".8", width:"100%", height:"45px"}}>
       <p style={{color:"#fff",fontSize:".7em"}}>Servewerx is created <span style={{fontWeight:"bold",fontStyle:"italic"}}>by small business for small business</span>. 
       &nbsp;<a href="https://www.forteworks.com"  style={{textDecoration:"none",color:"orange",cursor:"pointer"}} target="blank">forteworks.com</a> 
+      &nbsp;&nbsp;
+      <a
+                href="tel:8122670592"
+                style={{ color: "orange", textDecoration: "none" }}
+              >
+                (812) 267-0592<Icon className="appIcon">phone</Icon>
+              </a>
+              &nbsp;&nbsp;
+              <a
+                href="mailto:forteworks@gmail.com"
+                style={{ color: "orange", textDecoration: "none" }}
+              >
+                forteworks@gmail.com<Icon className="appIcon">email</Icon>
+              </a>
       </p>
     </div>
   );
