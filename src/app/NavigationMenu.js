@@ -12,6 +12,7 @@ import styled from "styled-components";
 import * as authAction from "../redux/actions/authAction";
 import * as postAction from "../redux/actions/postAction";
 import Home from "./Home";
+import AdminPage from "./pages/Admin";
 import AllSitePostsPage from "./pages/AllSitePostsPage";
 import DashboardPage from "./pages/DashboardPage";
 // import RegisterPage from "./pages/RegisterPage";
@@ -33,6 +34,7 @@ export default function NavigationMenu(props) {
   console.log("navigation menu props:", props);
   var auth = useSelector((state) => state.auth.authorized);
   const [user, setUser] = useState({});
+  const [admin,setAdmin] =  useState(false);
   const [redirect, setRedirect] = useState(null);
   const [hideRegister, setHideRegister] = useState(false);
   const dispatch = useDispatch();
@@ -46,10 +48,13 @@ export default function NavigationMenu(props) {
     dispatch(authAction.userProfile())
       .then(async (result) => {
         setUser(result.data);
-        console.log("user:", user);
+        console.log("NAVIGATION : user:", user);
+        if( user._id === "607da64cdfa3380004aceabf"){
+          setAdmin(true);
+        }
       })
       .catch((err) => console.log(err));
-  }, []);
+  }, [user]);
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const handleClick = (event) => {
@@ -143,6 +148,19 @@ export default function NavigationMenu(props) {
                         </Link>
                       </LinkStyle>
                     </MenuItem>
+                   { admin && 
+                       <MenuItem onClick={handleClose}>
+                       
+                       <LinkStyle>
+                         <Link
+                           to="/admin"
+                           style={{ textDecoration: "none", color: "#222" }}
+                         >
+                           Admin
+                         </Link>
+                       </LinkStyle>
+                     </MenuItem>
+                    }
                   </>
                 )}
                 {!auth ? (
@@ -266,6 +284,7 @@ export default function NavigationMenu(props) {
         <Route path="/allSitePosts" component={AllSitePostsPage} />
         <Route path="/logout" component={Home} />
         <Route path="/register" component={FreeRegistrationPage} />
+        <Route path="/admin" component={AdminPage} />
       </Router>
     </div>
   );
