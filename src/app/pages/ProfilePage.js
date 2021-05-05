@@ -14,7 +14,7 @@ const ProfilePage = (props) => {
   useEffect(() => {
     dispatch(authAction.userProfile())
       .then(async (result) => {
-        console.log("result:", result);
+        console.log("profile result:", result);
         setUser(result.data);
       })
       .catch((err) => console.log(err));
@@ -45,7 +45,11 @@ const ProfilePage = (props) => {
 
       <ProfileCard user={user} refresh={getUserProfile}></ProfileCard>
       <p className="cardDevNote">ProfilePage</p>
-      
+       {/* <Grid>
+         { user._id === "607da64cdfa3380004aceabf" &&
+            <h1>ME</h1>
+         }
+       </Grid> */}
     </Grid>
   );
 };
