@@ -3,7 +3,7 @@
  .appDevNote{
   font-size:.7em;
   font-style: italic;
-  display:none;
+  display:block;
 }
 
 
@@ -176,6 +176,10 @@ body, html {
   cursor:pointer;
 }
  
+.filterLabel{
+   font-weight:500;
+    margin:0 1em 0 1em;
+}
 
 
 .cardDevNote{

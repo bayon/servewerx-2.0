@@ -41,7 +41,21 @@ const PostCreateCard = (props) => {
     dispatch(authAction.getCategories())
       .then((results) => {
         console.log("category results:", results);
-        setCategories(results);
+        
+          //var sortedCategories = []
+          // return currentPosts
+          //   .sort((a, b) => (a.category > b.category ? 1 : -1))
+          //   .map((post, i) => {
+          //     return (
+          //       <AllSitePostsDisplayCard
+          //         key={i}
+          //         post={post}
+          //       ></AllSitePostsDisplayCard>
+          //     );
+          //   });
+        const sortedResults = results.sort((a, b) => (a.title > b.title ? 1 : -1))
+        //sort alpha here?
+        setCategories(sortedResults);
       })
       .catch((err) => console.error(err));
   }, []);

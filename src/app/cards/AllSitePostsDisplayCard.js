@@ -10,6 +10,7 @@ const AllSitePostsDisplayCard = (props) => {
   let [loading, setLoading] = useState(false);
   let [color, setColor] = useState("red");
 
+  var us_states = useSelector((state) => state.auth.usstates);
   const IMG_URL = config.url.IMG_URL;
   var auth = useSelector((state) => state.auth.authorized);
   var user = useSelector((state) => state.auth.user);
@@ -148,7 +149,8 @@ const AllSitePostsDisplayCard = (props) => {
                       <Icon className="cardIcon">web</Icon>
                     </a>
                   </div>
-                  <div className="cardContactInfo">{props.post.zip}</div>
+                  <div className="cardContactInfo">{props.post.city} ,{us_states[parseInt(props.post.state)]} &nbsp;{props.post.zip}  </div>
+                  
                   <div className="cardContactInfo">
                     {formatIsoStringDate(props.post.dateCreated)}
                   </div>
