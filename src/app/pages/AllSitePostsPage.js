@@ -9,7 +9,7 @@ import * as postAction from "../../redux/actions/postAction";
 import AllSitePostsDisplayCard from "../cards/AllSitePostsDisplayCard";
 import PostDisplayCard from "../cards/PostDisplayCard";
 
- /*
+/*
 TO GO: SPINNER: 
 deps:
 import FadeLoader from "react-spinners/FadeLoader";
@@ -23,7 +23,6 @@ jsx:
 <FadeLoader color={"red"} loading={loading}  size={1} height={4} width={2}   />
 </div>
 */
- 
 
 const AllSitePostsPage = (props) => {
   let [loading, setLoading] = useState(false);
@@ -69,7 +68,7 @@ const AllSitePostsPage = (props) => {
         setCurrentPosts(res);
         setHaveCurrentPosts(true);
         setLoading(false);
-        window.scrollTo(0, 0)
+        window.scrollTo(0, 0);
       })
 
       .catch((err) => console.log("error:", err));
@@ -85,7 +84,7 @@ const AllSitePostsPage = (props) => {
   const [sortLatest, setSortLatest] = useState(false);
   const [sortPostType1, setSortPostType1] = useState(false);
   const [sortPostType2, setSortPostType2] = useState(false);
-  // const [sortCategory, setSortCategory] = useState(false);
+   const [sortCategory, setSortCategory] = useState(false);
 
   const [sortId, setSortId] = useState(false);
   const [sortZip, setSortZip] = useState(false);
@@ -117,21 +116,20 @@ const AllSitePostsPage = (props) => {
         console.log(" --oo--  FILTERED POSTS RESULTS:", result);
         setCurrentPosts(result);
         setHaveCurrentPosts(true);
-        window.scrollTo(0, 0)
-
+        window.scrollTo(0, 0);
       })
       .catch((err) => console.log(err));
   };
 
   useEffect(() => {
     //initial gets all users once.
-    setLoading(true)
+    setLoading(true);
     dispatch(postAction.allSitePosts())
       .then(async (result) => {
         console.log("ALL POSTS RESULTS USEEFFECT:", result);
         setCurrentPosts(result);
         setHaveCurrentPosts(true);
-        setLoading(false)
+        setLoading(false);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -155,7 +153,7 @@ const AllSitePostsPage = (props) => {
     setSortLatest(false);
     setSortPostType1(false);
     setSortPostType2(false);
-    // setSortCategory(false);
+     setSortCategory(false);
     setNoSort(false);
   };
   const setSortOption = (e) => {
@@ -181,15 +179,14 @@ const AllSitePostsPage = (props) => {
       case "postType2":
         setSortPostType2(true);
         break;
-      // case "category":
-      //   setSortCategory(true);
-      //   break;
+      case "category":
+        setSortCategory(true);
+        break;
       default:
         setNoSort(true);
         break;
     }
-    window.scrollTo(0, 0)
-
+    window.scrollTo(0, 0);
   };
 
   const setFilterOption = (e) => {
@@ -260,18 +257,18 @@ const AllSitePostsPage = (props) => {
             );
           });
       }
-      // if (sortCategory) {
-      //   return currentPosts
-      //     .sort((a, b) => (a.category > b.category ? 1 : -1))
-      //     .map((post, i) => {
-      //       return (
-      //         <AllSitePostsDisplayCard
-      //           key={i}
-      //           post={post}
-      //         ></AllSitePostsDisplayCard>
-      //       );
-      //     });
-      // }
+      if (sortCategory) {
+        return currentPosts
+          .sort((a, b) => (a.category > b.category ? 1 : -1))
+          .map((post, i) => {
+            return (
+              <AllSitePostsDisplayCard
+                key={i}
+                post={post}
+              ></AllSitePostsDisplayCard>
+            );
+          });
+      }
 
       if (noSort) {
         return currentPosts.map((post, i) => {
@@ -330,9 +327,15 @@ const AllSitePostsPage = (props) => {
       spacing={0}
       className="main-component-container component-background-image"
     >
-      <div style={{position:"absolute",bottom:"25%",left:"50%"}} >
-<FadeLoader color={"red"} loading={loading}  size={1} height={4} width={2}   />
-</div>
+      <div style={{ position: "absolute", bottom: "25%", left: "50%" }}>
+        <FadeLoader
+          color={"red"}
+          loading={loading}
+          size={1}
+          height={4}
+          width={2}
+        />
+      </div>
       <Grid
         container
         spacing={0}
@@ -345,15 +348,24 @@ const AllSitePostsPage = (props) => {
           background: "#fff",
           paddingTop: "1em",
           fontSize: ".7em",
-          boxShadow:"1px 1px 4px #333"
+          boxShadow: "1px 1px 4px #333",
         }}
-        className="filter-grid"  
+        className="filter-grid"
       >
-        <button onClick={toggleShow}   style={{cursor:"button",fontSize:"1.2em"}}>{show ? "Hide" : "Filter"}</button>
+        <Grid container alignItems="center">
+        <Grid item xs={12} sm={1}>
+        <button
+          onClick={toggleShow}
+          style={{ cursor: "button", fontSize: "1.2em" }}
+        >
+          {show ? "Hide" : "Filter"}
+        </button>
+        </Grid>
         {show && (
           <>
-            <Grid item xs={12} >
-              <span>
+            
+              <Grid item xs={12} sm={4}>
+                <label className="filterLabel" >Type:</label>
                 <input
                   type="radio"
                   id="name"
@@ -398,66 +410,78 @@ const AllSitePostsPage = (props) => {
                 <label htmlFor="postType2" className="radioLabel">
                   Hiring
                 </label>
-                {/* <input
-              type="radio"
-              id="category"
-              name="sortOption"
-              value="category"
-              onChange={setSortOption}
-            />
-            <label htmlFor="category" >Category</label> */}
-              </span>
-            </Grid>
-
-            <Grid container alignItems="center" justify="center">
-              <input
-                className="appInputAuto"
-                type="text"
-                id="filterKey"
-                name="filterKey"
-                onBlur={setFilterOption}
-                ref={searchInputEl}
-              />
-              <button className=" filterButton" style={{cursor:"button"}}>
-                <Icon style={{ fontSize: "1em" }}>search</Icon>
-              </button>
-              <button onClick={resetAll} style={{cursor:"button"}} className=" filterButton">
-                <Icon style={{ fontSize: "1em" }}>refresh</Icon>
-              </button>
-            </Grid>
-            <Grid container alignItems="center" justify="center">
-              <form style={{ fontSize: "1em" }}>
-                <label></label>
                 <input
-                  type="number"
-                  className="appTinyInput"
-                  placeholder="miles"
-                  onChange={handleMiles}
-                  value={miles}
-                  name="miles"
-                  ref={milesInput}
-                ></input>
-                <label> from </label>
-                <input
-                  type="text"
-                  className="appTinyInput"
-                  placeholder="zipcode"
-                  onChange={handleZip}
-                  name="zipcode"
-                  value={zipcode}
-                  ref={zipInput}
+                  type="radio"
+                  id="category"
+                  name="sortOption"
+                  value="category"
+                  onChange={setSortOption}
                 />
-                <button type="submit" className="filterButton" onClick={handleProximityForm} style={{cursor:"button"}}>
-                  find
+                <label htmlFor="category">Category</label>
+              </Grid>
+
+              <Grid item item xs={12} sm={3}>
+                <label className="filterLabel" >Keyword:</label>
+                <input
+                  className="appInputAuto"
+                  type="text"
+                  id="filterKey"
+                  name="filterKey"
+                  onBlur={setFilterOption}
+                  ref={searchInputEl}
+                />
+                <button className=" filterButton" style={{ cursor: "button" }}>
+                  <Icon style={{ fontSize: "1em" }}>search</Icon>
                 </button>
-               
-                <button onClick={resetProximity} className="filterButton">
+                <button
+                  onClick={resetAll}
+                  style={{ cursor: "button" }}
+                  className=" filterButton"
+                >
                   <Icon style={{ fontSize: "1em" }}>refresh</Icon>
                 </button>
-              </form>
-            </Grid>
+              </Grid>
+
+              <Grid item xs={12} sm={3}    >
+                <form style={{ fontSize: "1em" }}>
+                  <label className="filterLabel" >Location:</label>
+                  <input
+                    type="number"
+                    className="appTinyInput"
+                    placeholder="miles"
+                    onChange={handleMiles}
+                    value={miles}
+                    name="miles"
+                    ref={milesInput}
+                  ></input>
+                  <label> from </label>
+                  <input
+                    type="text"
+                    className="appTinyInput"
+                    placeholder="zipcode"
+                    onChange={handleZip}
+                    name="zipcode"
+                    value={zipcode}
+                    ref={zipInput}
+                  />
+                  <button
+                    type="submit"
+                    className="filterButton"
+                    onClick={handleProximityForm}
+                    style={{ cursor: "button" }}
+                  >
+                    find
+                  </button>
+
+                  <button onClick={resetProximity} className="filterButton">
+                    <Icon style={{ fontSize: "1em" }}>refresh</Icon>
+                  </button>
+                </form>
+              </Grid>
+           
           </>
         )}
+         </Grid>
       </Grid>
 
       <Grid item xs={12} style={{ marginTop: "200px" }}>
@@ -470,4 +494,3 @@ const AllSitePostsPage = (props) => {
 };
 
 export default AllSitePostsPage;
- 

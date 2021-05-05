@@ -19,10 +19,8 @@ import FreeRegistrationPage from "./pages/FreeRegistrationPage";
 import LoginPage from "./pages/LoginPage";
 import ProfilePage from "./pages/ProfilePage";
 
- 
-
 const LinkStyle = styled.section`
-  padding: 0.3em;
+  padding: 0 0.3em 0 0.3em;
   height: 35px;
   background: #fff;
   color: #333;
@@ -32,18 +30,16 @@ const LinkStyle = styled.section`
 `;
 
 export default function NavigationMenu(props) {
-  console.log('navigation menu props:',props)
+  console.log("navigation menu props:", props);
   var auth = useSelector((state) => state.auth.authorized);
   const [user, setUser] = useState({});
-  const [redirect,setRedirect] = useState(null)
-  const [hideRegister,setHideRegister] = useState(false)
+  const [redirect, setRedirect] = useState(null);
+  const [hideRegister, setHideRegister] = useState(false);
   const dispatch = useDispatch();
- 
 
-
-const hideRegistrationPromt = () => {
-  setHideRegister(!hideRegister)
-}
+  const hideRegistrationPromt = () => {
+    setHideRegister(!hideRegister);
+  };
 
   useEffect(() => {
     //check authorization
@@ -64,9 +60,6 @@ const hideRegistrationPromt = () => {
     setAnchorEl(null);
   };
 
- 
- 
-
   return (
     <div>
       <Router>
@@ -80,7 +73,13 @@ const hideRegistrationPromt = () => {
             background: "#fff",
           }}
         >
-          <Grid container spacing={1} alignItems="center" justify="center" style={{padding:".2em 0 0 0"}}>
+          <Grid
+            container
+            spacing={1}
+            alignItems="bottom"
+            justify="center"
+            style={{ padding: ".2em 0 0 0" }}
+          >
             <Grid item sm={1}>
               <IconButton
                 edge="start"
@@ -88,7 +87,6 @@ const hideRegistrationPromt = () => {
                 aria-haspopup="true"
                 aria-label="menu"
                 onClick={handleClick}
-                 
               >
                 <MenuIcon />
               </IconButton>
@@ -98,15 +96,13 @@ const hideRegistrationPromt = () => {
                 keepMounted
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
-                 
               >
-                <MenuItem onClick={handleClose}  >
+                <MenuItem onClick={handleClose}>
                   {" "}
                   <LinkStyle>
                     <Link
                       to="/"
                       style={{ textDecoration: "none", color: "#222" }}
-                       
                     >
                       Home
                     </Link>
@@ -142,7 +138,7 @@ const hideRegistrationPromt = () => {
                         <Link
                           to="/profile"
                           style={{ textDecoration: "none", color: "#222" }}
-                         >
+                        >
                           My Profile
                         </Link>
                       </LinkStyle>
@@ -220,48 +216,49 @@ const hideRegistrationPromt = () => {
             <Grid item sm={6} xs={8}>
               {/* <div className="brandname">Servewerx.com  </div> */}
               <div className="brand_name_logo"></div>
-             
             </Grid>
-          
-            <Grid item sm={3} xs={1}  >
+
+            <Grid item sm={3} xs={1}>
               <Grid container alignItems="center" justify="center">
-                <Grid
-                  item
-                >
-                   <button onClick={hideRegistrationPromt}>
-                   <Link
-                          to="/allSitePosts"
-                          style={{ textDecoration: "none", color: "#222" }}
-                        >
-                          Browse
-                        </Link>
-                   </button>
-                    
-                      
-                 
+                <Grid item>
+                  <button onClick={hideRegistrationPromt}>
+                    <Link
+                      to="/allSitePosts"
+                      style={{
+                        textDecoration: "none",
+                        color: "darkgreen",
+                        fontWeight: "600",
+                      }}
+                    >
+                      Browse
+                    </Link>
+                  </button>
                 </Grid>
-                
               </Grid>
             </Grid>
-            <Grid item sm={1} ><div className="server_logo" ></div></Grid>
-            <Grid item sm={3} xs={12}> 
-            {!auth && !hideRegister &&
-             <LinkStyle>
-            <Link
-              to="/register"
-              style={{ textDecoration: "none", color: "red",fontWeight:"bold" }}
-            >
-              Register
-            </Link>
-          </LinkStyle>
-            }
-             </Grid>
-           </Grid>
+            <Grid item sm={1}>
+              <div className="server_logo"></div>
+            </Grid>
+            <Grid item sm={1} xs={12} style={{ textAlign: "right" }}>
+              {!auth && !hideRegister && (
+                <Link
+                  to="/register"
+                  style={{
+                    textDecoration: "none",
+                    color: "red",
+                    fontWeight: "bold",
+                    backgroundColor: "transparent",
+                  }}
+                >
+                  Register
+                </Link>
+              )}
+            </Grid>
+          </Grid>
         </Toolbar>
 
-
         <Route exact path="/" component={Home} />
-        <Route exact path="/build" component={Home}  /> 
+        <Route exact path="/build" component={Home} />
         <Route path="/login" component={LoginPage} />
         {/* <Route path="/register" component={RegisterPage} /> */}
         <Route path="/dashboard" component={DashboardPage} />
