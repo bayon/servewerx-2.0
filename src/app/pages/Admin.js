@@ -37,7 +37,7 @@ const AdminPage = (props) => {
         alert("STRIKE OUT!")
       }else{
         alert('THREE OUTS!')
-        setOuts(0)
+        switchAtBat() //reset outs,strikes,balls,walks
       }
       setStrikes(0);
     }
