@@ -93,9 +93,11 @@ export default function FreeRegistrationPage(props) {
                 href="sms:+17702855486&body=servewerx"
                 style={{ textDecoration: "none", fontWeight: "bold" }}
               >
-                SERVEWERX <Icon>sms</Icon>
+                SERVEWERX <Icon>sms</Icon> 
               </a>
+              770-285-5486
               <p>to get your code.</p>
+              <p></p>
             </Card>
             {/* <input name="sms_response" placeholder="sms response here."></input>
               <button onClick={ () => {console.log('need to verify user....phone....')} }>Submit Your Response</button> */}

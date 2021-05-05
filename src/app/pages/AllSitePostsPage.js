@@ -416,8 +416,10 @@ const AllSitePostsPage = (props) => {
                   name="sortOption"
                   value="category"
                   onChange={setSortOption}
+                  className="radioInput"
+
                 />
-                <label htmlFor="category">Category</label>
+                <label htmlFor="category" className="radioLabel">Category</label>
               </Grid>
 
               <Grid item item xs={12} sm={3}>
@@ -488,7 +490,7 @@ const AllSitePostsPage = (props) => {
         {haveCurrentPosts && displayPosts()}
       </Grid>
 
-      <p className="cardDevNote">AllSitePostsPage</p>
+      <p className="appDevNote">AllSitePostsPage</p>
     </Grid>
   );
 };

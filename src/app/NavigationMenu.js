@@ -158,7 +158,7 @@ export default function NavigationMenu(props) {
                         </Link>
                       </LinkStyle>
                     </MenuItem>
-                    {/* <MenuItem onClick={handleClose}>
+                     <MenuItem onClick={handleClose}>
                       {" "}
                       <LinkStyle>
                         <Link
@@ -168,7 +168,7 @@ export default function NavigationMenu(props) {
                           Register
                         </Link>
                       </LinkStyle>
-                    </MenuItem> */}
+                    </MenuItem> 
                   </>
                 ) : (
                   <>
@@ -245,12 +245,12 @@ export default function NavigationMenu(props) {
                   to="/register"
                   style={{
                     textDecoration: "none",
-                    color: "red",
+                    color: "orange",
                     fontWeight: "bold",
                     backgroundColor: "transparent",
                   }}
                 >
-                  Register
+                  Get Started
                 </Link>
               )}
             </Grid>
