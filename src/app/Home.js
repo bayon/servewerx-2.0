@@ -1,3 +1,4 @@
+import Card from "@material-ui/core/Card";
 import Grid from "@material-ui/core/Grid";
 import { Parallax, ParallaxLayer } from "@react-spring/parallax";
 import React from "react";
@@ -17,7 +18,7 @@ export default function Home(props) {
         >
           <ParallaxLayer
             offset={0}
-            speed={2.5}
+            speed={1}
             style={{
               display: "flex",
               justifyContent: "center",
@@ -67,7 +68,7 @@ export default function Home(props) {
 
           <ParallaxLayer
             offset={1}
-            speed={0.5}
+            speed={2}
             style={{
               display: "flex",
               justifyContent: "center",
@@ -81,24 +82,85 @@ export default function Home(props) {
               container
               justify="center"
               alignItems="center"
-              spacing={1}
-              direction="column"
-              style={{textShadow:"1px 1px #000"}}
+              style={{ marginBottom: "40px" }}
             >
-              <h1>Browse for Free</h1>
-              <Grid item>
-                <h2>One Dollar</h2>
+              <Grid
+                item
+                xs={12}
+                sm={12}
+                style={{
+                  textShadow: "1px 0px #000",
+                  
+                }}
+              >
+                <h2>Browse Business Cards For Free</h2>
+                <p>Register and post cards for $1.</p>
+                <p>( securely through 'Stripe' )</p>
+                <h3>Find, People and Work, Near You.</h3>
               </Grid>
-              <Grid item>
-                <h1>$1</h1>
-              </Grid>
-              <Grid item>
-                <h2>To Post An Ad per month</h2>
-              </Grid>
-              <Grid item>
-                <p>post as many ads as you'd like.</p>
-                <p>Find Help or Find Work near your zipcode.</p>
-              </Grid>
+
+              <Card style={{ padding: "15px",margin:"50px" }}>
+                <Grid container direction="row"   alignItems="center"
+                    justify="center">
+                  <Grid
+                    item
+                    xs={12}
+                    sm={10}
+                    style={{
+                      textAlign: "left",
+                      fontSize: ".7em",
+                      padding: "2em",
+                    
+                    }}
+                  >
+                    <h3>Why Servewerx?</h3>
+                    <p>It's a simple bulletin board for your business card basically.</p>
+                    <p>
+                      I worked construction and remodeling jobs for 15 years
+                      straight, back in the 90's and early 2000's. For the last
+                      11 years I've been working creating web applications. I
+                      recently decided to start up a small remodeling business
+                      myself, 'Blue Cottage Remodeling'. And I've noticed that
+                      getting your name out there is a little more expensive
+                      than I'd like.
+                    </p>
+                    <p>
+                      It can cost about $15 a week to put an ad in your local
+                      paper and about $5 to post on other sites. Then you should
+                      probably create a 'facebook' page for yourself. I think
+                      that's free, but to promote it you have to spend some
+                      money. Not to mention the more expensive advertising
+                      options.
+                    </p>
+                    <p>
+                      So I figured I'd just do it for free, but then you know,
+                      there'd be people who didn't really care, posting crazy
+                      stuff. So I'm charging a dollar for a month is a pretty
+                      good deal for both you and me. And everytime I put an add
+                      out for Servewerx, your name gets out there too.
+                    </p>
+                    <p>
+                      I'll make more cool features for you in the future but for
+                      now this is what I got. 
+                    </p>
+
+                    <p> - Bayon Forte </p>
+                  </Grid>
+
+                  <Grid
+                    item
+                    xs={12}
+                    sm={2}
+                  
+                    
+                  >
+                    <div
+                      className="creatorImage"
+                      style={{ height: "100px" }}
+                    ></div>
+                  </Grid>
+                </Grid>
+              </Card>
             </Grid>
           </ParallaxLayer>
         </Parallax>

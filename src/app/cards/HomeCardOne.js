@@ -32,12 +32,7 @@ const HomeCardOne = () => {
             Skilled Professionals
           </Typography>
 
-          <Typography variant="body2" component="p" color="textSecondary">
-            Crafstmen 
-          </Typography>
-          <Typography variant="body2" component="p" color="textSecondary">
-            and
-          </Typography>
+        
           <Typography variant="body2" component="p" color="textSecondary">
             Small Businesses
           </Typography>

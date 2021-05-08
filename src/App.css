@@ -151,7 +151,14 @@ body, html {
   background-repeat: no-repeat;
   background-size: contain; 
 }
-
+.creatorImage {
+  background-image: url(./app/assets/img/IMG_0729.jpg); 
+  height: 200px;
+  width:auto;
+  background-position: center; 
+  background-repeat: no-repeat;
+  background-size: contain; 
+}
 .main-component-container{
    
   /* border:dotted 1px white; */
