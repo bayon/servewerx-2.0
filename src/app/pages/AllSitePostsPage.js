@@ -411,7 +411,8 @@ const AllSitePostsPage = (props) => {
                   Hiring
                 </label>
                 {/* 
-                //BUG: rapid flashes in UI possibly multiple refreshes...
+                //BUG: rapid flashes in UI possibly multiple refreshes...due to loop in call to userprofile to set user...
+                */}
                 <input
                   type="radio"
                   id="category"
@@ -421,7 +422,7 @@ const AllSitePostsPage = (props) => {
                   className="radioInput"
 
                 />
-                <label htmlFor="category" className="radioLabel">Category</label> */}
+                <label htmlFor="category" className="radioLabel">Category</label> 
               </Grid>
 
               <Grid item item xs={12} sm={3}>

@@ -54,7 +54,7 @@ export default function NavigationMenu(props) {
         }
       })
       .catch((err) => console.log(err));
-  }, [user]);
+  }, []);//user
 
   const [anchorEl, setAnchorEl] = React.useState(null);
   const handleClick = (event) => {
