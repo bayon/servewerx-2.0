@@ -173,6 +173,10 @@ button {
 
 .pageTitle {}
 
+.filter-grid{
+  background-color:rgba(255,255,255,0.90) !important;
+}
+
 .filterButton {
   margin-right: 5px;
   margin-left: 5px;
