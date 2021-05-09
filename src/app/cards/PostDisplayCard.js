@@ -49,6 +49,10 @@ const PostDisplayCard = (props) => {
     dispatch(postAction.setStatusGreen()).catch((err) => console.error(err));
   };
 
+  if (props.post.postImage == "default") {
+    props.post.postImage = "servewerx_your_biz_card_here.png";//servewerx_level_scale-1.0-h100.png
+  }
+
   return (
     <Grid container spacing={0}>
       <Grid item xs={12} sm={10}>

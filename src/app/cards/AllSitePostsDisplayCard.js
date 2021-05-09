@@ -24,8 +24,9 @@ const AllSitePostsDisplayCard = (props) => {
 
   //SET DEFAULT IMAGE IF NON EXISTS.
   if (props.post.postImage == "default") {
-    props.post.postImage = "servewerx_level_scale-1.0-h100.png";
+    props.post.postImage = "servewerx_your_biz_card_here.png";//servewerx_level_scale-1.0-h100.png
   }
+  // https://servewerx-space-1.nyc3.digitaloceanspaces.com/servewerx_your_biz_card_here.png
   // const  convertDateToReadableString = (date) => {
   //   if (!date) return
   //   const d = new Date(date.replace('-', '/'))
