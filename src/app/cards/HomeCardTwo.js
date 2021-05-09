@@ -36,7 +36,7 @@ const HomeCardTwo = () => {
             Find a job
           </Typography>
           <Typography variant="body2" component="p" color="textSecondary">
-            Find good help
+            Near You
           </Typography>
         </div>
 
