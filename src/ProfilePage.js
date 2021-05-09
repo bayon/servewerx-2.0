@@ -14,7 +14,7 @@ const ProfilePage = (props) => {
   useEffect(() => {
     dispatch(authAction.userProfile())
       .then(async (result) => {
-        //console.log("profile result:", result);
+        console.log("profile result:", result);
         setUser(result.data);
       })
       .catch((err) => console.log(err));
@@ -26,7 +26,7 @@ const ProfilePage = (props) => {
   const getUserProfile = () => {
     dispatch(authAction.userProfile())
       .then(async (result) => {
-        //console.log("result:", result);
+        console.log("result:", result);
         setUser(result.data);
       })
       .catch((err) => console.log(err));

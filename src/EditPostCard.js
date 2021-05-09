@@ -16,7 +16,7 @@ const formSchema = yup.object({
 
 
 const EditPostCard = (props) => {
-  //console.log("EDIT POST CARD props:", props);
+  console.log("EDIT POST CARD props:", props);
   const currentPost = props.data
 
   const Kolor = useSelector((state) => state.post.statusColor);
@@ -28,7 +28,7 @@ const EditPostCard = (props) => {
     //get initial categories 
     dispatch(authAction.getCategories())
     .then((results) => {
-     // console.log("category results:",results)
+      console.log("category results:",results)
       setCategories(results)
     })
     .catch((err) => console.error(err));
@@ -40,7 +40,7 @@ const EditPostCard = (props) => {
     dispatch(postAction.getStatusColor())
       .then(async () => {
         // result would be undefined
-        //console.log("NEW >>> hook status color:", Kolor);
+        console.log("NEW >>> hook status color:", Kolor);
         //setKolor(Kolor)
       })
       .catch((err) => console.log(err));
@@ -76,20 +76,20 @@ _id: "60730537d09d5d33501fc987"
   var us_states = useSelector((state) => state.auth.usstates);
   //var categories = useSelector((state) => state.post.categories);
 
-  //console.log("STATE---------user:", user);
+  console.log("STATE---------user:", user);
   useEffect(() => {
     setInProgress(inProgress);
   }, [inProgress]);
 
   const post_categories = ["select one", "Looking for Work", "Looking to Hire","Open for Business"];
   const activatedOptions = ["Set Activation", "activated", "deactivated"];
-  //console.log("EditPostCard.js props:", props);
+  console.log("EditPostCard.js props:", props);
   const deleteItem = () => {
-   // console.log("delete item ", currentPost._id);
+    console.log("delete item ", currentPost._id);
     //call to a redux action.
     dispatch(postAction.deletePost(currentPost._id))
       .then(async (res) => {
-       // console.log("res:", res);
+        console.log("res:", res);
         dispatch(postAction.setStatusGreen()).catch((err) =>
           console.error(err)
         );
@@ -136,21 +136,21 @@ _id: "60730537d09d5d33501fc987"
               // !PostImage REQUIRED here so as to not get deleted accidentally.
               validationSchema={formSchema}
               onSubmit={(values) => {
-                //console.log(". . . . . . . . . post update values:", values);
+                console.log(". . . . . . . . . post update values:", values);
                 setInProgress(true);
                 props.closeEdit();
                 setSeeDetails(!seeDetails);
                 dispatch(postAction.updatePost(values))
                   .then(async (result) => {
-                   // console.log("create post result:", result);
+                    console.log("create post result:", result);
                     // seeDetails(false);
                     if (result.success) {
                       //setInProgress(true);
                       //seeDetails(false);
                     }
-                    // console.log(
-                    //   "IT ALL STARTS HERE WITH REFRESH POSTS FOR USER."
-                    // );
+                    console.log(
+                      "IT ALL STARTS HERE WITH REFRESH POSTS FOR USER."
+                    );
                     dispatch(postAction.setStatusGreen()).catch((err) => console.error(err))
                     props.refresh(); //?
                   })

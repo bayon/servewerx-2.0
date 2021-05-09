@@ -36,7 +36,7 @@ export default function DashboardPage(props) {
   var haveUser = useSelector((state) => state.auth.haveUser);
   var post = useSelector((state) => state.post);
   const [editingPost, setEditingPost] = useState(false)
-  console.log("post:",post)
+ // console.log("post:",post)
   if (!auth) {
     return <div>not authorized.</div>;
   }

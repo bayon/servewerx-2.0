@@ -31,7 +31,7 @@ const PostDisplayCard = (props) => {
 
   // const [inProgress, setInProgress] = useState(false);
   const IMG_URL = config.url.IMG_URL;
-  //console.log("PostDisplayCard - props:", props); //good to here.
+  console.log("PostDisplayCard - props:", props); //good to here.
 
   var user = useSelector((state) => state.auth.user);
   //console.log("STATE---------user:", user);
@@ -40,7 +40,7 @@ const PostDisplayCard = (props) => {
   // }, [inProgress]);
 
   const initEdit = () => {
-    //console.log(". . . . . . . .init edit ");
+    console.log(". . . . . . . .init edit ");
     dispatch(postAction.setStatusBlue()).catch((err) => console.error(err));
     setAllowEdit(!allowEdit);
   };

@@ -28,7 +28,7 @@ jsx:
 
 const ImageForm = (props) => {
   const dispatch = useDispatch();
-  //console.log("PROPS: ", props);
+  console.log("PROPS: ", props);
   let [loading, setLoading] = useState(false);
   const [file, setFile] = useState(null);
   // const [imgFile, setImgFile] = useState(null);
@@ -36,7 +36,7 @@ const ImageForm = (props) => {
   var user = useSelector((state) => state.auth.user);
   const handleFileChange = (event) => {
     setFile(event.target.files);
-   // console.log(file);
+    console.log(file);
   };
 
   const API_URL = config.url.API_URL;

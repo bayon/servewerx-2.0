@@ -30,7 +30,7 @@ const PostImageForm = (props) => {
 const [fileSize,setFileSize] = useState(0);
   
   const dispatch = useDispatch();
-   //console.log("PostImageForm PROPS: ", props);
+   console.log("PostImageForm PROPS: ", props);
 
 
 
@@ -50,8 +50,8 @@ const [fileSize,setFileSize] = useState(0);
       //event.target.files.filter(file => file.size <= 1000000);
     }
     setFileSize(file_size)
-   // console.log('file_name:file_type:file_size:',file_name,":",file_type,":",file_size)
-    //console.log(file);
+    console.log('file_name:file_type:file_size:',file_name,":",file_type,":",file_size)
+    console.log(file);
   };
 
    
@@ -68,13 +68,13 @@ const [fileSize,setFileSize] = useState(0);
     console.log('values to update the post with...',values)
     dispatch(postAction.updateCreatingPost(values))
       .then(async (result) => {
-       // console.log('update post result:',result)
+        console.log('update post result:',result)
         if (result.success) {
           //code
-         // console.log('success response ')
+          console.log('success response ')
 
         }
-       // console.log('success or fail dispatch response ?! ')
+        console.log('success or fail dispatch response ?! ')
         setLoading(false);
         //props.props.refresh();
         
@@ -96,8 +96,8 @@ const [fileSize,setFileSize] = useState(0);
       return false;
     }
     const data = new FormData();
-    //console.log('PROPS:',props);
-    //console.log('PROPS PROPS:',props.props);
+    console.log('PROPS:',props);
+    console.log('PROPS PROPS:',props.props);
     const currentPost = props.props.post.data; // AS OPPOSED TO : props.props.post.post ??? 
     data.append("id", currentPost.id);//props.props 2x UNDEFINED ? id vs _id 
     
@@ -108,24 +108,24 @@ const [fileSize,setFileSize] = useState(0);
     for (var x = 0; x < file.length; x++) {
       data.append("file", file[x]);
     }
-    //console.log("DATA getting sent to API: data:",data)
+    console.log("DATA getting sent to API: data:",data)
     //NOT USING THE REDUX ACTIONS AND REDUCERS: 
     axios.post(`${API_URL}/uploadPostImage`, data).then((res) => {
-     // console.log('post image upload results: ',res)
+      console.log('post image upload results: ',res)
       const postImage = res.data;
       currentPost.postImage = postImage;
       // const values = user.data;
       const values = currentPost
-     // console.log('values to update the post with...',values)
+      console.log('values to update the post with...',values)
       dispatch(postAction.updateCreatingPost(values))
         .then(async (result) => {
-         // console.log('update post result:',result)
+          console.log('update post result:',result)
           if (result.success) {
             //code
-           // console.log('success response ')
+            console.log('success response ')
 
           }
-          //console.log('success or fail dispatch response ?! ')
+          console.log('success or fail dispatch response ?! ')
           setLoading(false);
           //props.props.refresh();
         })

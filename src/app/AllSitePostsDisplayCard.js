@@ -58,7 +58,7 @@ const AllSitePostsDisplayCard = (props) => {
   //   setLoading(false);
   // };
 
-  //console.log("inProgress:", inProgress);
+  console.log("inProgress:", inProgress);
   useEffect(() => {
     setInProgress(inProgress);
   }, [inProgress]);

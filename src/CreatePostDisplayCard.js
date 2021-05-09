@@ -27,7 +27,7 @@ const CreatePostDisplayCard = (props) => {
   var user = useSelector((state) => state.auth.user);
 
  try {
-  //console.log("CreatePostDisplayCard - props:", props); //good to here.
+  console.log("CreatePostDisplayCard - props:", props); //good to here.
   currentPost = props.props.post.post
   
  } catch (error) {
@@ -43,7 +43,7 @@ const CreatePostDisplayCard = (props) => {
   // }, [inProgress]); post.postStepThree && 
 
   const initEdit = () => {
-    //console.log('. . . . . . . .init edit ')
+    console.log('. . . . . . . .init edit ')
     dispatch(postAction.setStatusBlue()).catch((err) => console.error(err))
     setAllowEdit(!readyToComplete);
   }
@@ -122,7 +122,7 @@ const CreatePostDisplayCard = (props) => {
                 <button
                   onClick={() => {
                      //initEdit()
-                    // console.log("ACCEPT THE NEW POST")
+                     console.log("ACCEPT THE NEW POST")
                      setBeginPay(true)
                      //dispatch to new post action postAccepted
                      // set postStepone and postStepTwo back to false. call it good.
@@ -145,7 +145,7 @@ const CreatePostDisplayCard = (props) => {
                   onClick={() => {
                      //initEdit()
                     
-                    // console.log("CANCEL THE NEW POST")
+                     console.log("CANCEL THE NEW POST")
                       //dispatch to new post action postCanceled
                       dispatch(postAction.cancelPost(currentPost._id)).catch((err) => console.error(err))
                       // delete the post and remove the image. 

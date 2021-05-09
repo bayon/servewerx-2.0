@@ -32,15 +32,15 @@ const PostCreateCard = (props) => {
   //var categories = useSelector((state) => state.post.categories);
   var haveCategories = useSelector((state) => state.auth.haveCategories);
 
-  useEffect(() => {
-    console.log("post data changed:", post);
-  }, [post]);
+  // useEffect(() => {
+  //  // console.log("post data changed:", post);
+  // }, [post]);
 
   useEffect(() => {
     //get initial categories
     dispatch(authAction.getCategories())
       .then((results) => {
-        console.log("category results:", results);
+        //console.log("category results:", results);
         
           //var sortedCategories = []
           // return currentPosts
@@ -66,7 +66,7 @@ const PostCreateCard = (props) => {
   }, [inProgress]);
 
   const initEdit = () => {
-    console.log(". . . . . . . .init edit ");
+    //console.log(". . . . . . . .init edit ");
     dispatch(postAction.setStatusBlue()).catch((err) => console.error(err));
     //setAllowEdit(!allowEdit);
     setSeeDetails(!seeDetails);
@@ -117,12 +117,12 @@ const PostCreateCard = (props) => {
                   // !PostImage REQUIRED here so as to not get deleted accidentally.
                   validationSchema={formSchema}
                   onSubmit={(values) => {
-                    console.log("values:", values);
+                    //("values:", values);
                     setInProgress(true);
                     setSeeDetails(!seeDetails);
                     dispatch(postAction.createPost(values))
                       .then(async (result) => {
-                        console.log("create post result:", result); //good.
+                        //console.log("create post result:", result); //good.
                         await setCurrentPost(result);
                         await setSumbitComplete(true);
 

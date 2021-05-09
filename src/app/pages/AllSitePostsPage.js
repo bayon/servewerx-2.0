@@ -77,8 +77,8 @@ const AllSitePostsPage = (props) => {
   const [currentPosts, setCurrentPosts] = useState([]);
   const [haveCurrentPosts, setHaveCurrentPosts] = useState(false);
   const [show, setShow] = useState(false);
-  const [miles, setMiles] = useState(null);
-  const [zipcode, setZipcode] = useState(null);
+  const [miles, setMiles] = useState('');
+  const [zipcode, setZipcode] = useState('');
 
   const [sortName, setSortName] = useState(false);
   const [sortLatest, setSortLatest] = useState(false);
@@ -93,9 +93,9 @@ const AllSitePostsPage = (props) => {
 
   const [filterKey, setFilterKey] = useState("");
 
-  const searchInputEl = useRef(null);
-  const milesInput = useRef(null);
-  const zipInput = useRef(null);
+  const searchInputEl = useRef('');
+  const milesInput = useRef('');
+  const zipInput = useRef('');
   const toggleShow = () => {
     setShow(!show);
   };

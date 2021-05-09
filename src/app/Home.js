@@ -7,7 +7,7 @@ import HomeCardThree from "./cards/HomeCardThree";
 import HomeCardTwo from "./cards/HomeCardTwo";
 
 export default function Home(props) {
-  console.log("home props:", props);
+  //console.log("home props:", props);
   return (
     <React.Fragment>
       <Grid container>
@@ -90,28 +90,25 @@ export default function Home(props) {
                 sm={12}
                 style={{
                   textShadow: "1px 0px #000",
+                  backgroundColor:"rgba(0,0,0,.5)"
                   
                 }}
               >
-                <h2>Browse Business Cards For Free</h2>
-                <p>Register and post cards for $1.</p>
-                <p>( securely through 'Stripe' )</p>
-                <h3>Find, People and Work, Near You.</h3>
+                <h2>Browse For Free</h2>
+                <p>Post Business Cards for $1.</p>
+                <p style={{fontStyle:"italic"}}>( securely through 'Stripe' )</p>
+                <h3>Find Someone Near You.</h3>
               </Grid>
 
-              <Card style={{ padding: "15px",margin:"50px" }}>
+              <Card className="storyCard">
                 <Grid container direction="row"   alignItems="center"
-                    justify="center">
+                    justify="center" className='storyContainer'>
                   <Grid
                     item
                     xs={12}
                     sm={10}
-                    style={{
-                      textAlign: "left",
-                      fontSize: ".7em",
-                      padding: "2em",
-                    
-                    }}
+                    className="storyGrid"
+                   
                   >
                     <h3>Why Servewerx?</h3>
                     <p>It's a simple bulletin board for your business card basically.</p>
@@ -125,17 +122,17 @@ export default function Home(props) {
                       than I'd like.
                     </p>
                     <p>
-                      It can cost about $15 a week to put an ad in your local
-                      paper and about $5 to post on other sites. Then you should
-                      probably create a 'facebook' page for yourself. I think
+                      It can cost anywhere from $15 to $150 a week to put an ad in your local
+                      paper depending on where you live. About $5 to post on Craigslist. </p>
+                      <p> Then you probably already created a 'facebook' page for your business. I think
                       that's free, but to promote it you have to spend some
-                      money. Not to mention the more expensive advertising
-                      options.
+                      money. Not to even mention the more expensive advertising
+                      options like AngiesList or HomeAdvisor. They won't even tell you how much they will charge.
                     </p>
                     <p>
-                      So I figured I'd just do it for free, but then you know,
+                      So I figured I'd just do it for free. But then, you know,
                       there'd be people who didn't really care, posting crazy
-                      stuff. So I'm charging a dollar for a month is a pretty
+                      stuff just because it was free. So I'm charging a dollar for a month , which is a pretty
                       good deal for both you and me. And everytime I put an add
                       out for Servewerx, your name gets out there too.
                     </p>
