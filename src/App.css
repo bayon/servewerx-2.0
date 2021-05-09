@@ -1,7 +1,7 @@
 .appDevNote {
   font-size: .7em;
   font-style: italic;
-  display: block;
+  display: none;
 }
 
 body, html {
