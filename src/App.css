@@ -1,11 +1,8 @@
-
-
- .appDevNote{
-  font-size:.7em;
+.appDevNote {
+  font-size: .7em;
   font-style: italic;
-  display:none;
+  display: block;
 }
-
 
 body, html {
   height: 100%;
@@ -15,77 +12,74 @@ body, html {
 .App {
   text-align: center;
 }
- 
-.appIcon{
+
+.appIcon {
   font-size: .8em !important;
-  margin-left:.8em;
-}
-.appAnchor{
-  text-decoration:none;
-  color:#222;
+  margin-left: .8em;
 }
 
- button{
-  margin:1em;
+.appAnchor {
+  text-decoration: none;
+  color: #222;
+}
 
+button {
+  margin: 1em;
   border: none;
   outline: none;
   border: solid 1px #ddd;
   border-radius: 4px;
   padding: 10px;
-  font-size:.8em;
-
+  font-size: .8em;
 }
 
-.appInput{
+.appInput {
   border: none;
   outline: none;
   border: solid 1px #ddd;
   border-radius: 4px;
   padding: 10px;
-  font-size:.8em;
-  width:100%;
-
+  font-size: .8em;
+  width: 100%;
 }
-.appInputAuto{
+
+.appInputAuto {
   border: none;
   outline: none;
   border: solid 1px #ddd;
   border-radius: 4px;
   padding: 10px;
-  font-size:.8em;
-  width:auto;
+  font-size: .8em;
+  width: auto;
 }
- .appTinyInput{
+
+.appTinyInput {
   border: none;
   outline: none;
   border: solid 1px #ddd;
   border-radius: 4px;
   padding: 5px;
-  font-size:.8em;
-  width:50px;
-  max-width:50px;
+  font-size: .8em;
+  width: 50px;
+  max-width: 50px;
+}
 
-} 
-
-.appSelect{
+.appSelect {
   padding: .5em;
   border: none;
   outline: none;
   margin-top: 1em;
-  min-width:90px;
+  min-width: 90px;
   border: solid 1px #ddd !important;
   border-radius: 4px;
-  width:100%;
+  width: 100%;
 }
 
 .component-full-background-image {
   /* The image used */
-  background-image: url(./app/assets/img/pexels-laurie-shaw-804392.jpg); 
-
-
+  background-image: url(./app/assets/img/pexels-laurie-shaw-804392.jpg);
   /* Full height */
-  height: 100%; 
+  height: 100%;
   /* Center and scale the image nicely */
   background-position: center;
   background-repeat: no-repeat;
@@ -93,312 +87,314 @@ body, html {
 }
 
 .component-background-image {
-  background-image: url(./app/assets/img/BulletinBoard-1blur.jpg); 
-
-   
-  height: 100%; 
-  
-   background-position: center;
+  background-image: url(./app/assets/img/BulletinBoard-1blur.jpg);
+  height: 100%;
+  background-position: center;
   background-repeat: no-repeat;
-  background-size: cover; 
+  background-size: cover;
 }
 
 .server-background-image {
-  background-image: url(./app/assets/img/waiter_saw_finished_resize_blur_1000_transp.png); 
-  height: 100%; 
+  background-image: url(./app/assets/img/waiter_saw_finished_resize_blur_1000_transp.png);
+  height: 100%;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover; 
+  background-size: cover;
 }
-.brandname{
-  color:#f7b72b;
+
+.brandname {
+  color: #f7b72b;
   /* font-family:'Courier New', Courier, monospace; */
-  font-family:Arial, Helvetica, sans-serif;
-  font-size:1.7em;
-  font-weight:bold;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.7em;
+  font-weight: bold;
   text-shadow: .5px 0px 1px #222;
-  padding: 0 ;
+  padding: 0;
   margin: 0;
 }
+
 .logo {
-  background-image: url(./app/assets/img/servewerx_level_scale-1.0-h100.png); 
+  background-image: url(./app/assets/img/servewerx_level_scale-1.0-h100.png);
   height: 40px;
-   /* background-position: center; */
+  /* background-position: center; */
   background-repeat: no-repeat;
-  background-size: contain; 
+  background-size: contain;
 }
- 
+
 .server_logo {
-  background-image: url(./app/assets/img/waiter_saw_finished_resize_200.jpg); 
+  background-image: url(./app/assets/img/waiter_saw_finished_resize_200.jpg);
   height: 60px;
-   /* background-position: center; */
+  /* background-position: center; */
   background-repeat: no-repeat;
-  background-size: contain; 
+  background-size: contain;
 }
 
 .server-logo-transparent {
-  background-image: url(./app/assets/img/waiter_saw_finished_resize_986_transp.png); 
-  height: 500px ;
-    background-position: center; 
+  background-image: url(./app/assets/img/waiter_saw_finished_resize_986_transp.png);
+  height: 500px;
+  background-position: center;
   background-repeat: no-repeat;
-  background-size: contain; 
+  background-size: contain;
 }
 
 .brand_name_logo {
-  background-image: url(./app/assets/img/servewerx_with_saw_croped.png); 
+  background-image: url(./app/assets/img/servewerx_with_saw_croped.png);
   height: 50px;
-   /* background-position: center; */
+  /* background-position: center; */
   background-repeat: no-repeat;
-  background-size: contain; 
+  background-size: contain;
 }
+
 .creatorImage {
-  background-image: url(./app/assets/img/IMG_0729.jpg); 
+  background-image: url(./app/assets/img/IMG_0729.jpg);
   height: 200px;
-  width:auto;
-  background-position: center; 
+  width: auto;
+  background-position: center;
   background-repeat: no-repeat;
-  background-size: contain; 
+  background-size: contain;
 }
-.main-component-container{
-   
+
+.main-component-container {
   /* border:dotted 1px white; */
-  padding-top:100px;
-  min-height:100vh;
-  padding-bottom:100px;
+  padding-top: 100px;
+  min-height: 100vh;
+  padding-bottom: 100px;
 }
+
 /* .navigation-container{
   padding-top:100px;
   border:solid 10px red;
   height:100%;
 } */
-.appPage{
-  background:#fff;
-}
-.pageTitle{
-   
-}
-.filterButton{
-  margin-right:5px;
-  margin-left:5px;
-  cursor:pointer;
-}
- 
-.filterLabel{
-   font-weight:500;
-    margin:0 1em 0 1em;
+
+.appPage {
+  background: #fff;
 }
 
+.pageTitle {}
 
-.cardDevNote{
-  font-size:.7em;
-  font-style: italic;
-  display:block;
+.filterButton {
+  margin-right: 5px;
+  margin-left: 5px;
+  cursor: pointer;
 }
 
+.filterLabel {
+  font-weight: 500;
+  margin: 0 1em 0 1em;
+}
 
 .card {
-    width: auto;
-    height: auto;
-    background: #fff;
-    border-radius: 5px;
-    /* background-image: url(https://drscdn.500px.org/photo/435236/q%3D80_m%3D1500/v2?webp=true&sig=67031bdff6f582f3e027311e2074be452203ab637c0bd21d89128844becf8e40); */
-    background-size: cover;
-    background-position: center center;
-    box-shadow: 0px 10px 30px -5px rgba(0, 0, 0, 0.3);
-    transition: box-shadow 0.5s;
-    will-change: transform;
-    
-  }
-  
-  .card:hover {
-    box-shadow: 0px 30px 100px -10px rgba(0, 0, 0, 0.4);
-  }
-  
-
-  .card-plain{
-    width: auto;
-    height: auto;
-    background: #fff;
-    border-radius: 5px;
-    background-size: cover;
-    background-position: center center;
-    box-shadow: 0px 10px 30px -5px rgba(0, 0, 0, 0.3);
-    transition: box-shadow 0.5s;
-    will-change: transform;
-    border: 15px solid white;
-
-    padding:15px;
-    margin:15px;
-  }
-
-  .cardInput{
-    margin-top:5px;
-    margin-bottom:15px;
-    border: none;
-    outline: none;
-    border: solid 1px #ddd;
-    border-radius: 4px;
-    padding: 10px;
-    font-size:.8em;
-   
-    width:100%;
-
-  }
-
- 
-
-   .ProfileCardForm label{
-     text-align:left;
-   }
-   
-   .cardButton{
-    margin-top:1em;
-    margin-bottom:1em;
-    border: none;
-    outline: none;
-    border: solid 1px #ddd;
-    border-radius: 4px;
-    padding: 10px;
-    font-size:.8em;
-
-  }
-.cardCategory{
-  color:blue;
-}
-.cardPostType{
-   font-style:italic;
-
-}
-  .cardSelect{
-    padding: .5em;
-    margin-top: 1em;
-    /* border:none; */
-    /* outline: none; */
-    min-width:90px;
-    border: solid 1px #ddd !important;
-    border-radius: 4px;
-    width:100%;
-  }
- .cardTextarea{
-   height:100px;
-   width:100%;
-   margin-top:1em;
-   border:solid 1px #ddd ;
-   border-radius:4px;
- }
-  .cardIcon{
-    font-size: .8em !important;
-    margin-left:.8em;
-  }
-
- 
-
-  .cardImageGrid{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-  }
-  .cardImg{
-    height:120px;
-    border-radius: 4px;
-  }
-  .cardTitle{
-    font-weight:bold;
-  }
-  .cardDescription{
-
-  }
-  .cardContactInfo {
-    font-style:italic;
-    margin:1em;
-  }
-
-  .cardDetailsContainer{
-
-  }
-
-  .EditPostCardForm{
-    display:flex;
-    padding: 1em;
-
-
-  }
-
-  .cardGridContainer{
-    padding: 1em;
-  }
-  .PostCreateCardForm{
-    
-
-  }
-  .cardLabel{
-    color: #333;
-    font-size:.8em;
-    margin-top: 1em;
-   
-
-  }
-  .cardLabelContainer{
-    padding-top:15px;
-    margin-top: 2em;
-    text-align:left;  
-  }
-  /* style={{background:"#eee" ,borderRadius:"15px",marginTop:"20px"}} */
-  .cardCard{
-    padding: 20px 20px 20px 20px ;
-    background:#fff;
-     box-shadow: 2px 2px 10px #000;
-    border-radius: 15px ;
-    margin-top:20px;
-  }
-.radioLabel{
-font-size:.8em;
- 
- margin-right:3px;
-}
-.radioInput{
-  font-size:1em;
+  width: auto;
+  height: auto;
+  background: #fff;
+  border-radius: 5px;
+  /* background-image: url(https://drscdn.500px.org/photo/435236/q%3D80_m%3D1500/v2?webp=true&sig=67031bdff6f582f3e027311e2074be452203ab637c0bd21d89128844becf8e40); */
+  background-size: cover;
+  background-position: center center;
+  box-shadow: 0px 10px 30px -5px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 0.5s;
+  will-change: transform;
 }
 
+.card:hover {
+  box-shadow: 0px 30px 100px -10px rgba(0, 0, 0, 0.4);
+}
 
+.card-plain {
+  width: auto;
+  height: auto;
+  background: #fff;
+  border-radius: 5px;
+  background-size: cover;
+  background-position: center center;
+  box-shadow: 0px 10px 30px -5px rgba(0, 0, 0, 0.3);
+  transition: box-shadow 0.5s;
+  will-change: transform;
+  border: 15px solid white;
+  padding: 15px;
+  margin: 15px;
+}
 
-.homeCard{
+.cardInput {
+  margin-top: 5px;
+  margin-bottom: 15px;
+  border: none;
+  outline: none;
+  border: solid 1px #ddd;
+  border-radius: 4px;
+  padding: 10px;
+  font-size: .8em;
+  width: 100%;
+}
+
+.ProfileCardForm label {
+  text-align: left;
+}
+
+.cardButton {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  border: none;
+  outline: none;
+  border: solid 1px #ddd;
+  border-radius: 4px;
+  padding: 10px;
+  font-size: .8em;
+}
+
+.cardCategory {
+  color: blue;
+}
+
+.cardPostType {
+  font-style: italic;
+}
+
+.cardSelect {
+  padding: .5em;
+  margin-top: 1em;
+  /* border:none; */
+  /* outline: none; */
+  min-width: 90px;
+  border: solid 1px #ddd !important;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.cardTextarea {
+  height: 100px;
+  width: 100%;
+  margin-top: 1em;
+  border: solid 1px #ddd;
+  border-radius: 4px;
+}
+
+.cardIcon {
+  font-size: .8em !important;
+  margin-left: .8em;
+}
+
+.cardImageGrid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cardImg {
+  height: 120px;
+  border-radius: 4px;
+}
+
+.cardTitle {
+  font-weight: bold;
+}
+
+.cardDescription {}
+
+.cardContactInfo {
+  font-style: italic;
+  margin: 1em;
+}
+
+.cardDetailsContainer {}
+
+.EditPostCardForm {
+  display: flex;
+  padding: 1em;
+}
+
+.cardGridContainer {
+  padding: 1em;
+}
+
+.PostCreateCardForm {}
+
+.cardLabel {
+  color: #333;
+  font-size: .8em;
+  margin-top: 1em;
+}
+
+.cardLabelContainer {
+  padding-top: 15px;
+  margin-top: 2em;
+  text-align: left;
+}
+
+/* style={{background:"#eee" ,borderRadius:"15px",marginTop:"20px"}} */
+
+.cardCard {
+  padding: 20px 20px 20px 20px;
+  background: #fff;
+  box-shadow: 2px 2px 10px #000;
+  border-radius: 15px;
+  margin-top: 20px;
+}
+
+.radioLabel {
+  font-size: .8em;
+  margin-right: 3px;
+}
+
+.radioInput {
+  font-size: 1em;
+}
+
+.homeCard {
   /* opacity:.9; */
   box-shadow: 2px 2px 10px #000;
 }
- .innerHomeCard{
-   height:"125px !important";
-   padding:"50px"
 
- }
+.innerHomeCard {
+  height: "125px !important";
+  padding: "50px"
+}
 
+.storyCard {
+  padding: 15px;
+  margin: 50px;
+}
 
+.storyContainer {
+}
 
+.storyGrid {
+  text-align: left;
+  font-size: .7em;
+  padding: 2em;
+}
 
-  @media only screen and (max-width: 600px) {
-    /* 600 or LESS */
-  }
-  
-  @media only screen and (min-width: 601px) {
-     /* Greater Than 600 */
-    .cardCard{
-      padding: 20px 20px 20px 20px ;
-    }
-  }
-
-  .trim{
-    padding:0;
-    margin:0;
-  }
-
-  .pageGreeting{
-     
-  }
 @media only screen and (max-width: 600px) {
-   
+  /* 600 or LESS */
+  .storyCard {
+    padding: 5px;
+    margin: 5px;
+     margin-bottom:100px;
+  }
+  .storyContainer {
+   }
+  .storyGrid {
+    text-align: left;
+    font-size: .7em;
+    padding: 0em;
+   }
 }
 
 @media only screen and (min-width: 601px) {
-  
+  /* Greater Than 600 */
+  .cardCard {
+    padding: 20px 20px 20px 20px;
+  }
 }
+
+.trim {
+  padding: 0;
+  margin: 0;
+}
+
+.pageGreeting {}
+
+@media only screen and (max-width: 600px) {}
+
+@media only screen and (min-width: 601px) {}

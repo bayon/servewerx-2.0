@@ -69,7 +69,7 @@ const UsersPostsPage = (props) => {
   const getFilteredOwnerPosts = (key, userId) => {
     dispatch(postAction.filterOwnersPosts(key, userId))
       .then(async (result) => {
-        //console.log(" --xx--  FILTERED OWNER POSTS RESULTS:", result);
+        console.log(" --xx--  FILTERED OWNER POSTS RESULTS:", result);
         setCurrentPosts(result);
         setHaveCurrentPosts(true);
       })
@@ -136,7 +136,7 @@ const UsersPostsPage = (props) => {
     setNoSort(false);
   };
   const setSortOption = (e) => {
-   // console.log(e.target.value);
+    console.log(e.target.value);
     const key = e.target.value;
     clearSortOptions();
     switch (key) {
@@ -157,11 +157,11 @@ const UsersPostsPage = (props) => {
 
   const setFilterOption = (e) => {
     setFilterKey(e.target.value);
-    //console.log("SETTING FILTER:");
+    console.log("SETTING FILTER:");
     const key = e.target.value;
 
     if (key === "" || key === " ") {
-      //console.log("GET DEFAULT DATA BACK...");
+      console.log("GET DEFAULT DATA BACK...");
       getDefaultPosts(user._id);
     } else {
       const userId = user._id;
@@ -180,9 +180,9 @@ const UsersPostsPage = (props) => {
   };
 
   const refreshUserPosts = () => {
-    // console.log(
-    //   "should refresh users posts here and now immediately after changing...."
-    // );
+    console.log(
+      "should refresh users posts here and now immediately after changing...."
+    );
     //to do this...need to requery
     dispatch(postAction.allUserPosts(user._id))
       .then(async (result) => {
@@ -191,9 +191,9 @@ const UsersPostsPage = (props) => {
       })
       .catch((err) => console.log(err));
 
-    // console.log(
-    //   "Question now is does this refreshed data continue down to the bottom component. YES SUCCESS!"
-    // );
+    console.log(
+      "Question now is does this refreshed data continue down to the bottom component. YES SUCCESS!"
+    );
   };
 
   const displayPosts = () => {

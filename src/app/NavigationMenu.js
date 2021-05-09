@@ -31,11 +31,11 @@ const LinkStyle = styled.section`
 `;
 
 export default function NavigationMenu(props) {
-  console.log("navigation menu props:", props);
+  //console.log("navigation menu props:", props);
   var auth = useSelector((state) => state.auth.authorized);
   const [user, setUser] = useState({});
   const [admin,setAdmin] =  useState(false);
-  const [redirect, setRedirect] = useState(null);
+  //const [redirect, setRedirect] = useState(null);
   const [hideRegister, setHideRegister] = useState(false);
   const dispatch = useDispatch();
 
@@ -48,7 +48,7 @@ export default function NavigationMenu(props) {
     dispatch(authAction.userProfile())
       .then(async (result) => {
         setUser(result.data);
-        console.log("NAVIGATION : user:", user);
+        //console.log("NAVIGATION : user:", user);
         if( user._id === "607da64cdfa3380004aceabf"){
           setAdmin(true);
         }
@@ -59,7 +59,7 @@ export default function NavigationMenu(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
-    console.log("anchorEl:", anchorEl);
+    //console.log("anchorEl:", anchorEl);
   };
   const handleClose = () => {
     setAnchorEl(null);
@@ -81,7 +81,7 @@ export default function NavigationMenu(props) {
           <Grid
             container
             spacing={1}
-            alignItems="bottom"
+            alignItems="baseline"
             justify="center"
             style={{ padding: ".2em 0 0 0" }}
           >
@@ -103,7 +103,7 @@ export default function NavigationMenu(props) {
                 onClose={handleClose}
               >
                 <MenuItem onClick={handleClose}>
-                  {" "}
+                  
                   <LinkStyle>
                     <Link
                       to="/"
@@ -114,7 +114,7 @@ export default function NavigationMenu(props) {
                   </LinkStyle>
                 </MenuItem>
                 <MenuItem onClick={handleClose}>
-                  {" "}
+                  
                   <LinkStyle>
                     <Link
                       to="/allSitePosts"
@@ -125,9 +125,9 @@ export default function NavigationMenu(props) {
                   </LinkStyle>
                 </MenuItem>
                 {auth && (
-                  <>
+                  <div>
                     <MenuItem onClick={handleClose}>
-                      {" "}
+                      
                       <LinkStyle>
                         <Link
                           to="/dashboard"
@@ -138,7 +138,7 @@ export default function NavigationMenu(props) {
                       </LinkStyle>
                     </MenuItem>
                     <MenuItem onClick={handleClose}>
-                      {" "}
+                      
                       <LinkStyle>
                         <Link
                           to="/profile"
@@ -161,12 +161,12 @@ export default function NavigationMenu(props) {
                        </LinkStyle>
                      </MenuItem>
                     }
-                  </>
+                  </div>
                 )}
                 {!auth ? (
-                  <>
+                  <div>
                     <MenuItem onClick={handleClose}>
-                      {" "}
+                      
                       <LinkStyle>
                         <Link
                           to="/login"
@@ -177,7 +177,7 @@ export default function NavigationMenu(props) {
                       </LinkStyle>
                     </MenuItem>
                      <MenuItem onClick={handleClose}>
-                      {" "}
+                      
                       <LinkStyle>
                         <Link
                           to="/register"
@@ -187,9 +187,9 @@ export default function NavigationMenu(props) {
                         </Link>
                       </LinkStyle>
                     </MenuItem> 
-                  </>
+                  </div>
                 ) : (
-                  <>
+                  <div>
                     <MenuItem onClick={handleClose}>
                       <Link
                         style={{
@@ -201,15 +201,12 @@ export default function NavigationMenu(props) {
                         onClick={() => {
                           dispatch(authAction.logoutUser())
                             .then(async (result) => {
-                              console.log("result:", result);
+                              //console.log("result:", result);
                               //PURGE post step vars:
                               localStorage.removeItem("forteworksToken");
                               dispatch(postAction.clearPost())
                                 .then(async (result) => {
-                                  console.log(
-                                    "logout and cancel to purge post vars: result:",
-                                    result
-                                  );
+                                 
                                 })
                                 .catch((err) => console.log(err));
                             })
@@ -227,7 +224,7 @@ export default function NavigationMenu(props) {
                         </LinkStyle>
                       </Link>
                     </MenuItem>
-                  </>
+                  </div>
                 )}
               </Menu>
             </Grid>

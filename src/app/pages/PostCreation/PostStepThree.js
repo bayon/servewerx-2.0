@@ -14,7 +14,7 @@ const LinkStyle = styled.section`
 
 const PostStepThree = (props) => {
 
-  console.log('Post Step 3 props:',props)
+  //console.log('Post Step 3 props:',props)
   var auth = useSelector((state) => state.auth.authorized);
   var user = useSelector((state) => state.auth.user);
   var post = useSelector((state) => state.post);

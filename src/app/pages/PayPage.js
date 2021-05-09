@@ -113,7 +113,7 @@ const API_URL = config.url.API_URL
     if(props.currentPost.userId = "607da64cdfa3380004aceabf"){
       dispatch(postAction.acceptPost(props.currentPost._id))
       .then((res) => {
-        console.log('accept post result: res:',res)
+        //console.log('accept post result: res:',res)
         setLoading(false);
       })
       .catch((err) => console.error(err))
@@ -151,7 +151,7 @@ const API_URL = config.url.API_URL
         setPaid(true)
         dispatch(postAction.acceptPost(props.currentPost._id))
         .then((res) => {
-          console.log('accept post result: res:',res)
+         // console.log('accept post result: res:',res)
           alert('You Created A Post!')
           setLoading(false);
         })
@@ -202,7 +202,7 @@ const API_URL = config.url.API_URL
             setPaid(true)
                 dispatch(postAction.acceptPost(props.currentPost._id))
                      .then((res) => {
-                       console.log('accept post result: res:',res)
+                       //console.log('accept post result: res:',res)
 
                      })
                      .catch((err) => console.error(err))
@@ -215,7 +215,7 @@ const API_URL = config.url.API_URL
         setPaid(true)
         dispatch(postAction.acceptPost(props.currentPost._id))
         .then((res) => {
-          console.log('accept post result: res:',res)
+          //console.log('accept post result: res:',res)
 
         })
         .catch((err) => console.error(err))

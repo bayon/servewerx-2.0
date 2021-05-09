@@ -102,12 +102,12 @@ const ProfileCard = (props) => {
                   }}
                   validationSchema={formSchema}
                   onSubmit={(values) => {
-                   // console.log("values:", values);
+                    console.log("values:", values);
                     setInProgress(true);
                     setLoading(true);
                     dispatch(authAction.updateUser(values))
                       .then(async (result) => {
-                        //console.log("update result:", result);
+                        console.log("update result:", result);
 
                         if (result.success) {
                           setInProgress(true);
