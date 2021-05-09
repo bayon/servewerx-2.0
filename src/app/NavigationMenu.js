@@ -81,7 +81,7 @@ export default function NavigationMenu(props) {
           <Grid
             container
             spacing={1}
-            alignItems="baseline"
+           // alignItems="bottom"
             justify="center"
             style={{ padding: ".2em 0 0 0" }}
           >

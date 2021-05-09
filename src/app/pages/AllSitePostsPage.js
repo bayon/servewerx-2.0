@@ -345,7 +345,7 @@ const AllSitePostsPage = (props) => {
           left: "0px",
           right: "0px",
           zIndex: "100",
-          background: "#fff",
+          
           paddingTop: "1em",
           fontSize: ".7em",
           boxShadow: "1px 1px 4px #333",
@@ -358,13 +358,13 @@ const AllSitePostsPage = (props) => {
           onClick={toggleShow}
           style={{ cursor: "button", fontSize: "1.2em" }}
         >
-          {show ? "Hide" : "Filter"}
+          {show ? "Hide Filter" : "Filter"}
         </button>
         </Grid>
         {show && (
           <>
             
-              <Grid item xs={12} sm={4}>
+              <Grid item xs={12} sm={4}  >
                 <label className="filterLabel" >Type:</label>
                 <input
                   type="radio"
