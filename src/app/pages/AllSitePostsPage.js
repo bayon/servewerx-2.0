@@ -153,7 +153,7 @@ const AllSitePostsPage = (props) => {
     setSortLatest(false);
     setSortPostType1(false);
     setSortPostType2(false);
-     setSortCategory(false);
+    setSortCategory(false);
     setNoSort(false);
   };
   const setSortOption = (e) => {
@@ -410,6 +410,8 @@ const AllSitePostsPage = (props) => {
                 <label htmlFor="postType2" className="radioLabel">
                   Hiring
                 </label>
+                {/* 
+                //BUG: rapid flashes in UI possibly multiple refreshes...
                 <input
                   type="radio"
                   id="category"
@@ -419,7 +421,7 @@ const AllSitePostsPage = (props) => {
                   className="radioInput"
 
                 />
-                <label htmlFor="category" className="radioLabel">Category</label>
+                <label htmlFor="category" className="radioLabel">Category</label> */}
               </Grid>
 
               <Grid item item xs={12} sm={3}>
