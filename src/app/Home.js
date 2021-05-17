@@ -5,7 +5,7 @@ import React from "react";
 import HomeCardOne from "./cards/HomeCardOne";
 import HomeCardThree from "./cards/HomeCardThree";
 import HomeCardTwo from "./cards/HomeCardTwo";
-
+import Video from "./components/video/Video";
 export default function Home(props) {
   //console.log("home props:", props);
   return (
@@ -98,9 +98,10 @@ export default function Home(props) {
                 <p>Post Business Cards for $1.</p>
                 <p style={{fontStyle:"italic"}}>( securely through 'Stripe' )</p>
                 <h3>Find Someone Near You.</h3>
+               
               </Grid>
 
-              <Card className="storyCard">
+              <Card className="storyCard" style={{marginBottom:"100px",paddingBottom:"100px"}}>
                 <Grid container direction="row"   alignItems="center"
                     justify="center" className='storyContainer'>
                   <Grid
@@ -155,6 +156,24 @@ export default function Home(props) {
                       className="creatorImage"
                       style={{ height: "100px" }}
                     ></div>
+                  </Grid>
+                  <Grid item xs={12}>
+                    <Grid container direction="row" >
+                      <Grid item xs={12} sm={4}>
+                      <Video url={`https://www.youtube.com/watch?v=BJvh9cBl4IU`} style={{marginBottom:"100px"}}></Video>
+                      </Grid>
+                      <Grid item xs={12} sm={4}>
+                      <Video url={`https://www.youtube.com/watch?v=58EFkGwTMnY`} style={{marginBottom:"100px"}}></Video>
+
+                        </Grid>
+                    </Grid>
+                
+
+                
+
+
+                 
+
                   </Grid>
                 </Grid>
               </Card>
