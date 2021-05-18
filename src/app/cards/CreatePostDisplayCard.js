@@ -116,7 +116,7 @@ const CreatePostDisplayCard = (props) => {
                 </Grid>
               )}
             </Grid>
-            <Grid item sm={2}>
+            <Grid item sm={2} style={{paddingBottom:"100px",marginBottom:"100px"}}>
               {!readyToComplete && (
                   <>
                 <button
@@ -124,6 +124,7 @@ const CreatePostDisplayCard = (props) => {
                      //initEdit()
                      console.log("ACCEPT THE NEW POST")
                      setBeginPay(true)
+                     window.scrollTo(0, 0);
                      //dispatch to new post action postAccepted
                      // set postStepone and postStepTwo back to false. call it good.
 
