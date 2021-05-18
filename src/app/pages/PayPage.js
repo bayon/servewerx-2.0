@@ -81,7 +81,7 @@ function ButtonComponent(props) {
 
 
 function PayPage(props) {
-  console.log('payPage props:',props)
+  console.log('------- ------- ------- >>> payPage props:',props)
   // if pay page props user id = me "607da64cdfa3380004aceabf" THEN post without pay. 
   // props.currentPost.userId = "607da64cdfa3380004aceabf" THEN ...
   const [inProgress, setInProgress] = useState(false);
@@ -169,6 +169,7 @@ const API_URL = config.url.API_URL
 
   const handleSubmitSub = async (event) => {
     if (!stripe || !elements) {
+      console.log('error: spot 1')
       // Stripe.js has not yet loaded.
       // Make sure to disable form submission until Stripe.js has loaded.
       return;
@@ -183,6 +184,7 @@ const API_URL = config.url.API_URL
     });
 
     if (result.error) {
+      console.log('error spot 2')
       console.log(result.error.message);
     } else {
       const res = await axios.post(`${API_URL}/sub`, {'payment_method': result.paymentMethod.id, 'email': email});
