@@ -219,8 +219,8 @@ function PayPage(props) {
   if (!inProgress) {
     console.log("paid:", paid);
     return (
-      <div id="pay-page-card" style={{position:"absolute",top:"25%",left:"25%"}}>
-        <Card className={classes.root}>
+      <div id="pay-page-card" style={{position:"absolute",top:"25%",left:"2%"}}>
+        <Card className={classes.root} style={{boxShadow:"0px 0px 100px #000"}}>
           <div style={{ position: "absolute", top: "0%", left: "0%" }}>
             <FadeLoader
               color={"red"}
@@ -245,7 +245,7 @@ function PayPage(props) {
             />
             <CardInput />
             <div className={classes.div}>
-              <p>One Post $1.00 per month starting on date submitted.</p>
+              <p>One Post $1.00 one month only.</p>
               <Button
                 variant="contained"
                 color="primary"
