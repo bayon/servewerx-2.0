@@ -122,7 +122,7 @@ const CreatePostDisplayCard = (props) => {
                 <button
                   onClick={() => {
                      //initEdit()
-                    // console.log("ACCEPT THE NEW POST")
+                     console.log("ACCEPT THE NEW POST")
                      setBeginPay(true)
                      //dispatch to new post action postAccepted
                      // set postStepone and postStepTwo back to false. call it good.
